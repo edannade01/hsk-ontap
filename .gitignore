@@ -1,0 +1,7 @@
+.DS_Store
+.claude/
+HSK2 Bài Giàng/
+Sách giáo khoa/
+*.md
+*.csv
+*.command
