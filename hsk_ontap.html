@@ -88,7 +88,7 @@
 .wp-none{color:var(--text2);font-size:.85rem}
 .wp-ex-item{font-size:.82rem;color:var(--text);text-align:left;padding:5px 0;border-bottom:1px solid var(--border);line-height:1.6}
 .wp-ex-item:last-child{border-bottom:none}
-@media(max-width:640px){.songs-layout{flex-direction:column;height:auto}.songs-sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border)}.songs-list{max-height:260px}.lt-zh{font-size:1.15rem}}
+@media(max-width:640px){.songs-layout{flex-direction:column;height:auto}.songs-sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border)}.songs-sidebar-title{cursor:pointer;display:flex;align-items:center;justify-content:space-between}.songs-list-chevron{display:inline-block;transition:.3s;font-size:.9rem}.songs-sidebar.expanded .songs-list-chevron{transform:rotate(180deg)}.songs-list{max-height:260px;overflow-y:auto;transition:max-height .25s ease}.songs-sidebar.expanded .songs-list{max-height:600px}.lt-zh{font-size:1.15rem}}
 [data-dark] {
   --bg: #0F0F18; --surface: #1C1C2E; --surface2: #252538;
   --primary-bg: #1a2a4a;
@@ -656,7 +656,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 <div class="tab-panel" id="tab-songs">
   <div class="songs-layout">
     <aside class="songs-sidebar">
-      <div class="songs-sidebar-title">🎵 Bài Hát</div>
+      <div class="songs-sidebar-title" onclick="toggleSongsList()">🎵 Bài Hát <span class="songs-list-chevron">▾</span></div>
       <div class="songs-list" id="songsList"></div>
     </aside>
     <div class="songs-main">
@@ -4852,6 +4852,7 @@ function renderExercises(){
     </div>`).join('');
 }
 function toggleExBai(b){document.getElementById('exb-'+b).classList.toggle('open')}
+function toggleSongsList(){document.querySelector('.songs-sidebar').classList.toggle('expanded')}
 function exSectionIcon(type){
   const m={order:'🔀',fill:'✏️',translate:'🇻🇳→🇨🇳',translate2:'🇻🇳→🇨🇳',reverse:'🇨🇳→🇻🇳',mc:'☑️',cloze:'📝',clozepassage:'📄',correct:'🔧',reading:'📖',write:'✍️'};
   return m[type]||'📌';
