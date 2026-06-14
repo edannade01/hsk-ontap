@@ -697,6 +697,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 <div class="tab-panel" id="tab-exercise">
   <div class="filter-bar">
     <button class="badge-btn active" onclick="filterExercise('all',this)">Tất cả</button>
+    <button class="badge-btn b5" onclick="filterExercise(5,this)">Buổi 5</button>
     <button class="badge-btn b6" onclick="filterExercise(6,this)">Buổi 6</button>
     <button class="badge-btn b7" onclick="filterExercise(7,this)">Buổi 7</button>
     <button class="badge-btn b8" onclick="filterExercise(8,this)">Buổi 8</button>
@@ -3208,1260 +3209,1366 @@ const COMPARE = [
 ];
 
 const EXERCISES = [
-  {
-    "bai": 6,
-    "sections": [
-      {
-        "type": "order",
-        "title": "Sắp xếp câu thành câu hoàn chỉnh",
-        "items": [
-          {
-            "q": "跟 / 我 / 朋友 / 去 / 东西 / 买 / 商店 / 一起 / 下午",
-            "a": "下午我跟朋友一起去商店买东西。",
-            "pin": "Xiàwǔ wǒ gēn péngyou yìqǐ qù shāngdiàn mǎi dōngxi.",
-            "vn": "Chiều nay tôi cùng bạn đi cửa hàng mua đồ."
-          },
-          {
-            "q": "代表团 / 飞机 / 去 / 坐 / 参观 / 上海 / 明天",
-            "a": "明天代表团坐飞机去上海参观。",
-            "pin": "Míngtiān dàibiǎotuán zuò fēijī qù Shànghǎi cānguān.",
-            "vn": "Ngày mai đoàn đại biểu đi máy bay đến Thượng Hải tham quan."
-          },
-          {
-            "q": "代表团 / 她 / 翻译 / 给 / 当",
-            "a": "代表团给她当翻译。",
-            "pin": "Dàibiǎotuán gěi tā dāng fānyì.",
-            "vn": "Đoàn đại biểu để cô ấy làm phiên dịch."
-          },
-          {
-            "q": "我 / 上海 / 一个 / 朋友 / 去 / 看",
-            "a": "我去上海看一个朋友。",
-            "pin": "Wǒ qù Shànghǎi kàn yí ge péngyou.",
-            "vn": "Tôi đến Thượng Hải thăm một người bạn."
-          },
-          {
-            "q": "常 / 查 / 上网 / 资料 / 田芳",
-            "a": "田芳常上网查资料。",
-            "pin": "Tián Fāng cháng shàngwǎng chá zīliào.",
-            "vn": "Điền Phương thường lên mạng tra tài liệu."
-          },
-          {
-            "q": "她 / 用 / 伊妹儿 / 写 / 朋友 / 给 / 信",
-            "a": "她用伊妹儿给朋友写信。",
-            "pin": "Tā yòng yīmèiér gěi péngyou xiě xìn.",
-            "vn": "Cô ấy dùng email viết thư cho bạn."
-          },
-          {
-            "q": "我 / 上网 / 常 / 聊天儿 / 跟 / 朋友",
-            "a": "我常上网跟朋友聊天儿。",
-            "pin": "Wǒ cháng shàngwǎng gēn péngyou liáotiānr.",
-            "vn": "Tôi thường lên mạng tán gẫu với bạn bè."
-          },
-          {
-            "q": "我 / 张东 / 和 / 骑车 / 去 / 书店",
-            "a": "我和张东骑车去书店。",
-            "pin": "Wǒ hé Zhāng Dōng qí chē qù shūdiàn.",
-            "vn": "Tôi và Trương Đông đi xe đạp đến nhà sách."
-          }
-        ]
-      },
-      {
-        "type": "fill",
-        "title": "Chọn từ thích hợp điền vào chỗ trống",
-        "bank": [
-          "旅行",
-          "帮",
-          "回来",
-          "飞机",
-          "问题",
-          "报纸",
-          "花",
-          "翻译",
-          "火车",
-          "包裹"
-        ],
-        "items": [
-          {
-            "q": "我哥哥去上海___了一个星期。",
-            "a": "旅行",
-            "pin": "lǜxíng",
-            "hv": "LỮ HÀNH",
-            "spin": "Wǒ gēge qù Shànghǎi lǜxíng le yí ge xīngqī.",
-            "vn": "Anh tôi đi Thượng Hải du lịch một tuần."
-          },
-          {
-            "q": "今天下午我坐___去广州，明天才能到。",
-            "a": "火车",
-            "pin": "huǒchē",
-            "hv": "HỎA XA",
-            "spin": "Jīntiān xiàwǔ wǒ zuò huǒchē qù Guǎngzhōu, míngtiān cái néng dào.",
-            "vn": "Chiều nay tôi đi tàu hỏa đến Quảng Châu, ngày mai mới đến được."
-          },
-          {
-            "q": "她每天早上都喜欢一边喝咖啡一边看___。",
-            "a": "报纸",
-            "pin": "bàozhǐ",
-            "hv": "BÁO CHỈ",
-            "spin": "Tā měitiān zǎoshang dōu xǐhuan yìbiān hē kāfēi yìbiān kàn bàozhǐ.",
-            "vn": "Mỗi buổi sáng cô ấy đều thích vừa uống cà phê vừa đọc báo."
-          },
-          {
-            "q": "这个句子我听不懂，你能___一下吗？",
-            "a": "翻译",
-            "pin": "fānyì",
-            "hv": "PHIÊN DỊCH",
-            "spin": "Zhège jùzi wǒ tīng bu dǒng, nǐ néng fānyì yíxià ma?",
-            "vn": "Câu này tôi nghe không hiểu, bạn dịch giúp tôi được không?"
-          },
-          {
-            "q": "我妈妈从北京___以后，给我买了很多东西。",
-            "a": "回来",
-            "pin": "huílái",
-            "hv": "HỒI LAI",
-            "spin": "Wǒ māma cóng Běijīng huílái yǐhòu, gěi wǒ mǎi le hěn duō dōngxi.",
-            "vn": "Sau khi mẹ tôi từ Bắc Kinh về, đã mua cho tôi rất nhiều thứ."
-          },
-          {
-            "q": "这个___太大了，我一个人拿不动。",
-            "a": "包裹",
-            "pin": "bāoguǒ",
-            "hv": "BAO QUẢ",
-            "spin": "Zhège bāoguǒ tài dà le, wǒ yí ge rén ná bu dòng.",
-            "vn": "Bưu kiện này to quá, một mình tôi không xách được."
-          },
-          {
-            "q": "A：你会不会说中文？B：会一点儿，但是还有很多___。",
-            "a": "问题",
-            "pin": "wèntí",
-            "hv": "VẤN ĐỀ",
-            "spin": "Huì yìdiǎnr, dànshì hái yǒu hěn duō wèntí.",
-            "vn": "A: Bạn có biết nói tiếng Trung không? B: Biết một chút, nhưng vẫn còn nhiều vấn đề."
-          },
-          {
-            "q": "我想买一些___送给老师。",
-            "a": "花",
-            "pin": "huā",
-            "hv": "HOA",
-            "spin": "Wǒ xiǎng mǎi yìxiē huā sòng gěi lǎoshī.",
-            "vn": "Tôi muốn mua ít hoa tặng cho cô giáo."
-          },
-          {
-            "q": "明天我要坐___去北京，比火车快很多。",
-            "a": "飞机",
-            "pin": "fēijī",
-            "hv": "PHI CƠ",
-            "spin": "Míngtiān wǒ yào zuò fēijī qù Běijīng, bǐ huǒchē kuài hěn duō.",
-            "vn": "Ngày mai tôi sẽ đi máy bay đến Bắc Kinh, nhanh hơn tàu hỏa rất nhiều."
-          },
-          {
-            "q": "谢谢你昨天___我找医院。",
-            "a": "帮",
-            "pin": "bāng",
-            "hv": "BANG",
-            "spin": "Xièxie nǐ zuótiān bāng wǒ zhǎo yīyuàn.",
-            "vn": "Cảm ơn bạn hôm qua đã giúp tôi tìm bệnh viện."
-          }
-        ]
-      },
-      {
-        "type": "translate",
-        "title": "Dịch câu (Việt → Trung)",
-        "items": [
-          {
-            "q": "Tôi muốn tiện thể mua một tờ báo.",
-            "a": "我想顺便买一张报纸。",
-            "pin": "Wǒ xiǎng shùnbiàn mǎi yì zhāng bàozhǐ."
-          },
-          {
-            "q": "Người thanh niên đó đang giúp mẹ cầm bưu kiện.",
-            "a": "那个青年人正在帮他妈妈拿包裹。",
-            "pin": "Nàge qīngnián rén zhèngzài bāng tā māma ná bāoguǒ."
-          },
-          {
-            "q": "Sau khi du lịch trở về, tôi rất nhớ Trung Quốc.",
-            "a": "旅行回来以后，我很想念中国。",
-            "pin": "Lǜxíng huílái yǐhòu, wǒ hěn xiǎngniàn Zhōngguó."
-          },
-          {
-            "q": "Không thành vấn đề, ngày mai tôi sẽ giúp bạn.",
-            "a": "没问题，明天我会帮你。",
-            "pin": "Méi wèntí, míngtiān wǒ huì bāng nǐ."
-          },
-          {
-            "q": "Vì có vấn đề nên anh ấy không đi bằng máy bay.",
-            "a": "因为有问题，所以他不坐飞机去。",
-            "pin": "Yīnwèi yǒu wèntí, suǒyǐ tā bú zuò fēijī qù."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "bai": 7,
-    "sections": [
-      {
-        "type": "mc",
-        "title": "Chọn đáp án đúng",
-        "items": [
-          {
-            "q": "这件衣服太长了，我想买一件（　）一点儿的。",
-            "opts": [
-              "深",
-              "胖",
-              "短",
-              "漂亮"
-            ],
-            "a": 2,
-            "pin": "Zhè jiàn yīfu tài cháng le, wǒ xiǎng mǎi yí jiàn duǎn yìdiǎnr de.",
-            "vn": "Cái áo này dài quá, tôi muốn mua cái ngắn hơn một chút."
-          },
-          {
-            "q": "我觉得这条裤子很（　）你，你试一下吧。",
-            "opts": [
-              "试",
-              "合适",
-              "打折",
-              "适合"
-            ],
-            "a": 3,
-            "pin": "Wǒ juéde zhè tiáo kùzi hěn shìhé nǐ, nǐ shì yíxià ba.",
-            "vn": "Tôi thấy cái quần này rất hợp với bạn, bạn thử xem nào."
-          },
-          {
-            "q": "最近她每天运动，所以现在比以前（　）了很多。",
-            "opts": [
-              "长",
-              "深",
-              "瘦",
-              "浅"
-            ],
-            "a": 2,
-            "pin": "Zuìjìn tā měitiān yùndòng, suǒyǐ xiànzài bǐ yǐqián shòu le hěn duō.",
-            "vn": "Gần đây cô ấy ngày nào cũng tập thể dục, nên giờ gầy hơn trước rất nhiều."
-          },
-          {
-            "q": "这个商场今天（　），很多东西都很便宜。",
-            "opts": [
-              "打折",
-              "合适",
-              "可以",
-              "试"
-            ],
-            "a": 0,
-            "pin": "Zhège shāngchǎng jīntiān dǎzhé, hěn duō dōngxi dōu hěn piányi.",
-            "vn": "Trung tâm thương mại này hôm nay giảm giá, rất nhiều đồ đều rẻ."
-          },
-          {
-            "q": "我很喜欢这件衣服，我想先（　）一下。",
-            "opts": [
-              "学",
-              "试",
-              "看",
-              "找"
-            ],
-            "a": 1,
-            "pin": "Wǒ hěn xǐhuan zhè jiàn yīfu, wǒ xiǎng xiān shì yíxià.",
-            "vn": "Tôi rất thích cái áo này, tôi muốn thử trước."
-          },
-          {
-            "q": "我不喜欢颜色太（　）的衣服，我喜欢浅一点儿的。",
-            "opts": [
-              "深",
-              "长",
-              "胖",
-              "漂亮"
-            ],
-            "a": 0,
-            "pin": "Wǒ bù xǐhuan yánsè tài shēn de yīfu, wǒ xǐhuan qiǎn yìdiǎnr de.",
-            "vn": "Tôi không thích quần áo màu quá đậm, tôi thích màu nhạt hơn một chút."
-          },
-          {
-            "q": "今天我太忙了，所以不（　）和你一起去看电影。",
-            "opts": [
-              "试",
-              "打折",
-              "可以",
-              "当然"
-            ],
-            "a": 2,
-            "pin": "Jīntiān wǒ tài máng le, suǒyǐ bù kěyǐ hé nǐ yìqǐ qù kàn diànyǐng.",
-            "vn": "Hôm nay tôi bận quá, nên không thể cùng bạn đi xem phim."
-          },
-          {
-            "q": "越南有很多美丽的地方，风景都非常（　）。",
-            "opts": [
-              "深",
-              "漂亮",
-              "合适",
-              "瘦"
-            ],
-            "a": 1,
-            "pin": "Yuènán yǒu hěn duō měilì de dìfang, fēngjǐng dōu fēicháng piàoliang.",
-            "vn": "Việt Nam có rất nhiều nơi đẹp, cảnh đều rất xinh đẹp."
-          }
-        ]
-      },
-      {
-        "type": "order",
-        "title": "Sắp xếp câu thành câu hoàn chỉnh",
-        "items": [
-          {
-            "q": "因为 / 所以 / 想 / 我 / 这件衣服 / 有一点儿贵 / 等打折以后再买",
-            "a": "因为这件衣服有一点儿贵，所以我想等打折以后再买。",
-            "pin": "Yīnwèi zhè jiàn yīfu yǒu yìdiǎnr guì, suǒyǐ wǒ xiǎng děng dǎzhé yǐhòu zài mǎi.",
-            "vn": "Vì cái áo này hơi đắt một chút, nên tôi muốn chờ giảm giá rồi mới mua."
-          },
-          {
-            "q": "以前 / 但是 / 现在 / 很少运动 / 开始 / 注意身体健康 / 他 / 每天都会去跑步",
-            "a": "以前他很少运动，但是现在他开始注意身体健康，每天都会去跑步。",
-            "pin": "Yǐqián tā hěn shǎo yùndòng, dànshì xiànzài tā kāishǐ zhùyì shēntǐ jiànkāng, měitiān dōu huì qù pǎobù.",
-            "vn": "Trước đây anh ấy rất ít vận động, nhưng giờ anh ấy bắt đầu chú ý sức khỏe, ngày nào cũng đi chạy bộ."
-          },
-          {
-            "q": "的时候 / 服务员 / 那条蓝色的裙子 / 很适合 / 我姐姐 / 试衣服 / 觉得",
-            "a": "试衣服的时候，服务员觉得那条蓝色的裙子很适合我姐姐。",
-            "pin": "Shì yīfu de shíhou, fúwùyuán juéde nà tiáo lánsè de qúnzi hěn shìhé wǒ jiějie.",
-            "vn": "Lúc thử đồ, nhân viên phục vụ cảm thấy cái váy màu xanh dương đó rất hợp với chị tôi."
-          },
-          {
-            "q": "虽然 / 但是 / 很多人 / 商场里的东西 / 今天 / 还是 / 来买东西 / 不便宜",
-            "a": "虽然商场里的东西今天不便宜，但是还是有很多人来买东西。",
-            "pin": "Suīrán shāngchǎng lǐ de dōngxi jīntiān bù piányi, dànshì háishi yǒu hěn duō rén lái mǎi dōngxi.",
-            "vn": "Mặc dù hôm nay đồ trong trung tâm thương mại không rẻ, nhưng vẫn có rất nhiều người đến mua đồ."
-          },
-          {
-            "q": "我 / 如果 / 有时间的话 / 想 / 和朋友一起 / 去越南很多漂亮的地方旅游",
-            "a": "如果有时间的话，我想和朋友一起去越南很多漂亮的地方旅游。",
-            "pin": "Rúguǒ yǒu shíjiān dehuà, wǒ xiǎng hé péngyou yìqǐ qù Yuènán hěn duō piàoliang de dìfang lǜyóu.",
-            "vn": "Nếu có thời gian, tôi muốn cùng bạn bè đi du lịch nhiều nơi đẹp ở Việt Nam."
-          },
-          {
-            "q": "因为 / 所以 / 没有办法 / 昨天晚上 / 我们 / 跟老师一起吃饭 / 下大雨",
-            "a": "因为昨天晚上下大雨，所以我们没有办法跟老师一起吃饭。",
-            "pin": "Yīnwèi zuótiān wǎnshang xià dà yǔ, suǒyǐ wǒmen méiyǒu bànfǎ gēn lǎoshī yìqǐ chīfàn.",
-            "vn": "Vì tối qua mưa to, nên chúng tôi không có cách nào cùng ăn cơm với thầy/cô giáo."
-          },
-          {
-            "q": "小的时候 / 锻炼 / 现在 / 但是 / 不喜欢运动 / 我 / 每天 / 都 / 会去健身房 / 锻炼",
-            "a": "小的时候我不喜欢运动锻炼，但是现在我每天都会去健身房锻炼。",
-            "pin": "Xiǎo de shíhou wǒ bù xǐhuan yùndòng duànliàn, dànshì xiànzài wǒ měitiān dōu huì qù jiànshēnfáng duànliàn.",
-            "vn": "Lúc nhỏ tôi không thích vận động luyện tập, nhưng giờ ngày nào tôi cũng đi phòng gym tập luyện."
-          },
-          {
-            "q": "觉得 / 这件黑色的毛衣 / 我 / 不但 / 很漂亮 / 而且 / 很适合你",
-            "a": "我觉得这件黑色的毛衣不但很漂亮，而且很适合你。",
-            "pin": "Wǒ juéde zhè jiàn hēisè de máoyī bùdàn hěn piàoliang, érqiě hěn shìhé nǐ.",
-            "vn": "Tôi thấy cái áo len màu đen này không những rất đẹp, mà còn rất hợp với bạn."
-          },
-          {
-            "q": "如果 / 每天 / 你 / 多运动一点儿 / 身体 / 一定会 / 更健康",
-            "a": "如果你每天多运动一点儿，身体一定会更健康。",
-            "pin": "Rúguǒ nǐ měitiān duō yùndòng yìdiǎnr, shēntǐ yídìng huì gèng jiànkāng.",
-            "vn": "Nếu mỗi ngày bạn vận động nhiều hơn một chút, cơ thể chắc chắn sẽ khỏe mạnh hơn."
-          },
-          {
-            "q": "昨天 / 买了 / 的时候 / 因为 / 打折 / 所以 / 我和妈妈 / 很多东西 / 去商场 / 的时候",
-            "a": "昨天我和妈妈去商场的时候，因为打折，所以买了很多东西。",
-            "pin": "Zuótiān wǒ hé māma qù shāngchǎng de shíhou, yīnwèi dǎzhé, suǒyǐ mǎi le hěn duō dōngxi.",
-            "vn": "Hôm qua khi tôi và mẹ đi trung tâm thương mại, vì giảm giá nên đã mua rất nhiều đồ."
-          }
-        ]
-      },
-      {
-        "type": "reading",
-        "title": "Đọc đoạn văn và phán đoán đúng/sai",
-        "qtype": "tf",
-        "passage": {
-          "zh": "玛丽最近觉得自己有一点儿胖，所以她决定开始减肥。以前，她每天晚上都喜欢喝可乐、吃很多甜的东西，而且很少运动。后来，她的朋友告诉她：“如果你想健康一点儿，就应该少吃甜食，多做运动。”现在，玛丽每天晚上都会去公园跑步半个小时，有时候还会和朋友一起打篮球。虽然刚开始的时候有一点儿累，但是她觉得运动以后身体舒服多了。一个月以后，玛丽瘦了很多，也比以前更有精神了。",
-          "pin": "Mǎlì zuìjìn juéde zìjǐ yǒu yìdiǎnr pàng, suǒyǐ tā juédìng kāishǐ jiǎnféi. Yǐqián, tā měitiān wǎnshang dōu xǐhuan hē kělè, chī hěn duō tián de dōngxi, érqiě hěn shǎo yùndòng. Hòulái, tā de péngyou gàosu tā: “Rúguǒ nǐ xiǎng jiànkāng yìdiǎnr, jiù yīnggāi shǎo chī tiánshí, duō zuò yùndòng.” Xiànzài, Mǎlì měitiān wǎnshang dōu huì qù gōngyuán pǎobù bàn ge xiǎoshí, yǒu shíhou hái huì hé péngyou yìqǐ dǎ lánqiú. Suīrán gāng kāishǐ de shíhou yǒu yìdiǎnr lèi, dànshì tā juéde yùndòng yǐhòu shēntǐ shūfu duō le. Yí ge yuè yǐhòu, Mǎlì shòu le hěn duō, yě bǐ yǐqián gèng yǒu jīngshén le.",
-          "vn": "Gần đây Mary cảm thấy mình hơi béo, nên cô quyết định bắt đầu giảm cân. Trước đây, mỗi tối cô đều thích uống cô-ca, ăn nhiều đồ ngọt, và rất ít vận động. Sau đó, bạn cô nói với cô: “Nếu muốn khỏe mạnh hơn một chút, thì nên ăn ít đồ ngọt, vận động nhiều hơn.” Hiện tại, mỗi tối Mary đều đi chạy bộ ở công viên nửa giờ, có lúc còn cùng bạn chơi bóng rổ. Mặc dù lúc mới bắt đầu hơi mệt, nhưng cô cảm thấy sau khi vận động cơ thể thoải mái hơn nhiều. Một tháng sau, Mary đã gầy đi nhiều, cũng có tinh thần hơn trước."
+    {
+      "bai": 5,
+      "sections": [
+        {
+          "type": "cloze",
+          "title": "Điền từ vào chỗ trống",
+          "bank": [
+            "开始",
+            "意思",
+            "舒服",
+            "感冒",
+            "小时",
+            "请假"
+          ],
+          "items": [
+            {
+              "q": "昨天天气突然变冷了，我出门的时候穿得太少，结果晚上就___了。今天早上起床以后，我觉得头疼、咳嗽，身体非常不___。因为不能去上学，所以我给老师打了个电话___一天，在家里吃药休息。",
+              "a": [
+                "感冒",
+                "舒服",
+                "请假"
+              ],
+              "pin": "Zuótiān tiānqì tūrán biàn lěng le, wǒ chūmén de shíhou chuān de tài shǎo, jiéguǒ wǎnshang jiù gǎnmào le. Jīntiān zǎoshang qǐchuáng yǐhòu, wǒ juéde tóuténg, késou, shēntǐ fēicháng bù shūfu. Yīnwèi bù néng qù shàngxué, suǒyǐ wǒ gěi lǎoshī dǎ le ge diànhuà qǐngjià yì tiān, zài jiā lǐ chī yào xiūxi.",
+              "vn": "Hôm qua trời đột nhiên trở lạnh, lúc ra ngoài tôi mặc quá ít, kết quả tối đến thì bị cảm. Sáng nay sau khi ngủ dậy, tôi cảm thấy đau đầu, ho, người rất không khỏe. Vì không thể đi học, nên tôi gọi điện cho thầy/cô xin nghỉ một ngày, ở nhà uống thuốc nghỉ ngơi."
+            },
+            {
+              "q": "以前我不知道天天踢足球有什么___，觉得那只是十多个人在跑，真没意思。但是从上个月___和同学们一起踢了两次以后，我发现自己爱上了这项运动。现在，我每个周末都要去踢两个___的足球。",
+              "a": [
+                "意思",
+                "开始",
+                "小时"
+              ],
+              "pin": "Yǐqián wǒ bù zhīdào tiāntiān tī zúqiú yǒu shénme yìsi, juéde nà zhǐshì shí duō ge rén zài pǎo, zhēn méi yìsi. Dànshì cóng shàng ge yuè kāishǐ hé tóngxuémen yìqǐ tī le liǎng cì yǐhòu, wǒ fāxiàn zìjǐ ài shàng le zhè xiàng yùndòng. Xiànzài, wǒ měi ge zhōumò dōu yào qù tī liǎng ge xiǎoshí de zúqiú.",
+              "vn": "Trước đây tôi không biết ngày nào cũng đá bóng thì có ý nghĩa gì, cảm thấy đó chỉ là hơn chục người chạy, thật vô nghĩa. Nhưng từ tháng trước bắt đầu cùng các bạn học đá hai lần, tôi phát hiện mình đã yêu thích môn thể thao này. Hiện tại, mỗi cuối tuần tôi đều phải đi đá bóng hai giờ."
+            }
+          ]
         },
-        "items": [
-          {
-            "q": "玛丽以前很喜欢运动。",
-            "a": "Sai"
-          },
-          {
-            "q": "玛丽以前常常喝可乐。",
-            "a": "Đúng"
-          },
-          {
-            "q": "玛丽的朋友让她多吃甜食。",
-            "a": "Sai"
-          },
-          {
-            "q": "现在玛丽每天都会运动。",
-            "a": "Đúng"
-          },
-          {
-            "q": "玛丽现在身体比以前更好了。",
-            "a": "Đúng"
-          }
-        ]
-      },
-      {
-        "type": "write",
-        "title": "Viết đoạn văn theo chủ đề và từ cho sẵn",
-        "words": [
-          "运动",
-          "胖",
-          "瘦",
-          "健康",
-          "当然",
-          "喜欢"
-        ],
-        "wordsVn": "Vận động, béo, gầy, khỏe mạnh, đương nhiên, thích",
-        "sample": {
-          "zh": "以前我很胖，我很喜欢喝可乐，但是很少去运动。后来我想减肥，让自己更漂亮。当然，减肥以后，我比以前瘦了，也觉得更健康了，也更喜欢自己的身体了。",
-          "pin": "Yǐqián wǒ hěn pàng, wǒ hěn xǐhuan hē kělè, dànshì hěn shǎo qù yùndòng. Hòulái wǒ xiǎng jiǎnféi, ràng zìjǐ gèng piàoliang. Dāngrán, jiǎnféi yǐhòu, wǒ bǐ yǐqián shòu le, yě juéde gèng jiànkāng le, yě gèng xǐhuan zìjǐ de shēntǐ le.",
-          "vn": "Trước đây tôi rất béo, tôi rất thích uống cô-ca, nhưng rất ít khi vận động. Sau đó tôi muốn giảm cân, để bản thân đẹp hơn. Đương nhiên, sau khi giảm cân, tôi gầy hơn trước, cũng cảm thấy khỏe mạnh hơn, và cũng thích cơ thể mình hơn."
+        {
+          "type": "order",
+          "title": "Sắp xếp câu thành câu hoàn chỉnh",
+          "items": [
+            {
+              "q": "妹妹 / 已经 / 从 / 去年 / 开始 / 认真地 / 学习 / 汉语 / 两年了",
+              "a": "妹妹已经从去年开始认真地学习汉语两年了。",
+              "pin": "Mèimei yǐjīng cóng qùnián kāishǐ rènzhēnde xuéxí Hànyǔ liǎng nián le.",
+              "vn": "Em gái đã bắt đầu học tiếng Trung chăm chỉ từ năm ngoái, đến nay đã hai năm rồi."
+            },
+            {
+              "q": "哥哥 / 昨天 / 买的 / 这本书 / 看了 / 两遍 / 还是 / 没明白 / 它的意思",
+              "a": "哥哥昨天买的这本书，看了两遍还是没明白它的意思。",
+              "pin": "Gēge zuótiān mǎi de zhè běn shū, kàn le liǎng biàn háishi méi míngbai tā de yìsi.",
+              "vn": "Quyển sách anh trai mua hôm qua, đọc hai lần rồi vẫn không hiểu ý nghĩa của nó."
+            },
+            {
+              "q": "他 / 觉得 / 身体 / 哪里 / 不舒服 / 想 / 去 / 医院 / 找医生 / 看看",
+              "a": "他觉得身体哪里不舒服，想去医院找医生看看。",
+              "pin": "Tā juéde shēntǐ nǎlǐ bù shūfu, xiǎng qù yīyuàn zhǎo yīshēng kànkan.",
+              "vn": "Anh ấy cảm thấy trong người có chỗ không khỏe, muốn đến bệnh viện tìm bác sĩ khám thử."
+            },
+            {
+              "q": "姐姐 / 今天 / 坐了 / 两个小时 / 汽车 / 回 / 老家 / 还没 / 到的",
+              "a": "姐姐今天坐了两个小时汽车回老家，还没到的。",
+              "pin": "Jiějie jīntiān zuò le liǎng ge xiǎoshí qìchē huí lǎojiā, hái méi dào de.",
+              "vn": "Hôm nay chị tôi đi xe hai giờ về quê, vẫn chưa đến."
+            },
+            {
+              "q": "吃 / 这种 / 药 / 以后 / 没有效果 / 他的 / 咳嗽 / 反而 / 越来越 / 严重",
+              "a": "吃这种药以后没有效果，他的咳嗽反而越来越严重。",
+              "pin": "Chī zhè zhǒng yào yǐhòu méiyǒu xiàoguǒ, tā de késou fǎn'ér yuè lái yuè yánzhòng.",
+              "vn": "Sau khi uống loại thuốc này không có hiệu quả, cơn ho của anh ấy ngược lại càng ngày càng nặng hơn."
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "title": "Dịch câu (Việt → Trung)",
+          "items": [
+            {
+              "q": "Quyển sách này tuy rất dày nhưng tôi đã đọc hai lần rồi, cảm thấy rất có ý nghĩa.",
+              "a": "这本书虽然很厚，但是我已经看了两遍，觉得很有意思。",
+              "pin": "Zhè běn shū suīrán hěn hòu, dànshì wǒ yǐjīng kàn le liǎng biàn, juéde hěn yǒu yìsi."
+            },
+            {
+              "q": "Hôm qua anh ấy không đến công ty, hôm nay lại xin sếp nghỉ vì bệnh cảm cúm càng ngày càng nặng.",
+              "a": "昨天他没有来公司，今天又因为感冒越来越严重，跟老板请假了。",
+              "pin": "Zuótiān tā méiyǒu lái gōngsī, jīntiān yòu yīnwèi gǎnmào yuè lái yuè yánzhòng, gēn lǎobǎn qǐngjià le."
+            },
+            {
+              "q": "Từ tuần sau tôi sẽ bắt đầu bận rộn, mỗi ngày đều phải ngồi tàu hỏa ba tiếng đồng hồ đi làm.",
+              "a": "从下个星期开始我会很忙，每天都要坐三个小时火车去上班。",
+              "pin": "Cóng xià ge xīngqī kāishǐ wǒ huì hěn máng, měitiān dōu yào zuò sān ge xiǎoshí huǒchē qù shàngbān."
+            },
+            {
+              "q": "Bác sĩ nói loại thuốc này hiệu quả rất tốt, sau khi uống xong đầu sẽ không còn đau nữa, người sẽ dễ chịu hơn.",
+              "a": "医生说这种药效果很好，喝完以后头就不疼了，身体会舒服一些。",
+              "pin": "Yīshēng shuō zhè zhǒng yào xiàoguǒ hěn hǎo, hē wán yǐhòu tóu jiù bù téng le, shēntǐ huì shūfu yìxiē."
+            },
+            {
+              "q": "Nếu như bạn cảm thấy một mình ở nhà chán ngắt, vậy thì ngày mai cùng chúng tôi ra sân vận động chơi đi.",
+              "a": "如果你觉得一个人在家很没意思，那么明天就跟我们一起去操场玩儿吧。",
+              "pin": "Rúguǒ nǐ juéde yí ge rén zài jiā hěn méi yìsi, nàme míngtiān jiù gēn wǒmen yìqǐ qù cāochǎng wánr ba."
+            }
+          ]
         }
-      }
-    ]
-  },
-  {
-    "bai": 8,
-    "sections": [
-      {
-        "type": "cloze",
-        "title": "Điền từ vào chỗ trống",
-        "bank": [
-          "准备",
-          "参加",
-          "打算",
-          "举行",
-          "接",
-          "毕业",
-          "时间",
-          "经济",
-          "正好",
-          "国家"
-        ],
-        "items": [
-          {
-            "q": "麦克今年大学___了。他___明年去中国留学。可是现在他的___情况不太好，所以还需要努力工作赚钱。",
-            "a": [
-              "毕业",
-              "打算",
-              "经济"
-            ],
-            "pin": "Màikè jīnnián dàxué bìyè le. Tā dǎsuàn míngnián qù Zhōngguó liúxué. Kěshì xiànzài tā de jīngjì qíngkuàng bú tài hǎo, suǒyǐ hái xūyào nǔlì gōngzuò zhuànqián.",
-            "vn": "Mike năm nay đã tốt nghiệp đại học. Anh ấy dự định năm sau đi Trung Quốc du học. Nhưng hiện tại tình hình kinh tế của anh ấy không tốt lắm, nên vẫn cần phải cố gắng làm việc kiếm tiền."
-          },
-          {
-            "q": "昨天，公司___了一个欢迎会，因为来了几位新同事。老板希望大家都能___。可是小王那天没有___，因为他要去机场___一个从台湾来的朋友。",
-            "a": [
-              "举行",
-              "参加",
-              "参加",
-              "接"
-            ],
-            "pin": "Zuótiān, gōngsī jǔxíng le yí ge huānyínghuì, yīnwèi lái le jǐ wèi xīn tóngshì. Lǎobǎn xīwàng dàjiā dōu néng cānjiā. Kěshì Xiǎo Wáng nèitiān méiyǒu cānjiā, yīnwèi tā yào qù jīchǎng jiē yí ge cóng Táiwān lái de péngyou.",
-            "vn": "Hôm qua, công ty đã tổ chức một buổi tiệc chào mừng, vì có vài đồng nghiệp mới đến. Sếp hy vọng mọi người đều có thể tham gia. Nhưng Tiểu Vương hôm đó không tham gia, vì anh ấy phải ra sân bay đón một người bạn từ Đài Loan đến."
-          },
-          {
-            "q": "今天下午，小李正在___下个月去北京旅行的东西。因为朋友___也想去北京，所以他们决定一起去。",
-            "a": [
-              "准备",
-              "正好"
-            ],
-            "pin": "Jīntiān xiàwǔ, Xiǎo Lǐ zhèngzài zhǔnbèi xià ge yuè qù Běijīng lǜyóu de dōngxi. Yīnwèi péngyou zhènghǎo yě xiǎng qù Běijīng, suǒyǐ tāmen juédìng yìqǐ qù.",
-            "vn": "Chiều nay, Tiểu Lý đang chuẩn bị đồ cho chuyến du lịch Bắc Kinh tháng sau. Vì bạn anh ấy đúng lúc cũng muốn đi Bắc Kinh, nên họ quyết định đi cùng nhau."
-          },
-          {
-            "q": "小王觉得中国是一个很有意思的___，以后他还想去很多地方看看。",
-            "a": [
-              "国家"
-            ],
-            "pin": "Xiǎo Wáng juéde Zhōngguó shì yí ge hěn yǒu yìsi de guójiā, yǐhòu tā hái xiǎng qù hěn duō dìfang kànkan.",
-            "vn": "Tiểu Vương cảm thấy Trung Quốc là một quốc gia rất thú vị, sau này anh ấy còn muốn đi nhiều nơi để tham quan."
-          }
-        ]
-      },
-      {
-        "type": "translate",
-        "title": "Dịch câu (Việt → Trung)",
-        "items": [
-          {
-            "q": "Sau khi tốt nghiệp đại học, cô ấy muốn đến Bắc Kinh làm việc.",
-            "a": "大学毕业以后，她想去北京工作。",
-            "pin": "Dàxué bìyè yǐhòu, tā xiǎng qù Běijīng gōngzuò."
-          },
-          {
-            "q": "Hôm nay tôi không có thời gian nên không thể tham gia tiệc sinh nhật của anh ấy.",
-            "a": "今天我没有时间，所以不能参加他的生日晚会。",
-            "pin": "Jīntiān wǒ méiyǒu shíjiān, suǒyǐ bù néng cānjiā tā de shēngrì wǎnhuì."
-          },
-          {
-            "q": "Tôi định năm sau đi nước ngoài du lịch với bạn bè.",
-            "a": "我打算明年跟朋友一起去国外旅行。",
-            "pin": "Wǒ dǎsuàn míngnián gēn péngyou yìqǐ qù guówài lǜxíng."
-          },
-          {
-            "q": "Anh ấy đến đúng lúc, tôi đang cần người giúp.",
-            "a": "他来得正好，我正需要人帮忙。",
-            "pin": "Tā lái de zhènghǎo, wǒ zhèng xūyào rén bāngmáng."
-          },
-          {
-            "q": "Vì vấn đề kinh tế nên họ vẫn chưa tổ chức hôn lễ.",
-            "a": "因为经济问题，所以他们还没举行婚礼。",
-            "pin": "Yīnwèi jīngjì wèntí, suǒyǐ tāmen hái méi jǔxíng hūnlǐ."
-          },
-          {
-            "q": "Tôi phải chuẩn bị rất nhiều đồ vì tuần sau đi nước ngoài công tác.",
-            "a": "因为下星期要去国外出差，所以我要准备很多东西。",
-            "pin": "Yīnwèi xià xīngqī yào qù guówài chūchāi, suǒyǐ wǒ yào zhǔnbèi hěn duō dōngxi."
-          },
-          {
-            "q": "Tiệc kết thúc lúc 10 giờ tối nhưng chúng tôi vẫn chưa muốn về.",
-            "a": "晚会晚上十点结束了，但是我们还不想回家。",
-            "pin": "Wǎnhuì wǎnshang shí diǎn jiéshù le, dànshì wǒmen hái bù xiǎng huí jiā."
-          }
-        ]
-      },
-      {
-        "type": "reading",
-        "title": "Đọc đoạn văn và trả lời câu hỏi",
-        "qtype": "qa",
-        "passage": {
-          "zh": "今天是星期六，本来王红打算和朋友一起参加生日晚会，可是下午公司的一个同事突然生病了，所以经理让她去医院看看那个同事。等她从医院出来的时候，已经晚上八点了。她本来以为生日晚会已经结束了，可是朋友告诉她：“你来得正好，我们刚刚开始吃蛋糕。”在这个晚会，她还认识了很多新朋友，大家一起聊天、唱歌，到晚上十二点才回家。虽然她很累，可是她觉得今天还是非常开心。",
-          "pin": "Jīntiān shì xīngqīliù, běnlái Wáng Hóng dǎsuàn hé péngyou yìqǐ cānjiā shēngrì wǎnhuì, kěshì xiàwǔ gōngsī de yí ge tóngshì tūrán shēngbìng le, suǒyǐ jīnglǐ ràng tā qù yīyuàn kànkan nàge tóngshì. Děng tā cóng yīyuàn chūlái de shíhou, yǐjīng wǎnshang bā diǎn le. Tā běnlái yǐwéi shēngrì wǎnhuì yǐjīng jiéshù le, kěshì péngyou gàosu tā: “Nǐ lái de zhènghǎo, wǒmen gānggāng kāishǐ chī dàngāo.” Zài zhège wǎnhuì, tā hái rènshi le hěn duō xīn péngyou, dàjiā yìqǐ liáotiān, chànggē, dào wǎnshang shí'èr diǎn cái huí jiā. Suīrán tā hěn lèi, kěshì tā juéde jīntiān háishi fēicháng kāixīn.",
-          "vn": "Hôm nay là thứ Bảy, Vương Hồng vốn định cùng bạn bè đi tham dự tiệc sinh nhật, nhưng chiều nay một đồng nghiệp công ty bất ngờ bị bệnh, nên giám đốc bảo cô đến bệnh viện thăm đồng nghiệp đó. Đến khi cô ra khỏi bệnh viện thì đã 8 giờ tối. Cô vốn nghĩ tiệc sinh nhật đã kết thúc rồi, nhưng bạn bảo cô: “Bạn đến đúng lúc lắm, chúng tôi vừa mới bắt đầu ăn bánh kem.” Tại buổi tiệc này, cô còn quen được nhiều bạn mới, mọi người cùng nói chuyện, hát hò, đến 12 giờ đêm mới về nhà. Mặc dù rất mệt, nhưng cô cảm thấy hôm nay vẫn rất vui."
+      ]
+    },
+    {
+      "bai": 6,
+      "sections": [
+        {
+          "type": "order",
+          "title": "Sắp xếp câu thành câu hoàn chỉnh",
+          "items": [
+            {
+              "q": "跟 / 我 / 朋友 / 去 / 东西 / 买 / 商店 / 一起 / 下午",
+              "a": "下午我跟朋友一起去商店买东西。",
+              "pin": "Xiàwǔ wǒ gēn péngyou yìqǐ qù shāngdiàn mǎi dōngxi.",
+              "vn": "Chiều nay tôi cùng bạn đi cửa hàng mua đồ."
+            },
+            {
+              "q": "代表团 / 飞机 / 去 / 坐 / 参观 / 上海 / 明天",
+              "a": "明天代表团坐飞机去上海参观。",
+              "pin": "Míngtiān dàibiǎotuán zuò fēijī qù Shànghǎi cānguān.",
+              "vn": "Ngày mai đoàn đại biểu đi máy bay đến Thượng Hải tham quan."
+            },
+            {
+              "q": "代表团 / 她 / 翻译 / 给 / 当",
+              "a": "代表团给她当翻译。",
+              "pin": "Dàibiǎotuán gěi tā dāng fānyì.",
+              "vn": "Đoàn đại biểu để cô ấy làm phiên dịch."
+            },
+            {
+              "q": "我 / 上海 / 一个 / 朋友 / 去 / 看",
+              "a": "我去上海看一个朋友。",
+              "pin": "Wǒ qù Shànghǎi kàn yí ge péngyou.",
+              "vn": "Tôi đến Thượng Hải thăm một người bạn."
+            },
+            {
+              "q": "常 / 查 / 上网 / 资料 / 田芳",
+              "a": "田芳常上网查资料。",
+              "pin": "Tián Fāng cháng shàngwǎng chá zīliào.",
+              "vn": "Điền Phương thường lên mạng tra tài liệu."
+            },
+            {
+              "q": "她 / 用 / 伊妹儿 / 写 / 朋友 / 给 / 信",
+              "a": "她用伊妹儿给朋友写信。",
+              "pin": "Tā yòng yīmèiér gěi péngyou xiě xìn.",
+              "vn": "Cô ấy dùng email viết thư cho bạn."
+            },
+            {
+              "q": "我 / 上网 / 常 / 聊天儿 / 跟 / 朋友",
+              "a": "我常上网跟朋友聊天儿。",
+              "pin": "Wǒ cháng shàngwǎng gēn péngyou liáotiānr.",
+              "vn": "Tôi thường lên mạng tán gẫu với bạn bè."
+            },
+            {
+              "q": "我 / 张东 / 和 / 骑车 / 去 / 书店",
+              "a": "我和张东骑车去书店。",
+              "pin": "Wǒ hé Zhāng Dōng qí chē qù shūdiàn.",
+              "vn": "Tôi và Trương Đông đi xe đạp đến nhà sách."
+            }
+          ]
         },
-        "items": [
-          {
-            "q": "今天本来王红打算做什么？",
-            "a": "她本来打算和朋友一起参加生日晚会。"
-          },
-          {
-            "q": "为什么她后来去了医院？",
-            "a": "因为公司一个同事突然生病了，经理让她去医院看看那个同事。"
-          },
-          {
-            "q": "她几点从医院出来？",
-            "a": "晚上八点。"
-          },
-          {
-            "q": "她去的时候，生日晚会结束了吗？",
-            "a": "还没结束，大家刚刚开始吃蛋糕。"
-          },
-          {
-            "q": "为什么她觉得很开心？",
-            "a": "因为在晚会上她认识了很多新朋友，大家一起聊天、唱歌，过得很愉快。"
-          }
-        ]
-      },
-      {
-        "type": "write",
-        "title": "Viết đoạn văn theo chủ đề và từ cho sẵn",
-        "topic": "你以后的打算",
-        "words": [
-          "打算",
-          "留学",
-          "工作",
-          "毕业",
-          "结婚"
-        ],
-        "wordsVn": "Dự định, du học, làm việc, tốt nghiệp, kết hôn",
-        "sample": {
-          "zh": "我大学毕业八年了，现在在城市工作。我打算明年去美国留学，毕业以后打算结婚。",
-          "pin": "Wǒ dàxué bìyè bā nián le, xiànzài zài chéngshì gōngzuò. Wǒ dǎsuàn míngnián qù Měiguó liúxué, bìyè yǐhòu dǎsuàn jiéhūn.",
-          "vn": "Tôi đã tốt nghiệp đại học 8 năm rồi, hiện đang làm việc ở thành phố. Tôi dự định năm sau đi Mỹ du học, sau khi tốt nghiệp dự định kết hôn."
+        {
+          "type": "fill",
+          "title": "Chọn từ thích hợp điền vào chỗ trống",
+          "bank": [
+            "旅行",
+            "帮",
+            "回来",
+            "飞机",
+            "问题",
+            "报纸",
+            "花",
+            "翻译",
+            "火车",
+            "包裹"
+          ],
+          "items": [
+            {
+              "q": "我哥哥去上海___了一个星期。",
+              "a": "旅行",
+              "pin": "lǜxíng",
+              "hv": "LỮ HÀNH",
+              "spin": "Wǒ gēge qù Shànghǎi lǜxíng le yí ge xīngqī.",
+              "vn": "Anh tôi đi Thượng Hải du lịch một tuần."
+            },
+            {
+              "q": "今天下午我坐___去广州，明天才能到。",
+              "a": "火车",
+              "pin": "huǒchē",
+              "hv": "HỎA XA",
+              "spin": "Jīntiān xiàwǔ wǒ zuò huǒchē qù Guǎngzhōu, míngtiān cái néng dào.",
+              "vn": "Chiều nay tôi đi tàu hỏa đến Quảng Châu, ngày mai mới đến được."
+            },
+            {
+              "q": "她每天早上都喜欢一边喝咖啡一边看___。",
+              "a": "报纸",
+              "pin": "bàozhǐ",
+              "hv": "BÁO CHỈ",
+              "spin": "Tā měitiān zǎoshang dōu xǐhuan yìbiān hē kāfēi yìbiān kàn bàozhǐ.",
+              "vn": "Mỗi buổi sáng cô ấy đều thích vừa uống cà phê vừa đọc báo."
+            },
+            {
+              "q": "这个句子我听不懂，你能___一下吗？",
+              "a": "翻译",
+              "pin": "fānyì",
+              "hv": "PHIÊN DỊCH",
+              "spin": "Zhège jùzi wǒ tīng bu dǒng, nǐ néng fānyì yíxià ma?",
+              "vn": "Câu này tôi nghe không hiểu, bạn dịch giúp tôi được không?"
+            },
+            {
+              "q": "我妈妈从北京___以后，给我买了很多东西。",
+              "a": "回来",
+              "pin": "huílái",
+              "hv": "HỒI LAI",
+              "spin": "Wǒ māma cóng Běijīng huílái yǐhòu, gěi wǒ mǎi le hěn duō dōngxi.",
+              "vn": "Sau khi mẹ tôi từ Bắc Kinh về, đã mua cho tôi rất nhiều thứ."
+            },
+            {
+              "q": "这个___太大了，我一个人拿不动。",
+              "a": "包裹",
+              "pin": "bāoguǒ",
+              "hv": "BAO QUẢ",
+              "spin": "Zhège bāoguǒ tài dà le, wǒ yí ge rén ná bu dòng.",
+              "vn": "Bưu kiện này to quá, một mình tôi không xách được."
+            },
+            {
+              "q": "A：你会不会说中文？B：会一点儿，但是还有很多___。",
+              "a": "问题",
+              "pin": "wèntí",
+              "hv": "VẤN ĐỀ",
+              "spin": "Huì yìdiǎnr, dànshì hái yǒu hěn duō wèntí.",
+              "vn": "A: Bạn có biết nói tiếng Trung không? B: Biết một chút, nhưng vẫn còn nhiều vấn đề."
+            },
+            {
+              "q": "我想买一些___送给老师。",
+              "a": "花",
+              "pin": "huā",
+              "hv": "HOA",
+              "spin": "Wǒ xiǎng mǎi yìxiē huā sòng gěi lǎoshī.",
+              "vn": "Tôi muốn mua ít hoa tặng cho cô giáo."
+            },
+            {
+              "q": "明天我要坐___去北京，比火车快很多。",
+              "a": "飞机",
+              "pin": "fēijī",
+              "hv": "PHI CƠ",
+              "spin": "Míngtiān wǒ yào zuò fēijī qù Běijīng, bǐ huǒchē kuài hěn duō.",
+              "vn": "Ngày mai tôi sẽ đi máy bay đến Bắc Kinh, nhanh hơn tàu hỏa rất nhiều."
+            },
+            {
+              "q": "谢谢你昨天___我找医院。",
+              "a": "帮",
+              "pin": "bāng",
+              "hv": "BANG",
+              "spin": "Xièxie nǐ zuótiān bāng wǒ zhǎo yīyuàn.",
+              "vn": "Cảm ơn bạn hôm qua đã giúp tôi tìm bệnh viện."
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "title": "Dịch câu (Việt → Trung)",
+          "items": [
+            {
+              "q": "Tôi muốn tiện thể mua một tờ báo.",
+              "a": "我想顺便买一张报纸。",
+              "pin": "Wǒ xiǎng shùnbiàn mǎi yì zhāng bàozhǐ."
+            },
+            {
+              "q": "Người thanh niên đó đang giúp mẹ cầm bưu kiện.",
+              "a": "那个青年人正在帮他妈妈拿包裹。",
+              "pin": "Nàge qīngnián rén zhèngzài bāng tā māma ná bāoguǒ."
+            },
+            {
+              "q": "Sau khi du lịch trở về, tôi rất nhớ Trung Quốc.",
+              "a": "旅行回来以后，我很想念中国。",
+              "pin": "Lǜxíng huílái yǐhòu, wǒ hěn xiǎngniàn Zhōngguó."
+            },
+            {
+              "q": "Không thành vấn đề, ngày mai tôi sẽ giúp bạn.",
+              "a": "没问题，明天我会帮你。",
+              "pin": "Méi wèntí, míngtiān wǒ huì bāng nǐ."
+            },
+            {
+              "q": "Vì có vấn đề nên anh ấy không đi bằng máy bay.",
+              "a": "因为有问题，所以他不坐飞机去。",
+              "pin": "Yīnwèi yǒu wèntí, suǒyǐ tā bú zuò fēijī qù."
+            }
+          ]
         }
-      }
-    ]
-  },
-  {
-    "bai": 9,
-    "sections": [
-      {
-        "type": "fill",
-        "title": "Điền từ thích hợp vào chỗ trống",
-        "bank": [
-          "以后",
-          "教室",
-          "起床",
-          "一定",
-          "晚饭",
-          "操场",
-          "每",
-          "半",
-          "上课",
-          "差",
-          "节",
-          "习惯"
-        ],
-        "items": [
-          {
-            "q": "我每天六点半___，然后去学校。",
-            "a": "起床",
-            "pin": "qǐchuáng",
-            "hv": "KHỞI SÀNG",
-            "spin": "Wǒ měitiān liù diǎn bàn qǐchuáng, ránhòu qù xuéxiào.",
-            "vn": "Mỗi ngày tôi dậy lúc 6 giờ rưỡi, sau đó đến trường."
-          },
-          {
-            "q": "他在___里复习今天老师教的语法。",
-            "a": "教室",
-            "pin": "jiàoshì",
-            "hv": "GIÁO THẤT",
-            "spin": "Tā zài jiàoshì lǐ fùxí jīntiān lǎoshī jiāo de yǔfǎ.",
-            "vn": "Anh ấy ở trong phòng học ôn lại ngữ pháp thầy/cô dạy hôm nay."
-          },
-          {
-            "q": "我们学校有一个很大的___。",
-            "a": "操场",
-            "pin": "cāochǎng",
-            "hv": "THAO TRƯỜNG",
-            "spin": "Wǒmen xuéxiào yǒu yí ge hěn dà de cāochǎng.",
-            "vn": "Trường chúng tôi có một sân vận động rất lớn."
-          },
-          {
-            "q": "我妈妈做的___特别好吃。",
-            "a": "晚饭",
-            "pin": "wǎnfàn",
-            "hv": "VÃN PHẠN",
-            "spin": "Wǒ māma zuò de wǎnfàn tèbié hǎochī.",
-            "vn": "Cơm tối mẹ tôi nấu rất ngon."
-          },
-          {
-            "q": "你明天___要早点来。",
-            "a": "一定",
-            "pin": "yídìng",
-            "hv": "NHẤT ĐỊNH",
-            "spin": "Nǐ míngtiān yídìng yào zǎo diǎn lái.",
-            "vn": "Ngày mai bạn nhất định phải đến sớm hơn."
-          },
-          {
-            "q": "我等了他___天，他还没来。",
-            "a": "半",
-            "pin": "bàn",
-            "hv": "BÁN",
-            "spin": "Wǒ děng le tā bàn tiān, tā hái méi lái.",
-            "vn": "Tôi đợi anh ấy nửa ngày rồi, anh ấy vẫn chưa đến."
-          },
-          {
-            "q": "___个人都有不同的生活方式。",
-            "a": "每",
-            "pin": "měi",
-            "hv": "MỖI",
-            "spin": "Měi ge rén dōu yǒu bùtóng de shēnghuó fāngshì.",
-            "vn": "Mỗi người đều có cách sống khác nhau."
-          },
-          {
-            "q": "___的时候不要一直玩手机。",
-            "a": "上课",
-            "pin": "shàngkè",
-            "hv": "THƯỢNG KHÓA",
-            "spin": "Shàngkè de shíhou bú yào yìzhí wán shǒujī.",
-            "vn": "Khi lên lớp không nên cứ chơi điện thoại."
-          },
-          {
-            "q": "她学习有一点___，但是非常努力。",
-            "a": "差",
-            "pin": "chà",
-            "hv": "SAI",
-            "spin": "Tā xuéxí yǒu yìdiǎn chà, dànshì fēicháng nǔlì.",
-            "vn": "Cô ấy học hơi kém một chút, nhưng rất chăm chỉ."
-          },
-          {
-            "q": "明天你们有几___汉语课？",
-            "a": "节",
-            "pin": "jié",
-            "hv": "TIẾT",
-            "spin": "Míngtiān nǐmen yǒu jǐ jié Hànyǔ kè?",
-            "vn": "Ngày mai các bạn có mấy tiết tiếng Trung?"
-          },
-          {
-            "q": "我希望___能有更好的工作。",
-            "a": "以后",
-            "pin": "yǐhòu",
-            "hv": "DĨ HẬU",
-            "spin": "Wǒ xīwàng yǐhòu néng yǒu gèng hǎo de gōngzuò.",
-            "vn": "Tôi hy vọng sau này có thể có công việc tốt hơn."
-          },
-          {
-            "q": "他每天早上跑步，这已经是他的___了。",
-            "a": "习惯",
-            "pin": "xíguàn",
-            "hv": "TẬP QUÁN",
-            "spin": "Tā měitiān zǎoshang pǎobù, zhè yǐjīng shì tā de xíguàn le.",
-            "vn": "Anh ấy ngày nào cũng chạy bộ vào buổi sáng, đây đã thành thói quen của anh ấy rồi."
-          }
-        ]
-      },
-      {
-        "type": "reading",
-        "title": "Đọc đoạn văn và trả lời câu hỏi",
-        "qtype": "qa",
-        "passage": {
-          "zh": "小林是一个非常努力的学生。虽然他的汉语能力以前有一点差，但是他从来没有放弃过。他每天早上六点起床，吃完早饭以后就去学校。上课的时候，他总是认真听老师讲课，从来不聊天。下课以后，他常常一个人在教室里复习语法。晚上回家以后，他还会学习两个小时汉语。现在，小林的汉语比以前好了很多。老师和同学都觉得他进步得非常快。",
-          "pin": "Xiǎo Lín shì yí ge fēicháng nǔlì de xuésheng. Suīrán tā de Hànyǔ nénglì yǐqián yǒu yìdiǎn chà, dànshì tā cónglái méiyǒu fàngqì guò. Tā měitiān zǎoshang liù diǎn qǐchuáng, chī wán zǎofàn yǐhòu jiù qù xuéxiào. Shàngkè de shíhou, tā zǒngshì rènzhēn tīng lǎoshī jiǎngkè, cónglái bù liáotiān. Xiàkè yǐhòu, tā chángcháng yí ge rén zài jiàoshì lǐ fùxí yǔfǎ. Wǎnshang huí jiā yǐhòu, tā hái huì xuéxí liǎng ge xiǎoshí Hànyǔ. Xiànzài, Xiǎo Lín de Hànyǔ bǐ yǐqián hǎo le hěn duō. Lǎoshī hé tóngxué dōu juéde tā jìnbù de fēicháng kuài.",
-          "vn": "Tiểu Lâm là một học sinh rất chăm chỉ. Mặc dù trước đây năng lực tiếng Trung của cậu hơi kém, nhưng cậu chưa từng bỏ cuộc. Mỗi sáng cậu dậy lúc 6 giờ, ăn sáng xong là đến trường. Khi lên lớp, cậu luôn chăm chú nghe thầy/cô giảng bài, không bao giờ nói chuyện riêng. Sau khi tan học, cậu thường một mình ở trong lớp ôn lại ngữ pháp. Tối về nhà, cậu còn học thêm tiếng Trung hai giờ. Hiện tại, tiếng Trung của Tiểu Lâm tốt hơn trước rất nhiều. Thầy/cô và các bạn đều thấy cậu tiến bộ rất nhanh."
+      ]
+    },
+    {
+      "bai": 7,
+      "sections": [
+        {
+          "type": "mc",
+          "title": "Chọn đáp án đúng",
+          "items": [
+            {
+              "q": "这件衣服太长了，我想买一件（　）一点儿的。",
+              "opts": [
+                "深",
+                "胖",
+                "短",
+                "漂亮"
+              ],
+              "a": 2,
+              "pin": "Zhè jiàn yīfu tài cháng le, wǒ xiǎng mǎi yí jiàn duǎn yìdiǎnr de.",
+              "vn": "Cái áo này dài quá, tôi muốn mua cái ngắn hơn một chút."
+            },
+            {
+              "q": "我觉得这条裤子很（　）你，你试一下吧。",
+              "opts": [
+                "试",
+                "合适",
+                "打折",
+                "适合"
+              ],
+              "a": 3,
+              "pin": "Wǒ juéde zhè tiáo kùzi hěn shìhé nǐ, nǐ shì yíxià ba.",
+              "vn": "Tôi thấy cái quần này rất hợp với bạn, bạn thử xem nào."
+            },
+            {
+              "q": "最近她每天运动，所以现在比以前（　）了很多。",
+              "opts": [
+                "长",
+                "深",
+                "瘦",
+                "浅"
+              ],
+              "a": 2,
+              "pin": "Zuìjìn tā měitiān yùndòng, suǒyǐ xiànzài bǐ yǐqián shòu le hěn duō.",
+              "vn": "Gần đây cô ấy ngày nào cũng tập thể dục, nên giờ gầy hơn trước rất nhiều."
+            },
+            {
+              "q": "这个商场今天（　），很多东西都很便宜。",
+              "opts": [
+                "打折",
+                "合适",
+                "可以",
+                "试"
+              ],
+              "a": 0,
+              "pin": "Zhège shāngchǎng jīntiān dǎzhé, hěn duō dōngxi dōu hěn piányi.",
+              "vn": "Trung tâm thương mại này hôm nay giảm giá, rất nhiều đồ đều rẻ."
+            },
+            {
+              "q": "我很喜欢这件衣服，我想先（　）一下。",
+              "opts": [
+                "学",
+                "试",
+                "看",
+                "找"
+              ],
+              "a": 1,
+              "pin": "Wǒ hěn xǐhuan zhè jiàn yīfu, wǒ xiǎng xiān shì yíxià.",
+              "vn": "Tôi rất thích cái áo này, tôi muốn thử trước."
+            },
+            {
+              "q": "我不喜欢颜色太（　）的衣服，我喜欢浅一点儿的。",
+              "opts": [
+                "深",
+                "长",
+                "胖",
+                "漂亮"
+              ],
+              "a": 0,
+              "pin": "Wǒ bù xǐhuan yánsè tài shēn de yīfu, wǒ xǐhuan qiǎn yìdiǎnr de.",
+              "vn": "Tôi không thích quần áo màu quá đậm, tôi thích màu nhạt hơn một chút."
+            },
+            {
+              "q": "今天我太忙了，所以不（　）和你一起去看电影。",
+              "opts": [
+                "试",
+                "打折",
+                "可以",
+                "当然"
+              ],
+              "a": 2,
+              "pin": "Jīntiān wǒ tài máng le, suǒyǐ bù kěyǐ hé nǐ yìqǐ qù kàn diànyǐng.",
+              "vn": "Hôm nay tôi bận quá, nên không thể cùng bạn đi xem phim."
+            },
+            {
+              "q": "越南有很多美丽的地方，风景都非常（　）。",
+              "opts": [
+                "深",
+                "漂亮",
+                "合适",
+                "瘦"
+              ],
+              "a": 1,
+              "pin": "Yuènán yǒu hěn duō měilì de dìfang, fēngjǐng dōu fēicháng piàoliang.",
+              "vn": "Việt Nam có rất nhiều nơi đẹp, cảnh đều rất xinh đẹp."
+            }
+          ]
         },
-        "items": [
-          {
-            "q": "小林以前汉语怎么样？",
-            "a": "他的汉语能力以前有一点差。"
-          },
-          {
-            "q": "他每天几点起床？",
-            "a": "他每天早上六点起床。"
-          },
-          {
-            "q": "上课的时候他做什么？",
-            "a": "他总是认真听老师讲课，从来不聊天。"
-          },
-          {
-            "q": "下课以后他为什么还在教室？",
-            "a": "因为他常常一个人在教室里复习语法。"
-          },
-          {
-            "q": "现在他的汉语有没有进步？",
-            "a": "有，他进步得非常快。"
-          },
-          {
-            "q": "为什么老师和同学都觉得他进步很快？",
-            "a": "因为他学习非常努力，每天都认真上课、复习语法，晚上还会再学两个小时，所以进步得很快。"
-          }
-        ]
-      },
-      {
-        "type": "translate2",
-        "title": "Dịch sang tiếng Trung",
-        "items": [
-          {
-            "q": "Mỗi người đều có cuộc sống khác nhau.",
-            "a": "每个人都有不同的生活。",
-            "pin": "Měi ge rén dōu yǒu bùtóng de shēnghuó."
-          },
-          {
-            "q": "Sau khi tan học chúng tôi thường đi sân vận động đá bóng.",
-            "a": "下课以后，我们常常去操场踢足球。",
-            "pin": "Xiàkè yǐhòu, wǒmen chángcháng qù cāochǎng tī zúqiú."
-          },
-          {
-            "q": "Anh ấy nằm trên giường xem điện thoại nửa ngày.",
-            "a": "他躺在床上看手机看了半天。",
-            "pin": "Tā tǎng zài chuáng shàng kàn shǒujī kàn le bàntiān."
-          },
-          {
-            "q": "Tôi hy vọng sau này có thể sống hạnh phúc.",
-            "a": "我希望以后能生活得很幸福。",
-            "pin": "Wǒ xīwàng yǐhòu néng shēnghuó de hěn xìngfú."
-          },
-          {
-            "q": "Khi lên lớp nhất định không được nói chuyện.",
-            "a": "上课的时候一定不要聊天。",
-            "pin": "Shàngkè de shíhou yídìng bú yào liáotiān."
-          },
-          {
-            "q": "Đây là phòng học mà có nhiều kỷ niệm đẹp nhất đối với tôi.",
-            "a": "这是对我来说有最多美好回忆的教室。",
-            "pin": "Zhè shì duì wǒ lái shuō yǒu zuì duō měihǎo huíyì de jiàoshì."
-          },
-          {
-            "q": "Năng lực của cô ấy hơi kém nhưng cô ấy rất cố gắng.",
-            "a": "她的能力有点差，但是她很努力。",
-            "pin": "Tā de nénglì yǒudiǎn chà, dànshì tā hěn nǔlì."
-          },
-          {
-            "q": "Mỗi lần đến nhà tôi anh ấy đều mua rất nhiều đồ.",
-            "a": "每次来我家他都买很多东西。",
-            "pin": "Měi cì lái wǒ jiā tā dōu mǎi hěn duō dōngxi."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "bai": 10,
-    "sections": [
-      {
-        "type": "fill",
-        "title": "Điền từ thích hợp vào chỗ trống",
-        "bank": [
-          "锻炼",
-          "洗澡",
-          "然后",
-          "睡觉",
-          "爬山",
-          "出发",
-          "集合",
-          "准时",
-          "带",
-          "困",
-          "精神",
-          "熬夜",
-          "年级",
-          "上车",
-          "前"
-        ],
-        "items": [
-          {
-            "q": "我昨天晚上___做作业，所以现在很累。",
-            "a": "熬夜",
-            "pin": "áoyè",
-            "hv": "NGAO DẠ",
-            "spin": "Wǒ zuótiān wǎnshang áoyè zuò zuòyè, suǒyǐ xiànzài hěn lèi.",
-            "vn": "Tối qua tôi thức khuya làm bài tập, nên giờ rất mệt."
-          },
-          {
-            "q": "他每天早上都去公园___身体。",
-            "a": "锻炼",
-            "pin": "duànliàn",
-            "hv": "ĐOÀN LUYỆN",
-            "spin": "Tā měitiān zǎoshang dōu qù gōngyuán duànliàn shēntǐ.",
-            "vn": "Mỗi sáng anh ấy đều ra công viên tập thể dục."
-          },
-          {
-            "q": "吃完晚饭以后，我先洗澡，___做作业。",
-            "a": "然后",
-            "pin": "ránhòu",
-            "hv": "NHIÊN HẬU",
-            "spin": "Chī wán wǎnfàn yǐhòu, wǒ xiān xǐzǎo, ránhòu zuò zuòyè.",
-            "vn": "Ăn tối xong, tôi tắm trước, sau đó làm bài tập."
-          },
-          {
-            "q": "明天早上六点我们要___，所以今晚必须早点睡。",
-            "a": "出发",
-            "pin": "chūfā",
-            "hv": "XUẤT PHÁT",
-            "spin": "Míngtiān zǎoshang liù diǎn wǒmen yào chūfā, suǒyǐ jīnwǎn bìxū zǎo diǎn shuì.",
-            "vn": "Sáng mai 6 giờ chúng ta phải xuất phát, nên tối nay phải ngủ sớm."
-          },
-          {
-            "q": "最近天气太热了，我每天都想___两次。",
-            "a": "洗澡",
-            "pin": "xǐzǎo",
-            "hv": "TẨY TÁO",
-            "spin": "Zuìjìn tiānqì tài rè le, wǒ měitiān dōu xiǎng xǐzǎo liǎng cì.",
-            "vn": "Gần đây thời tiết nóng quá, ngày nào tôi cũng muốn tắm hai lần."
-          },
-          {
-            "q": "我弟弟今年上小学一年___。",
-            "a": "年级",
-            "pin": "niánjí",
-            "hv": "NIÊN CẤP",
-            "spin": "Wǒ dìdi jīnnián shàng xiǎoxué yī niánjí.",
-            "vn": "Năm nay em trai tôi học lớp 1 (tiểu học)."
-          },
-          {
-            "q": "这个周末我们公司组织去___。",
-            "a": "爬山",
-            "pin": "páshān",
-            "hv": "BÀ SƠN",
-            "spin": "Zhège zhōumò wǒmen gōngsī zǔzhī qù páshān.",
-            "vn": "Cuối tuần này công ty chúng tôi tổ chức đi leo núi."
-          },
-          {
-            "q": "我昨天晚上没睡好，现在很___。",
-            "a": "困",
-            "pin": "kùn",
-            "hv": "KHỐN",
-            "spin": "Wǒ zuótiān wǎnshang méi shuì hǎo, xiànzài hěn kùn.",
-            "vn": "Tối qua tôi ngủ không ngon, giờ rất buồn ngủ."
-          },
-          {
-            "q": "睡觉___，我喜欢喝一杯热牛奶。",
-            "a": "前",
-            "pin": "qián",
-            "hv": "TIỀN",
-            "spin": "Shuìjiào qián, wǒ xǐhuan hē yì bēi rè niúnǎi.",
-            "vn": "Trước khi ngủ, tôi thích uống một cốc sữa nóng."
-          },
-          {
-            "q": "八点半我们在学校门口___。",
-            "a": "集合",
-            "pin": "jíhé",
-            "hv": "TẬP HỢP",
-            "spin": "Bā diǎn bàn wǒmen zài xuéxiào ménkǒu jíhé.",
-            "vn": "8 giờ rưỡi chúng ta tập hợp ở cổng trường."
-          },
-          {
-            "q": "明天早上七点我们___出发。",
-            "a": "准时",
-            "pin": "zhǔnshí",
-            "hv": "CHUẨN THỜI",
-            "spin": "Míngtiān zǎoshang qī diǎn wǒmen zhǔnshí chūfā.",
-            "vn": "Sáng mai 7 giờ chúng ta xuất phát đúng giờ."
-          },
-          {
-            "q": "你___雨伞了吗？外面下雨了。",
-            "a": "带",
-            "pin": "dài",
-            "hv": "ĐỚI",
-            "spin": "Nǐ dài yǔsǎn le ma? Wàimiàn xià yǔ le.",
-            "vn": "Bạn mang ô chưa? Bên ngoài đang mưa rồi."
-          },
-          {
-            "q": "快点___吧，车马上要开了。",
-            "a": "上车",
-            "pin": "shàngchē",
-            "hv": "THƯỢNG XA",
-            "spin": "Kuài diǎn shàngchē ba, chē mǎshàng yào kāi le.",
-            "vn": "Nhanh lên xe đi, xe sắp chạy rồi."
-          },
-          {
-            "q": "他这几天睡不着，所以没有___工作。",
-            "a": "精神",
-            "pin": "jīngshén",
-            "hv": "TINH THẦN",
-            "spin": "Tā zhè jǐ tiān shuì bu zháo, suǒyǐ méiyǒu jīngshén gōngzuò.",
-            "vn": "Mấy ngày nay anh ấy không ngủ được, nên làm việc không có tinh thần."
-          },
-          {
-            "q": "他回家以后先洗澡，然后马上去___。",
-            "a": "睡觉",
-            "pin": "shuìjiào",
-            "hv": "THỤY GIÁC",
-            "spin": "Tā huí jiā yǐhòu xiān xǐzǎo, ránhòu mǎshàng qù shuìjiào.",
-            "vn": "Anh ấy về nhà tắm trước, sau đó đi ngủ ngay."
-          }
-        ]
-      },
-      {
-        "type": "correct",
-        "title": "Sửa lỗi sai",
-        "example": {
-          "wrong": "我昨天晚上做作业熬夜了。",
-          "a": "我昨天晚上熬夜做作业了。"
+        {
+          "type": "order",
+          "title": "Sắp xếp câu thành câu hoàn chỉnh",
+          "items": [
+            {
+              "q": "因为 / 所以 / 想 / 我 / 这件衣服 / 有一点儿贵 / 等打折以后再买",
+              "a": "因为这件衣服有一点儿贵，所以我想等打折以后再买。",
+              "pin": "Yīnwèi zhè jiàn yīfu yǒu yìdiǎnr guì, suǒyǐ wǒ xiǎng děng dǎzhé yǐhòu zài mǎi.",
+              "vn": "Vì cái áo này hơi đắt một chút, nên tôi muốn chờ giảm giá rồi mới mua."
+            },
+            {
+              "q": "以前 / 但是 / 现在 / 很少运动 / 开始 / 注意身体健康 / 他 / 每天都会去跑步",
+              "a": "以前他很少运动，但是现在他开始注意身体健康，每天都会去跑步。",
+              "pin": "Yǐqián tā hěn shǎo yùndòng, dànshì xiànzài tā kāishǐ zhùyì shēntǐ jiànkāng, měitiān dōu huì qù pǎobù.",
+              "vn": "Trước đây anh ấy rất ít vận động, nhưng giờ anh ấy bắt đầu chú ý sức khỏe, ngày nào cũng đi chạy bộ."
+            },
+            {
+              "q": "的时候 / 服务员 / 那条蓝色的裙子 / 很适合 / 我姐姐 / 试衣服 / 觉得",
+              "a": "试衣服的时候，服务员觉得那条蓝色的裙子很适合我姐姐。",
+              "pin": "Shì yīfu de shíhou, fúwùyuán juéde nà tiáo lánsè de qúnzi hěn shìhé wǒ jiějie.",
+              "vn": "Lúc thử đồ, nhân viên phục vụ cảm thấy cái váy màu xanh dương đó rất hợp với chị tôi."
+            },
+            {
+              "q": "虽然 / 但是 / 很多人 / 商场里的东西 / 今天 / 还是 / 来买东西 / 不便宜",
+              "a": "虽然商场里的东西今天不便宜，但是还是有很多人来买东西。",
+              "pin": "Suīrán shāngchǎng lǐ de dōngxi jīntiān bù piányi, dànshì háishi yǒu hěn duō rén lái mǎi dōngxi.",
+              "vn": "Mặc dù hôm nay đồ trong trung tâm thương mại không rẻ, nhưng vẫn có rất nhiều người đến mua đồ."
+            },
+            {
+              "q": "我 / 如果 / 有时间的话 / 想 / 和朋友一起 / 去越南很多漂亮的地方旅游",
+              "a": "如果有时间的话，我想和朋友一起去越南很多漂亮的地方旅游。",
+              "pin": "Rúguǒ yǒu shíjiān dehuà, wǒ xiǎng hé péngyou yìqǐ qù Yuènán hěn duō piàoliang de dìfang lǜyóu.",
+              "vn": "Nếu có thời gian, tôi muốn cùng bạn bè đi du lịch nhiều nơi đẹp ở Việt Nam."
+            },
+            {
+              "q": "因为 / 所以 / 没有办法 / 昨天晚上 / 我们 / 跟老师一起吃饭 / 下大雨",
+              "a": "因为昨天晚上下大雨，所以我们没有办法跟老师一起吃饭。",
+              "pin": "Yīnwèi zuótiān wǎnshang xià dà yǔ, suǒyǐ wǒmen méiyǒu bànfǎ gēn lǎoshī yìqǐ chīfàn.",
+              "vn": "Vì tối qua mưa to, nên chúng tôi không có cách nào cùng ăn cơm với thầy/cô giáo."
+            },
+            {
+              "q": "小的时候 / 锻炼 / 现在 / 但是 / 不喜欢运动 / 我 / 每天 / 都 / 会去健身房 / 锻炼",
+              "a": "小的时候我不喜欢运动锻炼，但是现在我每天都会去健身房锻炼。",
+              "pin": "Xiǎo de shíhou wǒ bù xǐhuan yùndòng duànliàn, dànshì xiànzài wǒ měitiān dōu huì qù jiànshēnfáng duànliàn.",
+              "vn": "Lúc nhỏ tôi không thích vận động luyện tập, nhưng giờ ngày nào tôi cũng đi phòng gym tập luyện."
+            },
+            {
+              "q": "觉得 / 这件黑色的毛衣 / 我 / 不但 / 很漂亮 / 而且 / 很适合你",
+              "a": "我觉得这件黑色的毛衣不但很漂亮，而且很适合你。",
+              "pin": "Wǒ juéde zhè jiàn hēisè de máoyī bùdàn hěn piàoliang, érqiě hěn shìhé nǐ.",
+              "vn": "Tôi thấy cái áo len màu đen này không những rất đẹp, mà còn rất hợp với bạn."
+            },
+            {
+              "q": "如果 / 每天 / 你 / 多运动一点儿 / 身体 / 一定会 / 更健康",
+              "a": "如果你每天多运动一点儿，身体一定会更健康。",
+              "pin": "Rúguǒ nǐ měitiān duō yùndòng yìdiǎnr, shēntǐ yídìng huì gèng jiànkāng.",
+              "vn": "Nếu mỗi ngày bạn vận động nhiều hơn một chút, cơ thể chắc chắn sẽ khỏe mạnh hơn."
+            },
+            {
+              "q": "昨天 / 买了 / 的时候 / 因为 / 打折 / 所以 / 我和妈妈 / 很多东西 / 去商场 / 的时候",
+              "a": "昨天我和妈妈去商场的时候，因为打折，所以买了很多东西。",
+              "pin": "Zuótiān wǒ hé māma qù shāngchǎng de shíhou, yīnwèi dǎzhé, suǒyǐ mǎi le hěn duō dōngxi.",
+              "vn": "Hôm qua khi tôi và mẹ đi trung tâm thương mại, vì giảm giá nên đã mua rất nhiều đồ."
+            }
+          ]
         },
-        "items": [
-          {
-            "wrong": "我每天去都公园锻炼身体。",
-            "a": "我每天都去公园锻炼身体。",
-            "pin": "Wǒ měitiān dōu qù gōngyuán duànliàn shēntǐ.",
-            "vn": "Mỗi ngày tôi đều đi công viên tập thể dục."
+        {
+          "type": "reading",
+          "title": "Đọc đoạn văn và phán đoán đúng/sai",
+          "qtype": "tf",
+          "passage": {
+            "zh": "玛丽最近觉得自己有一点儿胖，所以她决定开始减肥。以前，她每天晚上都喜欢喝可乐、吃很多甜的东西，而且很少运动。后来，她的朋友告诉她：“如果你想健康一点儿，就应该少吃甜食，多做运动。”现在，玛丽每天晚上都会去公园跑步半个小时，有时候还会和朋友一起打篮球。虽然刚开始的时候有一点儿累，但是她觉得运动以后身体舒服多了。一个月以后，玛丽瘦了很多，也比以前更有精神了。",
+            "pin": "Mǎlì zuìjìn juéde zìjǐ yǒu yìdiǎnr pàng, suǒyǐ tā juédìng kāishǐ jiǎnféi. Yǐqián, tā měitiān wǎnshang dōu xǐhuan hē kělè, chī hěn duō tián de dōngxi, érqiě hěn shǎo yùndòng. Hòulái, tā de péngyou gàosu tā: “Rúguǒ nǐ xiǎng jiànkāng yìdiǎnr, jiù yīnggāi shǎo chī tiánshí, duō zuò yùndòng.” Xiànzài, Mǎlì měitiān wǎnshang dōu huì qù gōngyuán pǎobù bàn ge xiǎoshí, yǒu shíhou hái huì hé péngyou yìqǐ dǎ lánqiú. Suīrán gāng kāishǐ de shíhou yǒu yìdiǎnr lèi, dànshì tā juéde yùndòng yǐhòu shēntǐ shūfu duō le. Yí ge yuè yǐhòu, Mǎlì shòu le hěn duō, yě bǐ yǐqián gèng yǒu jīngshén le.",
+            "vn": "Gần đây Mary cảm thấy mình hơi béo, nên cô quyết định bắt đầu giảm cân. Trước đây, mỗi tối cô đều thích uống cô-ca, ăn nhiều đồ ngọt, và rất ít vận động. Sau đó, bạn cô nói với cô: “Nếu muốn khỏe mạnh hơn một chút, thì nên ăn ít đồ ngọt, vận động nhiều hơn.” Hiện tại, mỗi tối Mary đều đi chạy bộ ở công viên nửa giờ, có lúc còn cùng bạn chơi bóng rổ. Mặc dù lúc mới bắt đầu hơi mệt, nhưng cô cảm thấy sau khi vận động cơ thể thoải mái hơn nhiều. Một tháng sau, Mary đã gầy đi nhiều, cũng có tinh thần hơn trước."
           },
-          {
-            "wrong": "因为昨天晚上我熬夜了，所以今天很困我。",
-            "a": "因为昨天晚上我熬夜了，所以今天我很困。",
-            "pin": "Yīnwèi zuótiān wǎnshang wǒ áoyè le, suǒyǐ jīntiān wǒ hěn kùn.",
-            "vn": "Vì tối qua tôi thức khuya, nên hôm nay tôi rất buồn ngủ."
-          },
-          {
-            "wrong": "睡觉前我常常牛奶喝热。",
-            "a": "睡觉前我常常喝热牛奶。",
-            "pin": "Shuìjiào qián wǒ chángcháng hē rè niúnǎi.",
-            "vn": "Trước khi ngủ tôi thường uống sữa nóng."
-          },
-          {
-            "wrong": "我们明天准时七点出发会。",
-            "a": "我们明天会准时七点出发。",
-            "pin": "Wǒmen míngtiān huì zhǔnshí qī diǎn chūfā.",
-            "vn": "Ngày mai chúng tôi sẽ xuất phát đúng giờ vào 7 giờ."
-          },
-          {
-            "wrong": "虽然工作很忙，但是他常常还去锻炼。",
-            "a": "虽然工作很忙，但是他还常常去锻炼。",
-            "pin": "Suīrán gōngzuò hěn máng, dànshì tā hái chángcháng qù duànliàn.",
-            "vn": "Mặc dù công việc rất bận, nhưng anh ấy vẫn thường đi tập luyện."
-          },
-          {
-            "wrong": "我昨天晚上睡不着觉了一直。",
-            "a": "我昨天晚上一直睡不着觉。",
-            "pin": "Wǒ zuótiān wǎnshang yìzhí shuì bu zháo jiào.",
-            "vn": "Tối qua tôi cứ mãi không ngủ được."
-          },
-          {
-            "wrong": "他都每天锻炼身体一个小时。",
-            "a": "他每天都锻炼身体一个小时。",
-            "pin": "Tā měitiān dōu duànliàn shēntǐ yí ge xiǎoshí.",
-            "vn": "Mỗi ngày anh ấy đều tập thể dục một giờ."
-          },
-          {
-            "wrong": "我先洗澡，然后去房间回做作业。",
-            "a": "我先洗澡，然后回房间做作业。",
-            "pin": "Wǒ xiān xǐzǎo, ránhòu huí fángjiān zuò zuòyè.",
-            "vn": "Tôi tắm trước, sau đó về phòng làm bài tập."
-          },
-          {
-            "wrong": "他昨天晚上两点才睡觉了。",
-            "a": "他昨天晚上两点才睡觉。",
-            "pin": "Tā zuótiān wǎnshang liǎng diǎn cái shuìjiào.",
-            "vn": "Tối qua anh ấy đến 2 giờ mới đi ngủ."
-          },
-          {
-            "wrong": "我们在学校附近十分钟以后集合会。",
-            "a": "我们十分钟以后在学校附近集合。",
-            "pin": "Wǒmen shí fēnzhōng yǐhòu zài xuéxiào fùjìn jíhé.",
-            "vn": "10 phút nữa chúng ta tập hợp ở gần trường."
-          }
-        ]
-      },
-      {
-        "type": "reverse",
-        "title": "Dịch sang tiếng Việt",
-        "items": [
-          {
-            "q": "我每天都去公园锻炼身体。",
-            "a": "Tôi mỗi ngày đều đi công viên tập thể dục.",
-            "pin": "Wǒ měitiān dōu qù gōngyuán duànliàn shēntǐ."
-          },
-          {
-            "q": "因为明天要早起，所以今晚我要早点睡觉。",
-            "a": "Vì ngày mai phải dậy sớm, nên tối nay tôi phải đi ngủ sớm một chút.",
-            "pin": "Yīnwèi míngtiān yào zǎo qǐ, suǒyǐ jīnwǎn wǒ yào zǎo diǎn shuìjiào."
-          },
-          {
-            "q": "睡觉前不要玩手机。",
-            "a": "Trước khi ngủ không nên chơi điện thoại.",
-            "pin": "Shuìjiào qián bú yào wán shǒujī."
-          },
-          {
-            "q": "他睡过头了，所以今天他不上课。",
-            "a": "Anh ấy ngủ quên rồi, nên hôm nay anh ấy không đi học.",
-            "pin": "Tā shuì guòtóu le, suǒyǐ jīntiān tā bú shàngkè."
-          },
-          {
-            "q": "我们先集合，然后一起出发。",
-            "a": "Chúng tôi tập hợp trước, sau đó cùng xuất phát.",
-            "pin": "Wǒmen xiān jíhé, ránhòu yìqǐ chūfā."
-          },
-          {
-            "q": "虽然天气很热，但是很多人还是去爬山。",
-            "a": "Mặc dù thời tiết rất nóng, nhưng rất nhiều người vẫn đi leo núi.",
-            "pin": "Suīrán tiānqì hěn rè, dànshì hěn duō rén háishi qù páshān."
-          },
-          {
-            "q": "你上我的车吧，我带你去玩儿。",
-            "a": "Bạn lên xe tôi đi, tôi đưa bạn đi chơi.",
-            "pin": "Nǐ shàng wǒ de chē ba, wǒ dài nǐ qù wánr."
-          },
-          {
-            "q": "这个孩子已经会爬了。",
-            "a": "Đứa trẻ này đã biết bò rồi.",
-            "pin": "Zhège háizi yǐjīng huì pá le."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "bai": 11,
-    "sections": [
-      {
-        "type": "fill",
-        "title": "Điền từ thích hợp vào chỗ trống",
-        "bank": [
-          "叫",
-          "让",
-          "大家",
-          "谈",
-          "自己",
-          "爱好",
-          "京剧",
-          "非常",
-          "唱歌"
-        ],
-        "items": [
-          {
-            "q": "老师___我们介绍自己的家人。",
-            "a": "叫",
-            "pin": "jiào",
-            "hv": "KHIẾU",
-            "spin": "Lǎoshī jiào wǒmen jièshào zìjǐ de jiārén.",
-            "vn": "Thầy/cô giáo gọi chúng tôi giới thiệu về gia đình mình."
-          },
-          {
-            "q": "我的___是看电影和听音乐。",
-            "a": "爱好",
-            "pin": "àihào",
-            "hv": "ÁI HẢO",
-            "spin": "Wǒ de àihào shì kàn diànyǐng hé tīng yīnyuè.",
-            "vn": "Sở thích của tôi là xem phim và nghe nhạc."
-          },
-          {
-            "q": "这件事___我很生气。",
-            "a": "让",
-            "pin": "ràng",
-            "hv": "NHƯỢNG",
-            "spin": "Zhè jiàn shì ràng wǒ hěn shēngqì.",
-            "vn": "Việc này làm tôi rất tức giận."
-          },
-          {
-            "q": "你___什么名字？",
-            "a": "叫",
-            "pin": "jiào",
-            "hv": "KHIẾU",
-            "spin": "Nǐ jiào shénme míngzi?",
-            "vn": "Bạn tên là gì?"
-          },
-          {
-            "q": "今天下午我们一起___一谈吧。",
-            "a": "谈",
-            "pin": "tán",
-            "hv": "ĐÀM",
-            "spin": "Jīntiān xiàwǔ wǒmen yìqǐ tán yi tán ba.",
-            "vn": "Chiều nay chúng ta cùng nói chuyện một chút nhé."
-          },
-          {
-            "q": "___都喜欢这个老师。",
-            "a": "大家",
-            "pin": "dàjiā",
-            "hv": "ĐẠI GIA",
-            "spin": "Dàjiā dōu xǐhuan zhège lǎoshī.",
-            "vn": "Mọi người đều thích thầy/cô giáo này."
-          },
-          {
-            "q": "这是我___的事情，不用别人帮助。",
-            "a": "自己",
-            "pin": "zìjǐ",
-            "hv": "TỰ KỶ",
-            "spin": "Zhè shì wǒ zìjǐ de shìqing, bú yòng biérén bāngzhù.",
-            "vn": "Đây là việc của riêng tôi, không cần người khác giúp."
-          },
-          {
-            "q": "爷爷最喜欢看___。",
-            "a": "京剧",
-            "pin": "jīngjù",
-            "hv": "KINH KỊCH",
-            "spin": "Yéye zuì xǐhuan kàn jīngjù.",
-            "vn": "Ông nội thích xem Kinh kịch nhất."
-          },
-          {
-            "q": "我妹妹很喜欢___。",
-            "a": "唱歌",
-            "pin": "chànggē",
-            "hv": "XƯỚNG CA",
-            "spin": "Wǒ mèimei hěn xǐhuan chànggē.",
-            "vn": "Em gái tôi rất thích hát."
-          },
-          {
-            "q": "我对中国文化___感兴趣。",
-            "a": "非常",
-            "pin": "fēicháng",
-            "hv": "PHI THƯỜNG",
-            "spin": "Wǒ duì Zhōngguó wénhuà fēicháng gǎn xìngqù.",
-            "vn": "Tôi rất hứng thú với văn hóa Trung Quốc."
-          }
-        ]
-      },
-      {
-        "type": "reading",
-        "title": "Đọc đoạn văn và trả lời câu hỏi",
-        "qtype": "qa",
-        "passage": {
-          "zh": "小王今年十八岁，是大学一年级学生。他的爱好很多，比如唱歌、看电影和踢足球。不过，他最喜欢的是唱歌。有一次，学校举行比赛，小王唱了一首中文歌。唱完以后，大家都鼓掌。老师说：“你唱得非常好！”从那以后，小王对学习中文更有兴趣了。",
-          "pin": "Xiǎo Wáng jīnnián shíbā suì, shì dàxué yī niánjí xuésheng. Tā de àihào hěn duō, bǐrú chànggē, kàn diànyǐng hé tī zúqiú. Búguò, tā zuì xǐhuan de shì chànggē. Yǒu yí cì, xuéxiào jǔxíng bǐsài, Xiǎo Wáng chàng le yì shǒu Zhōngwén gē. Chàng wán yǐhòu, dàjiā dōu gǔzhǎng. Lǎoshī shuō: “Nǐ chàng de fēicháng hǎo!” Cóng nà yǐhòu, Xiǎo Wáng duì xuéxí Zhōngwén gèng yǒu xìngqù le.",
-          "vn": "Tiểu Vương năm nay 18 tuổi, là sinh viên năm nhất đại học. Sở thích của cậu rất nhiều, ví dụ như ca hát, xem phim và đá bóng. Nhưng cậu thích nhất là ca hát. Có một lần, trường tổ chức thi đấu, Tiểu Vương đã hát một bài hát tiếng Trung. Hát xong, mọi người đều vỗ tay. Thầy giáo nói: “Em hát rất hay!” Từ đó, Tiểu Vương càng có hứng thú với việc học tiếng Trung hơn."
+          "items": [
+            {
+              "q": "玛丽以前很喜欢运动。",
+              "a": "Sai"
+            },
+            {
+              "q": "玛丽以前常常喝可乐。",
+              "a": "Đúng"
+            },
+            {
+              "q": "玛丽的朋友让她多吃甜食。",
+              "a": "Sai"
+            },
+            {
+              "q": "现在玛丽每天都会运动。",
+              "a": "Đúng"
+            },
+            {
+              "q": "玛丽现在身体比以前更好了。",
+              "a": "Đúng"
+            }
+          ]
         },
-        "items": [
-          {
-            "q": "小王今年几岁？",
-            "a": "他今年十八岁。"
-          },
-          {
-            "q": "他的爱好有哪些？",
-            "a": "他的爱好有唱歌、看电影和踢足球。"
-          },
-          {
-            "q": "他最喜欢什么？",
-            "a": "他最喜欢唱歌。"
-          },
-          {
-            "q": "小王唱了什么歌？",
-            "a": "他唱了一首中文歌。"
-          },
-          {
-            "q": "老师觉得他唱得怎么样？",
-            "a": "老师觉得他唱得非常好。"
-          },
-          {
-            "q": "为什么小王更喜欢学习中文了？",
-            "a": "因为他唱中文歌得到了老师的称赞和大家的鼓掌，所以他对学习中文更有兴趣了。"
+        {
+          "type": "write",
+          "title": "Viết đoạn văn theo chủ đề và từ cho sẵn",
+          "words": [
+            "运动",
+            "胖",
+            "瘦",
+            "健康",
+            "当然",
+            "喜欢"
+          ],
+          "wordsVn": "Vận động, béo, gầy, khỏe mạnh, đương nhiên, thích",
+          "sample": {
+            "zh": "以前我很胖，我很喜欢喝可乐，但是很少去运动。后来我想减肥，让自己更漂亮。当然，减肥以后，我比以前瘦了，也觉得更健康了，也更喜欢自己的身体了。",
+            "pin": "Yǐqián wǒ hěn pàng, wǒ hěn xǐhuan hē kělè, dànshì hěn shǎo qù yùndòng. Hòulái wǒ xiǎng jiǎnféi, ràng zìjǐ gèng piàoliang. Dāngrán, jiǎnféi yǐhòu, wǒ bǐ yǐqián shòu le, yě juéde gèng jiànkāng le, yě gèng xǐhuan zìjǐ de shēntǐ le.",
+            "vn": "Trước đây tôi rất béo, tôi rất thích uống cô-ca, nhưng rất ít khi vận động. Sau đó tôi muốn giảm cân, để bản thân đẹp hơn. Đương nhiên, sau khi giảm cân, tôi gầy hơn trước, cũng cảm thấy khỏe mạnh hơn, và cũng thích cơ thể mình hơn."
           }
-        ]
-      }
-    ]
-  },
-  {
-    "bai": 14,
-    "sections": [
-      {
-        "type": "clozepassage",
-        "title": "Điền từ vào đoạn văn",
-        "bank": [
-          "红绿灯",
-          "往",
-          "拐",
-          "马路",
-          "注意",
-          "白色",
-          "会",
-          "目的",
-          "听说",
-          "报名"
-        ],
-        "passage": "昨天我第一次去朋友家。他告诉我：“你先一直走到十字路口，看见(1)___以后，再(2)___前走三百米，然后向右(3)___。过了(4)___以后，你会看到一座(5)___的大楼，我家就在那儿。”路上我遇到一个老人。他对我说：“年轻人，过马路的时候一定要(6)___安全。”后来我到了朋友家。他告诉我最近学校要举行运动(7)___，很多同学已经(8)___参加了。我还(9)___学校会开一个太极拳班。我的朋友很想参加，因为他的(10)___是让身体更健康。",
-        "blanks": [
-          "红绿灯",
-          "往",
-          "拐",
-          "马路",
-          "白色",
-          "注意",
-          "会",
-          "报名",
-          "听说",
-          "目的"
-        ],
-        "pin": "Zuótiān wǒ dì-yī cì qù péngyou jiā. Tā gàosu wǒ: “Nǐ xiān yìzhí zǒu dào shízìlùkǒu, kànjiàn hónglǜdēng yǐhòu, zài wǎng qián zǒu sānbǎi mǐ, ránhòu xiàng yòu guǎi. Guò le mǎlù yǐhòu, nǐ huì kàndào yí zuò báisè de dàlóu, wǒ jiā jiù zài nàr.” Lùshang wǒ yùdào yí ge lǎorén. Tā duì wǒ shuō: “Niánqīngrén, guò mǎlù de shíhou yídìng yào zhùyì ānquán.” Hòulái wǒ dào le péngyou jiā. Tā gàosu wǒ zuìjìn xuéxiào yào jǔxíng yùndònghuì, hěn duō tóngxué yǐjīng bàomíng cānjiā le. Wǒ hái tīngshuō xuéxiào huì kāi yí ge tàijíquán bān. Wǒ de péngyou hěn xiǎng cānjiā, yīnwèi tā de mùdì shì ràng shēntǐ gèng jiànkāng.",
-        "vn": "Hôm qua tôi lần đầu tiên đến nhà bạn. Bạn ấy nói với tôi: “Bạn cứ đi thẳng đến ngã tư, thấy đèn xanh đèn đỏ rồi, lại đi tiếp về phía trước 300 mét, sau đó rẽ phải. Qua đường rồi, bạn sẽ thấy một tòa nhà màu trắng, nhà tôi ở đó.” Trên đường tôi gặp một ông lão. Ông nói với tôi: “Người trẻ, khi qua đường nhất định phải chú ý an toàn.” Sau đó tôi đến nhà bạn. Bạn ấy nói với tôi gần đây trường sẽ tổ chức hội thao, rất nhiều bạn học đã đăng ký tham gia rồi. Tôi còn nghe nói trường sẽ mở một lớp Thái Cực Quyền. Bạn tôi rất muốn tham gia, vì mục đích của bạn ấy là để cơ thể khỏe mạnh hơn."
-      },
-      {
-        "type": "reading",
-        "title": "Đọc đoạn văn và trả lời câu hỏi",
-        "qtype": "qa",
-        "passage": {
-          "zh": "听说学校最近要开一个太极拳班，很多同学都很感兴趣。王东也想报名参加。王东虽然学习很忙，但是他觉得身体健康更重要。他听很多老人说，打太极拳对身体很好，而且可以让人放松心情。可是王东的朋友不太同意。他说：“你每天已经有很多作业了，如果再去学太极拳，可能会更累。”王东回答：“我的目的不是参加比赛，而是让自己更健康。我相信只要努力，坚持学习，一定会有好的结果。”",
-          "pin": "Tīngshuō xuéxiào zuìjìn yào kāi yí ge tàijíquán bān, hěn duō tóngxué dōu hěn gǎn xìngqù. Wáng Dōng yě xiǎng bàomíng cānjiā. Wáng Dōng suīrán xuéxí hěn máng, dànshì tā juéde shēntǐ jiànkāng gèng zhòngyào. Tā tīng hěn duō lǎorén shuō, dǎ tàijíquán duì shēntǐ hěn hǎo, érqiě kěyǐ ràng rén fàngsōng xīnqíng. Kěshì Wáng Dōng de péngyou bú tài tóngyì. Tā shuō: “Nǐ měitiān yǐjīng yǒu hěn duō zuòyè le, rúguǒ zài qù xué tàijíquán, kěnéng huì gèng lèi.” Wáng Dōng huídá: “Wǒ de mùdì bú shì cānjiā bǐsài, ér shì ràng zìjǐ gèng jiànkāng. Wǒ xiāngxìn zhǐyào nǔlì, jiānchí xuéxí, yídìng huì yǒu hǎo de jiéguǒ.”",
-          "vn": "Nghe nói trường gần đây sẽ mở một lớp Thái Cực Quyền, rất nhiều bạn học đều rất hứng thú. Vương Đông cũng muốn đăng ký tham gia. Vương Đông tuy học rất bận, nhưng cậu thấy sức khỏe quan trọng hơn. Cậu nghe nhiều người già nói, đánh Thái Cực Quyền rất tốt cho cơ thể, lại còn có thể giúp người ta thư giãn tâm trạng. Nhưng bạn của Vương Đông không đồng ý lắm. Bạn ấy nói: “Mỗi ngày bạn đã có rất nhiều bài tập rồi, nếu còn đi học Thái Cực Quyền, có thể sẽ càng mệt hơn.” Vương Đông trả lời: “Mục đích của tôi không phải là tham gia thi đấu, mà là để bản thân khỏe mạnh hơn. Tôi tin rằng chỉ cần cố gắng, kiên trì học tập, chắc chắn sẽ có kết quả tốt.”"
-        },
-        "items": [
-          {
-            "q": "学校最近要开什么班？",
-            "a": "学校最近要开一个太极拳班。"
-          },
-          {
-            "q": "谁想报名参加？",
-            "a": "王东想报名参加。"
-          },
-          {
-            "q": "王东为什么想学习太极拳？",
-            "a": "因为他觉得身体健康更重要，而且打太极拳对身体很好，还能让人放松心情。"
-          },
-          {
-            "q": "王东朋友的意见是什么？",
-            "a": "他朋友觉得王东每天作业已经很多了，如果再学太极拳，可能会更累。"
-          },
-          {
-            "q": "王东的目的是什么？",
-            "a": "他的目的不是参加比赛，而是让自己更健康。"
-          }
-        ]
-      },
-      {
-        "type": "write",
-        "title": "Viết đoạn văn theo chủ đề và từ cho sẵn",
-        "topic": "我第一次去朋友家",
-        "words": [
-          "马路",
-          "注意",
-          "一座",
-          "白色",
-          "听说"
-        ],
-        "wordsVn": "con đường, chú ý, một tòa, màu trắng, nghe nói",
-        "sample": {
-          "zh": "上个星期，我第一次去朋友家。他家在一座白色的大楼里，离我家不远。出门以后，我一直往前走，过马路的时候要特别注意安全。我听说他家附近有一个很大的公园，所以我们去朋友家以前，先去公园散步了一会儿。",
-          "pin": "Shàng ge xīngqī, wǒ dì-yī cì qù péngyou jiā. Tā jiā zài yí zuò báisè de dàlóu lǐ, lí wǒ jiā bù yuǎn. Chūmén yǐhòu, wǒ yìzhí wàng qián zǒu, guò mǎlù de shíhou yào tèbié zhùyì ānquán. Wǒ tīngshuō tā jiā fùjìn yǒu yí ge hěn dà de gōngyuán, suǒyǐ wǒmen qù péngyou jiā yǐqián, xiān qù gōngyuán sànbù le yíhuìr.",
-          "vn": "Tuần trước, tôi lần đầu đến nhà bạn. Nhà bạn ấy ở trong một tòa nhà màu trắng, không xa nhà tôi. Ra khỏi nhà, tôi đi thẳng về phía trước, khi qua đường phải đặc biệt chú ý an toàn. Tôi nghe nói gần nhà bạn ấy có một công viên rất lớn, nên trước khi đến nhà bạn, chúng tôi đã ra công viên đi dạo một lúc."
         }
-      }
-    ]
-  }
+      ]
+    },
+    {
+      "bai": 8,
+      "sections": [
+        {
+          "type": "cloze",
+          "title": "Điền từ vào chỗ trống",
+          "bank": [
+            "准备",
+            "参加",
+            "打算",
+            "举行",
+            "接",
+            "毕业",
+            "时间",
+            "经济",
+            "正好",
+            "国家"
+          ],
+          "items": [
+            {
+              "q": "麦克今年大学___了。他___明年去中国留学。可是现在他的___情况不太好，所以还需要努力工作赚钱。",
+              "a": [
+                "毕业",
+                "打算",
+                "经济"
+              ],
+              "pin": "Màikè jīnnián dàxué bìyè le. Tā dǎsuàn míngnián qù Zhōngguó liúxué. Kěshì xiànzài tā de jīngjì qíngkuàng bú tài hǎo, suǒyǐ hái xūyào nǔlì gōngzuò zhuànqián.",
+              "vn": "Mike năm nay đã tốt nghiệp đại học. Anh ấy dự định năm sau đi Trung Quốc du học. Nhưng hiện tại tình hình kinh tế của anh ấy không tốt lắm, nên vẫn cần phải cố gắng làm việc kiếm tiền."
+            },
+            {
+              "q": "昨天，公司___了一个欢迎会，因为来了几位新同事。老板希望大家都能___。可是小王那天没有___，因为他要去机场___一个从台湾来的朋友。",
+              "a": [
+                "举行",
+                "参加",
+                "参加",
+                "接"
+              ],
+              "pin": "Zuótiān, gōngsī jǔxíng le yí ge huānyínghuì, yīnwèi lái le jǐ wèi xīn tóngshì. Lǎobǎn xīwàng dàjiā dōu néng cānjiā. Kěshì Xiǎo Wáng nèitiān méiyǒu cānjiā, yīnwèi tā yào qù jīchǎng jiē yí ge cóng Táiwān lái de péngyou.",
+              "vn": "Hôm qua, công ty đã tổ chức một buổi tiệc chào mừng, vì có vài đồng nghiệp mới đến. Sếp hy vọng mọi người đều có thể tham gia. Nhưng Tiểu Vương hôm đó không tham gia, vì anh ấy phải ra sân bay đón một người bạn từ Đài Loan đến."
+            },
+            {
+              "q": "今天下午，小李正在___下个月去北京旅行的东西。因为朋友___也想去北京，所以他们决定一起去。",
+              "a": [
+                "准备",
+                "正好"
+              ],
+              "pin": "Jīntiān xiàwǔ, Xiǎo Lǐ zhèngzài zhǔnbèi xià ge yuè qù Běijīng lǜyóu de dōngxi. Yīnwèi péngyou zhènghǎo yě xiǎng qù Běijīng, suǒyǐ tāmen juédìng yìqǐ qù.",
+              "vn": "Chiều nay, Tiểu Lý đang chuẩn bị đồ cho chuyến du lịch Bắc Kinh tháng sau. Vì bạn anh ấy đúng lúc cũng muốn đi Bắc Kinh, nên họ quyết định đi cùng nhau."
+            },
+            {
+              "q": "小王觉得中国是一个很有意思的___，以后他还想去很多地方看看。",
+              "a": [
+                "国家"
+              ],
+              "pin": "Xiǎo Wáng juéde Zhōngguó shì yí ge hěn yǒu yìsi de guójiā, yǐhòu tā hái xiǎng qù hěn duō dìfang kànkan.",
+              "vn": "Tiểu Vương cảm thấy Trung Quốc là một quốc gia rất thú vị, sau này anh ấy còn muốn đi nhiều nơi để tham quan."
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "title": "Dịch câu (Việt → Trung)",
+          "items": [
+            {
+              "q": "Sau khi tốt nghiệp đại học, cô ấy muốn đến Bắc Kinh làm việc.",
+              "a": "大学毕业以后，她想去北京工作。",
+              "pin": "Dàxué bìyè yǐhòu, tā xiǎng qù Běijīng gōngzuò."
+            },
+            {
+              "q": "Hôm nay tôi không có thời gian nên không thể tham gia tiệc sinh nhật của anh ấy.",
+              "a": "今天我没有时间，所以不能参加他的生日晚会。",
+              "pin": "Jīntiān wǒ méiyǒu shíjiān, suǒyǐ bù néng cānjiā tā de shēngrì wǎnhuì."
+            },
+            {
+              "q": "Tôi định năm sau đi nước ngoài du lịch với bạn bè.",
+              "a": "我打算明年跟朋友一起去国外旅行。",
+              "pin": "Wǒ dǎsuàn míngnián gēn péngyou yìqǐ qù guówài lǜxíng."
+            },
+            {
+              "q": "Anh ấy đến đúng lúc, tôi đang cần người giúp.",
+              "a": "他来得正好，我正需要人帮忙。",
+              "pin": "Tā lái de zhènghǎo, wǒ zhèng xūyào rén bāngmáng."
+            },
+            {
+              "q": "Vì vấn đề kinh tế nên họ vẫn chưa tổ chức hôn lễ.",
+              "a": "因为经济问题，所以他们还没举行婚礼。",
+              "pin": "Yīnwèi jīngjì wèntí, suǒyǐ tāmen hái méi jǔxíng hūnlǐ."
+            },
+            {
+              "q": "Tôi phải chuẩn bị rất nhiều đồ vì tuần sau đi nước ngoài công tác.",
+              "a": "因为下星期要去国外出差，所以我要准备很多东西。",
+              "pin": "Yīnwèi xià xīngqī yào qù guówài chūchāi, suǒyǐ wǒ yào zhǔnbèi hěn duō dōngxi."
+            },
+            {
+              "q": "Tiệc kết thúc lúc 10 giờ tối nhưng chúng tôi vẫn chưa muốn về.",
+              "a": "晚会晚上十点结束了，但是我们还不想回家。",
+              "pin": "Wǎnhuì wǎnshang shí diǎn jiéshù le, dànshì wǒmen hái bù xiǎng huí jiā."
+            }
+          ]
+        },
+        {
+          "type": "reading",
+          "title": "Đọc đoạn văn và trả lời câu hỏi",
+          "qtype": "qa",
+          "passage": {
+            "zh": "今天是星期六，本来王红打算和朋友一起参加生日晚会，可是下午公司的一个同事突然生病了，所以经理让她去医院看看那个同事。等她从医院出来的时候，已经晚上八点了。她本来以为生日晚会已经结束了，可是朋友告诉她：“你来得正好，我们刚刚开始吃蛋糕。”在这个晚会，她还认识了很多新朋友，大家一起聊天、唱歌，到晚上十二点才回家。虽然她很累，可是她觉得今天还是非常开心。",
+            "pin": "Jīntiān shì xīngqīliù, běnlái Wáng Hóng dǎsuàn hé péngyou yìqǐ cānjiā shēngrì wǎnhuì, kěshì xiàwǔ gōngsī de yí ge tóngshì tūrán shēngbìng le, suǒyǐ jīnglǐ ràng tā qù yīyuàn kànkan nàge tóngshì. Děng tā cóng yīyuàn chūlái de shíhou, yǐjīng wǎnshang bā diǎn le. Tā běnlái yǐwéi shēngrì wǎnhuì yǐjīng jiéshù le, kěshì péngyou gàosu tā: “Nǐ lái de zhènghǎo, wǒmen gānggāng kāishǐ chī dàngāo.” Zài zhège wǎnhuì, tā hái rènshi le hěn duō xīn péngyou, dàjiā yìqǐ liáotiān, chànggē, dào wǎnshang shí'èr diǎn cái huí jiā. Suīrán tā hěn lèi, kěshì tā juéde jīntiān háishi fēicháng kāixīn.",
+            "vn": "Hôm nay là thứ Bảy, Vương Hồng vốn định cùng bạn bè đi tham dự tiệc sinh nhật, nhưng chiều nay một đồng nghiệp công ty bất ngờ bị bệnh, nên giám đốc bảo cô đến bệnh viện thăm đồng nghiệp đó. Đến khi cô ra khỏi bệnh viện thì đã 8 giờ tối. Cô vốn nghĩ tiệc sinh nhật đã kết thúc rồi, nhưng bạn bảo cô: “Bạn đến đúng lúc lắm, chúng tôi vừa mới bắt đầu ăn bánh kem.” Tại buổi tiệc này, cô còn quen được nhiều bạn mới, mọi người cùng nói chuyện, hát hò, đến 12 giờ đêm mới về nhà. Mặc dù rất mệt, nhưng cô cảm thấy hôm nay vẫn rất vui."
+          },
+          "items": [
+            {
+              "q": "今天本来王红打算做什么？",
+              "a": "她本来打算和朋友一起参加生日晚会。"
+            },
+            {
+              "q": "为什么她后来去了医院？",
+              "a": "因为公司一个同事突然生病了，经理让她去医院看看那个同事。"
+            },
+            {
+              "q": "她几点从医院出来？",
+              "a": "晚上八点。"
+            },
+            {
+              "q": "她去的时候，生日晚会结束了吗？",
+              "a": "还没结束，大家刚刚开始吃蛋糕。"
+            },
+            {
+              "q": "为什么她觉得很开心？",
+              "a": "因为在晚会上她认识了很多新朋友，大家一起聊天、唱歌，过得很愉快。"
+            }
+          ]
+        },
+        {
+          "type": "write",
+          "title": "Viết đoạn văn theo chủ đề và từ cho sẵn",
+          "topic": "你以后的打算",
+          "words": [
+            "打算",
+            "留学",
+            "工作",
+            "毕业",
+            "结婚"
+          ],
+          "wordsVn": "Dự định, du học, làm việc, tốt nghiệp, kết hôn",
+          "sample": {
+            "zh": "我大学毕业八年了，现在在城市工作。我打算明年去美国留学，毕业以后打算结婚。",
+            "pin": "Wǒ dàxué bìyè bā nián le, xiànzài zài chéngshì gōngzuò. Wǒ dǎsuàn míngnián qù Měiguó liúxué, bìyè yǐhòu dǎsuàn jiéhūn.",
+            "vn": "Tôi đã tốt nghiệp đại học 8 năm rồi, hiện đang làm việc ở thành phố. Tôi dự định năm sau đi Mỹ du học, sau khi tốt nghiệp dự định kết hôn."
+          }
+        }
+      ]
+    },
+    {
+      "bai": 9,
+      "sections": [
+        {
+          "type": "fill",
+          "title": "Điền từ thích hợp vào chỗ trống",
+          "bank": [
+            "以后",
+            "教室",
+            "起床",
+            "一定",
+            "晚饭",
+            "操场",
+            "每",
+            "半",
+            "上课",
+            "差",
+            "节",
+            "习惯"
+          ],
+          "items": [
+            {
+              "q": "我每天六点半___，然后去学校。",
+              "a": "起床",
+              "pin": "qǐchuáng",
+              "hv": "KHỞI SÀNG",
+              "spin": "Wǒ měitiān liù diǎn bàn qǐchuáng, ránhòu qù xuéxiào.",
+              "vn": "Mỗi ngày tôi dậy lúc 6 giờ rưỡi, sau đó đến trường."
+            },
+            {
+              "q": "他在___里复习今天老师教的语法。",
+              "a": "教室",
+              "pin": "jiàoshì",
+              "hv": "GIÁO THẤT",
+              "spin": "Tā zài jiàoshì lǐ fùxí jīntiān lǎoshī jiāo de yǔfǎ.",
+              "vn": "Anh ấy ở trong phòng học ôn lại ngữ pháp thầy/cô dạy hôm nay."
+            },
+            {
+              "q": "我们学校有一个很大的___。",
+              "a": "操场",
+              "pin": "cāochǎng",
+              "hv": "THAO TRƯỜNG",
+              "spin": "Wǒmen xuéxiào yǒu yí ge hěn dà de cāochǎng.",
+              "vn": "Trường chúng tôi có một sân vận động rất lớn."
+            },
+            {
+              "q": "我妈妈做的___特别好吃。",
+              "a": "晚饭",
+              "pin": "wǎnfàn",
+              "hv": "VÃN PHẠN",
+              "spin": "Wǒ māma zuò de wǎnfàn tèbié hǎochī.",
+              "vn": "Cơm tối mẹ tôi nấu rất ngon."
+            },
+            {
+              "q": "你明天___要早点来。",
+              "a": "一定",
+              "pin": "yídìng",
+              "hv": "NHẤT ĐỊNH",
+              "spin": "Nǐ míngtiān yídìng yào zǎo diǎn lái.",
+              "vn": "Ngày mai bạn nhất định phải đến sớm hơn."
+            },
+            {
+              "q": "我等了他___天，他还没来。",
+              "a": "半",
+              "pin": "bàn",
+              "hv": "BÁN",
+              "spin": "Wǒ děng le tā bàn tiān, tā hái méi lái.",
+              "vn": "Tôi đợi anh ấy nửa ngày rồi, anh ấy vẫn chưa đến."
+            },
+            {
+              "q": "___个人都有不同的生活方式。",
+              "a": "每",
+              "pin": "měi",
+              "hv": "MỖI",
+              "spin": "Měi ge rén dōu yǒu bùtóng de shēnghuó fāngshì.",
+              "vn": "Mỗi người đều có cách sống khác nhau."
+            },
+            {
+              "q": "___的时候不要一直玩手机。",
+              "a": "上课",
+              "pin": "shàngkè",
+              "hv": "THƯỢNG KHÓA",
+              "spin": "Shàngkè de shíhou bú yào yìzhí wán shǒujī.",
+              "vn": "Khi lên lớp không nên cứ chơi điện thoại."
+            },
+            {
+              "q": "她学习有一点___，但是非常努力。",
+              "a": "差",
+              "pin": "chà",
+              "hv": "SAI",
+              "spin": "Tā xuéxí yǒu yìdiǎn chà, dànshì fēicháng nǔlì.",
+              "vn": "Cô ấy học hơi kém một chút, nhưng rất chăm chỉ."
+            },
+            {
+              "q": "明天你们有几___汉语课？",
+              "a": "节",
+              "pin": "jié",
+              "hv": "TIẾT",
+              "spin": "Míngtiān nǐmen yǒu jǐ jié Hànyǔ kè?",
+              "vn": "Ngày mai các bạn có mấy tiết tiếng Trung?"
+            },
+            {
+              "q": "我希望___能有更好的工作。",
+              "a": "以后",
+              "pin": "yǐhòu",
+              "hv": "DĨ HẬU",
+              "spin": "Wǒ xīwàng yǐhòu néng yǒu gèng hǎo de gōngzuò.",
+              "vn": "Tôi hy vọng sau này có thể có công việc tốt hơn."
+            },
+            {
+              "q": "他每天早上跑步，这已经是他的___了。",
+              "a": "习惯",
+              "pin": "xíguàn",
+              "hv": "TẬP QUÁN",
+              "spin": "Tā měitiān zǎoshang pǎobù, zhè yǐjīng shì tā de xíguàn le.",
+              "vn": "Anh ấy ngày nào cũng chạy bộ vào buổi sáng, đây đã thành thói quen của anh ấy rồi."
+            }
+          ]
+        },
+        {
+          "type": "reading",
+          "title": "Đọc đoạn văn và trả lời câu hỏi",
+          "qtype": "qa",
+          "passage": {
+            "zh": "小林是一个非常努力的学生。虽然他的汉语能力以前有一点差，但是他从来没有放弃过。他每天早上六点起床，吃完早饭以后就去学校。上课的时候，他总是认真听老师讲课，从来不聊天。下课以后，他常常一个人在教室里复习语法。晚上回家以后，他还会学习两个小时汉语。现在，小林的汉语比以前好了很多。老师和同学都觉得他进步得非常快。",
+            "pin": "Xiǎo Lín shì yí ge fēicháng nǔlì de xuésheng. Suīrán tā de Hànyǔ nénglì yǐqián yǒu yìdiǎn chà, dànshì tā cónglái méiyǒu fàngqì guò. Tā měitiān zǎoshang liù diǎn qǐchuáng, chī wán zǎofàn yǐhòu jiù qù xuéxiào. Shàngkè de shíhou, tā zǒngshì rènzhēn tīng lǎoshī jiǎngkè, cónglái bù liáotiān. Xiàkè yǐhòu, tā chángcháng yí ge rén zài jiàoshì lǐ fùxí yǔfǎ. Wǎnshang huí jiā yǐhòu, tā hái huì xuéxí liǎng ge xiǎoshí Hànyǔ. Xiànzài, Xiǎo Lín de Hànyǔ bǐ yǐqián hǎo le hěn duō. Lǎoshī hé tóngxué dōu juéde tā jìnbù de fēicháng kuài.",
+            "vn": "Tiểu Lâm là một học sinh rất chăm chỉ. Mặc dù trước đây năng lực tiếng Trung của cậu hơi kém, nhưng cậu chưa từng bỏ cuộc. Mỗi sáng cậu dậy lúc 6 giờ, ăn sáng xong là đến trường. Khi lên lớp, cậu luôn chăm chú nghe thầy/cô giảng bài, không bao giờ nói chuyện riêng. Sau khi tan học, cậu thường một mình ở trong lớp ôn lại ngữ pháp. Tối về nhà, cậu còn học thêm tiếng Trung hai giờ. Hiện tại, tiếng Trung của Tiểu Lâm tốt hơn trước rất nhiều. Thầy/cô và các bạn đều thấy cậu tiến bộ rất nhanh."
+          },
+          "items": [
+            {
+              "q": "小林以前汉语怎么样？",
+              "a": "他的汉语能力以前有一点差。"
+            },
+            {
+              "q": "他每天几点起床？",
+              "a": "他每天早上六点起床。"
+            },
+            {
+              "q": "上课的时候他做什么？",
+              "a": "他总是认真听老师讲课，从来不聊天。"
+            },
+            {
+              "q": "下课以后他为什么还在教室？",
+              "a": "因为他常常一个人在教室里复习语法。"
+            },
+            {
+              "q": "现在他的汉语有没有进步？",
+              "a": "有，他进步得非常快。"
+            },
+            {
+              "q": "为什么老师和同学都觉得他进步很快？",
+              "a": "因为他学习非常努力，每天都认真上课、复习语法，晚上还会再学两个小时，所以进步得很快。"
+            }
+          ]
+        },
+        {
+          "type": "translate2",
+          "title": "Dịch sang tiếng Trung",
+          "items": [
+            {
+              "q": "Mỗi người đều có cuộc sống khác nhau.",
+              "a": "每个人都有不同的生活。",
+              "pin": "Měi ge rén dōu yǒu bùtóng de shēnghuó."
+            },
+            {
+              "q": "Sau khi tan học chúng tôi thường đi sân vận động đá bóng.",
+              "a": "下课以后，我们常常去操场踢足球。",
+              "pin": "Xiàkè yǐhòu, wǒmen chángcháng qù cāochǎng tī zúqiú."
+            },
+            {
+              "q": "Anh ấy nằm trên giường xem điện thoại nửa ngày.",
+              "a": "他躺在床上看手机看了半天。",
+              "pin": "Tā tǎng zài chuáng shàng kàn shǒujī kàn le bàntiān."
+            },
+            {
+              "q": "Tôi hy vọng sau này có thể sống hạnh phúc.",
+              "a": "我希望以后能生活得很幸福。",
+              "pin": "Wǒ xīwàng yǐhòu néng shēnghuó de hěn xìngfú."
+            },
+            {
+              "q": "Khi lên lớp nhất định không được nói chuyện.",
+              "a": "上课的时候一定不要聊天。",
+              "pin": "Shàngkè de shíhou yídìng bú yào liáotiān."
+            },
+            {
+              "q": "Đây là phòng học mà có nhiều kỷ niệm đẹp nhất đối với tôi.",
+              "a": "这是对我来说有最多美好回忆的教室。",
+              "pin": "Zhè shì duì wǒ lái shuō yǒu zuì duō měihǎo huíyì de jiàoshì."
+            },
+            {
+              "q": "Năng lực của cô ấy hơi kém nhưng cô ấy rất cố gắng.",
+              "a": "她的能力有点差，但是她很努力。",
+              "pin": "Tā de nénglì yǒudiǎn chà, dànshì tā hěn nǔlì."
+            },
+            {
+              "q": "Mỗi lần đến nhà tôi anh ấy đều mua rất nhiều đồ.",
+              "a": "每次来我家他都买很多东西。",
+              "pin": "Měi cì lái wǒ jiā tā dōu mǎi hěn duō dōngxi."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bai": 10,
+      "sections": [
+        {
+          "type": "fill",
+          "title": "Điền từ thích hợp vào chỗ trống",
+          "bank": [
+            "锻炼",
+            "洗澡",
+            "然后",
+            "睡觉",
+            "爬山",
+            "出发",
+            "集合",
+            "准时",
+            "带",
+            "困",
+            "精神",
+            "熬夜",
+            "年级",
+            "上车",
+            "前"
+          ],
+          "items": [
+            {
+              "q": "我昨天晚上___做作业，所以现在很累。",
+              "a": "熬夜",
+              "pin": "áoyè",
+              "hv": "NGAO DẠ",
+              "spin": "Wǒ zuótiān wǎnshang áoyè zuò zuòyè, suǒyǐ xiànzài hěn lèi.",
+              "vn": "Tối qua tôi thức khuya làm bài tập, nên giờ rất mệt."
+            },
+            {
+              "q": "他每天早上都去公园___身体。",
+              "a": "锻炼",
+              "pin": "duànliàn",
+              "hv": "ĐOÀN LUYỆN",
+              "spin": "Tā měitiān zǎoshang dōu qù gōngyuán duànliàn shēntǐ.",
+              "vn": "Mỗi sáng anh ấy đều ra công viên tập thể dục."
+            },
+            {
+              "q": "吃完晚饭以后，我先洗澡，___做作业。",
+              "a": "然后",
+              "pin": "ránhòu",
+              "hv": "NHIÊN HẬU",
+              "spin": "Chī wán wǎnfàn yǐhòu, wǒ xiān xǐzǎo, ránhòu zuò zuòyè.",
+              "vn": "Ăn tối xong, tôi tắm trước, sau đó làm bài tập."
+            },
+            {
+              "q": "明天早上六点我们要___，所以今晚必须早点睡。",
+              "a": "出发",
+              "pin": "chūfā",
+              "hv": "XUẤT PHÁT",
+              "spin": "Míngtiān zǎoshang liù diǎn wǒmen yào chūfā, suǒyǐ jīnwǎn bìxū zǎo diǎn shuì.",
+              "vn": "Sáng mai 6 giờ chúng ta phải xuất phát, nên tối nay phải ngủ sớm."
+            },
+            {
+              "q": "最近天气太热了，我每天都想___两次。",
+              "a": "洗澡",
+              "pin": "xǐzǎo",
+              "hv": "TẨY TÁO",
+              "spin": "Zuìjìn tiānqì tài rè le, wǒ měitiān dōu xiǎng xǐzǎo liǎng cì.",
+              "vn": "Gần đây thời tiết nóng quá, ngày nào tôi cũng muốn tắm hai lần."
+            },
+            {
+              "q": "我弟弟今年上小学一年___。",
+              "a": "年级",
+              "pin": "niánjí",
+              "hv": "NIÊN CẤP",
+              "spin": "Wǒ dìdi jīnnián shàng xiǎoxué yī niánjí.",
+              "vn": "Năm nay em trai tôi học lớp 1 (tiểu học)."
+            },
+            {
+              "q": "这个周末我们公司组织去___。",
+              "a": "爬山",
+              "pin": "páshān",
+              "hv": "BÀ SƠN",
+              "spin": "Zhège zhōumò wǒmen gōngsī zǔzhī qù páshān.",
+              "vn": "Cuối tuần này công ty chúng tôi tổ chức đi leo núi."
+            },
+            {
+              "q": "我昨天晚上没睡好，现在很___。",
+              "a": "困",
+              "pin": "kùn",
+              "hv": "KHỐN",
+              "spin": "Wǒ zuótiān wǎnshang méi shuì hǎo, xiànzài hěn kùn.",
+              "vn": "Tối qua tôi ngủ không ngon, giờ rất buồn ngủ."
+            },
+            {
+              "q": "睡觉___，我喜欢喝一杯热牛奶。",
+              "a": "前",
+              "pin": "qián",
+              "hv": "TIỀN",
+              "spin": "Shuìjiào qián, wǒ xǐhuan hē yì bēi rè niúnǎi.",
+              "vn": "Trước khi ngủ, tôi thích uống một cốc sữa nóng."
+            },
+            {
+              "q": "八点半我们在学校门口___。",
+              "a": "集合",
+              "pin": "jíhé",
+              "hv": "TẬP HỢP",
+              "spin": "Bā diǎn bàn wǒmen zài xuéxiào ménkǒu jíhé.",
+              "vn": "8 giờ rưỡi chúng ta tập hợp ở cổng trường."
+            },
+            {
+              "q": "明天早上七点我们___出发。",
+              "a": "准时",
+              "pin": "zhǔnshí",
+              "hv": "CHUẨN THỜI",
+              "spin": "Míngtiān zǎoshang qī diǎn wǒmen zhǔnshí chūfā.",
+              "vn": "Sáng mai 7 giờ chúng ta xuất phát đúng giờ."
+            },
+            {
+              "q": "你___雨伞了吗？外面下雨了。",
+              "a": "带",
+              "pin": "dài",
+              "hv": "ĐỚI",
+              "spin": "Nǐ dài yǔsǎn le ma? Wàimiàn xià yǔ le.",
+              "vn": "Bạn mang ô chưa? Bên ngoài đang mưa rồi."
+            },
+            {
+              "q": "快点___吧，车马上要开了。",
+              "a": "上车",
+              "pin": "shàngchē",
+              "hv": "THƯỢNG XA",
+              "spin": "Kuài diǎn shàngchē ba, chē mǎshàng yào kāi le.",
+              "vn": "Nhanh lên xe đi, xe sắp chạy rồi."
+            },
+            {
+              "q": "他这几天睡不着，所以没有___工作。",
+              "a": "精神",
+              "pin": "jīngshén",
+              "hv": "TINH THẦN",
+              "spin": "Tā zhè jǐ tiān shuì bu zháo, suǒyǐ méiyǒu jīngshén gōngzuò.",
+              "vn": "Mấy ngày nay anh ấy không ngủ được, nên làm việc không có tinh thần."
+            },
+            {
+              "q": "他回家以后先洗澡，然后马上去___。",
+              "a": "睡觉",
+              "pin": "shuìjiào",
+              "hv": "THỤY GIÁC",
+              "spin": "Tā huí jiā yǐhòu xiān xǐzǎo, ránhòu mǎshàng qù shuìjiào.",
+              "vn": "Anh ấy về nhà tắm trước, sau đó đi ngủ ngay."
+            }
+          ]
+        },
+        {
+          "type": "correct",
+          "title": "Sửa lỗi sai",
+          "example": {
+            "wrong": "我昨天晚上做作业熬夜了。",
+            "a": "我昨天晚上熬夜做作业了。"
+          },
+          "items": [
+            {
+              "wrong": "我每天去都公园锻炼身体。",
+              "a": "我每天都去公园锻炼身体。",
+              "pin": "Wǒ měitiān dōu qù gōngyuán duànliàn shēntǐ.",
+              "vn": "Mỗi ngày tôi đều đi công viên tập thể dục."
+            },
+            {
+              "wrong": "因为昨天晚上我熬夜了，所以今天很困我。",
+              "a": "因为昨天晚上我熬夜了，所以今天我很困。",
+              "pin": "Yīnwèi zuótiān wǎnshang wǒ áoyè le, suǒyǐ jīntiān wǒ hěn kùn.",
+              "vn": "Vì tối qua tôi thức khuya, nên hôm nay tôi rất buồn ngủ."
+            },
+            {
+              "wrong": "睡觉前我常常牛奶喝热。",
+              "a": "睡觉前我常常喝热牛奶。",
+              "pin": "Shuìjiào qián wǒ chángcháng hē rè niúnǎi.",
+              "vn": "Trước khi ngủ tôi thường uống sữa nóng."
+            },
+            {
+              "wrong": "我们明天准时七点出发会。",
+              "a": "我们明天会准时七点出发。",
+              "pin": "Wǒmen míngtiān huì zhǔnshí qī diǎn chūfā.",
+              "vn": "Ngày mai chúng tôi sẽ xuất phát đúng giờ vào 7 giờ."
+            },
+            {
+              "wrong": "虽然工作很忙，但是他常常还去锻炼。",
+              "a": "虽然工作很忙，但是他还常常去锻炼。",
+              "pin": "Suīrán gōngzuò hěn máng, dànshì tā hái chángcháng qù duànliàn.",
+              "vn": "Mặc dù công việc rất bận, nhưng anh ấy vẫn thường đi tập luyện."
+            },
+            {
+              "wrong": "我昨天晚上睡不着觉了一直。",
+              "a": "我昨天晚上一直睡不着觉。",
+              "pin": "Wǒ zuótiān wǎnshang yìzhí shuì bu zháo jiào.",
+              "vn": "Tối qua tôi cứ mãi không ngủ được."
+            },
+            {
+              "wrong": "他都每天锻炼身体一个小时。",
+              "a": "他每天都锻炼身体一个小时。",
+              "pin": "Tā měitiān dōu duànliàn shēntǐ yí ge xiǎoshí.",
+              "vn": "Mỗi ngày anh ấy đều tập thể dục một giờ."
+            },
+            {
+              "wrong": "我先洗澡，然后去房间回做作业。",
+              "a": "我先洗澡，然后回房间做作业。",
+              "pin": "Wǒ xiān xǐzǎo, ránhòu huí fángjiān zuò zuòyè.",
+              "vn": "Tôi tắm trước, sau đó về phòng làm bài tập."
+            },
+            {
+              "wrong": "他昨天晚上两点才睡觉了。",
+              "a": "他昨天晚上两点才睡觉。",
+              "pin": "Tā zuótiān wǎnshang liǎng diǎn cái shuìjiào.",
+              "vn": "Tối qua anh ấy đến 2 giờ mới đi ngủ."
+            },
+            {
+              "wrong": "我们在学校附近十分钟以后集合会。",
+              "a": "我们十分钟以后在学校附近集合。",
+              "pin": "Wǒmen shí fēnzhōng yǐhòu zài xuéxiào fùjìn jíhé.",
+              "vn": "10 phút nữa chúng ta tập hợp ở gần trường."
+            }
+          ]
+        },
+        {
+          "type": "reverse",
+          "title": "Dịch sang tiếng Việt",
+          "items": [
+            {
+              "q": "我每天都去公园锻炼身体。",
+              "a": "Tôi mỗi ngày đều đi công viên tập thể dục.",
+              "pin": "Wǒ měitiān dōu qù gōngyuán duànliàn shēntǐ."
+            },
+            {
+              "q": "因为明天要早起，所以今晚我要早点睡觉。",
+              "a": "Vì ngày mai phải dậy sớm, nên tối nay tôi phải đi ngủ sớm một chút.",
+              "pin": "Yīnwèi míngtiān yào zǎo qǐ, suǒyǐ jīnwǎn wǒ yào zǎo diǎn shuìjiào."
+            },
+            {
+              "q": "睡觉前不要玩手机。",
+              "a": "Trước khi ngủ không nên chơi điện thoại.",
+              "pin": "Shuìjiào qián bú yào wán shǒujī."
+            },
+            {
+              "q": "他睡过头了，所以今天他不上课。",
+              "a": "Anh ấy ngủ quên rồi, nên hôm nay anh ấy không đi học.",
+              "pin": "Tā shuì guòtóu le, suǒyǐ jīntiān tā bú shàngkè."
+            },
+            {
+              "q": "我们先集合，然后一起出发。",
+              "a": "Chúng tôi tập hợp trước, sau đó cùng xuất phát.",
+              "pin": "Wǒmen xiān jíhé, ránhòu yìqǐ chūfā."
+            },
+            {
+              "q": "虽然天气很热，但是很多人还是去爬山。",
+              "a": "Mặc dù thời tiết rất nóng, nhưng rất nhiều người vẫn đi leo núi.",
+              "pin": "Suīrán tiānqì hěn rè, dànshì hěn duō rén háishi qù páshān."
+            },
+            {
+              "q": "你上我的车吧，我带你去玩儿。",
+              "a": "Bạn lên xe tôi đi, tôi đưa bạn đi chơi.",
+              "pin": "Nǐ shàng wǒ de chē ba, wǒ dài nǐ qù wánr."
+            },
+            {
+              "q": "这个孩子已经会爬了。",
+              "a": "Đứa trẻ này đã biết bò rồi.",
+              "pin": "Zhège háizi yǐjīng huì pá le."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bai": 11,
+      "sections": [
+        {
+          "type": "fill",
+          "title": "Điền từ thích hợp vào chỗ trống",
+          "bank": [
+            "叫",
+            "让",
+            "大家",
+            "谈",
+            "自己",
+            "爱好",
+            "京剧",
+            "非常",
+            "唱歌"
+          ],
+          "items": [
+            {
+              "q": "老师___我们介绍自己的家人。",
+              "a": "叫",
+              "pin": "jiào",
+              "hv": "KHIẾU",
+              "spin": "Lǎoshī jiào wǒmen jièshào zìjǐ de jiārén.",
+              "vn": "Thầy/cô giáo gọi chúng tôi giới thiệu về gia đình mình."
+            },
+            {
+              "q": "我的___是看电影和听音乐。",
+              "a": "爱好",
+              "pin": "àihào",
+              "hv": "ÁI HẢO",
+              "spin": "Wǒ de àihào shì kàn diànyǐng hé tīng yīnyuè.",
+              "vn": "Sở thích của tôi là xem phim và nghe nhạc."
+            },
+            {
+              "q": "这件事___我很生气。",
+              "a": "让",
+              "pin": "ràng",
+              "hv": "NHƯỢNG",
+              "spin": "Zhè jiàn shì ràng wǒ hěn shēngqì.",
+              "vn": "Việc này làm tôi rất tức giận."
+            },
+            {
+              "q": "你___什么名字？",
+              "a": "叫",
+              "pin": "jiào",
+              "hv": "KHIẾU",
+              "spin": "Nǐ jiào shénme míngzi?",
+              "vn": "Bạn tên là gì?"
+            },
+            {
+              "q": "今天下午我们一起___一谈吧。",
+              "a": "谈",
+              "pin": "tán",
+              "hv": "ĐÀM",
+              "spin": "Jīntiān xiàwǔ wǒmen yìqǐ tán yi tán ba.",
+              "vn": "Chiều nay chúng ta cùng nói chuyện một chút nhé."
+            },
+            {
+              "q": "___都喜欢这个老师。",
+              "a": "大家",
+              "pin": "dàjiā",
+              "hv": "ĐẠI GIA",
+              "spin": "Dàjiā dōu xǐhuan zhège lǎoshī.",
+              "vn": "Mọi người đều thích thầy/cô giáo này."
+            },
+            {
+              "q": "这是我___的事情，不用别人帮助。",
+              "a": "自己",
+              "pin": "zìjǐ",
+              "hv": "TỰ KỶ",
+              "spin": "Zhè shì wǒ zìjǐ de shìqing, bú yòng biérén bāngzhù.",
+              "vn": "Đây là việc của riêng tôi, không cần người khác giúp."
+            },
+            {
+              "q": "爷爷最喜欢看___。",
+              "a": "京剧",
+              "pin": "jīngjù",
+              "hv": "KINH KỊCH",
+              "spin": "Yéye zuì xǐhuan kàn jīngjù.",
+              "vn": "Ông nội thích xem Kinh kịch nhất."
+            },
+            {
+              "q": "我妹妹很喜欢___。",
+              "a": "唱歌",
+              "pin": "chànggē",
+              "hv": "XƯỚNG CA",
+              "spin": "Wǒ mèimei hěn xǐhuan chànggē.",
+              "vn": "Em gái tôi rất thích hát."
+            },
+            {
+              "q": "我对中国文化___感兴趣。",
+              "a": "非常",
+              "pin": "fēicháng",
+              "hv": "PHI THƯỜNG",
+              "spin": "Wǒ duì Zhōngguó wénhuà fēicháng gǎn xìngqù.",
+              "vn": "Tôi rất hứng thú với văn hóa Trung Quốc."
+            }
+          ]
+        },
+        {
+          "type": "reading",
+          "title": "Đọc đoạn văn và trả lời câu hỏi",
+          "qtype": "qa",
+          "passage": {
+            "zh": "小王今年十八岁，是大学一年级学生。他的爱好很多，比如唱歌、看电影和踢足球。不过，他最喜欢的是唱歌。有一次，学校举行比赛，小王唱了一首中文歌。唱完以后，大家都鼓掌。老师说：“你唱得非常好！”从那以后，小王对学习中文更有兴趣了。",
+            "pin": "Xiǎo Wáng jīnnián shíbā suì, shì dàxué yī niánjí xuésheng. Tā de àihào hěn duō, bǐrú chànggē, kàn diànyǐng hé tī zúqiú. Búguò, tā zuì xǐhuan de shì chànggē. Yǒu yí cì, xuéxiào jǔxíng bǐsài, Xiǎo Wáng chàng le yì shǒu Zhōngwén gē. Chàng wán yǐhòu, dàjiā dōu gǔzhǎng. Lǎoshī shuō: “Nǐ chàng de fēicháng hǎo!” Cóng nà yǐhòu, Xiǎo Wáng duì xuéxí Zhōngwén gèng yǒu xìngqù le.",
+            "vn": "Tiểu Vương năm nay 18 tuổi, là sinh viên năm nhất đại học. Sở thích của cậu rất nhiều, ví dụ như ca hát, xem phim và đá bóng. Nhưng cậu thích nhất là ca hát. Có một lần, trường tổ chức thi đấu, Tiểu Vương đã hát một bài hát tiếng Trung. Hát xong, mọi người đều vỗ tay. Thầy giáo nói: “Em hát rất hay!” Từ đó, Tiểu Vương càng có hứng thú với việc học tiếng Trung hơn."
+          },
+          "items": [
+            {
+              "q": "小王今年几岁？",
+              "a": "他今年十八岁。"
+            },
+            {
+              "q": "他的爱好有哪些？",
+              "a": "他的爱好有唱歌、看电影和踢足球。"
+            },
+            {
+              "q": "他最喜欢什么？",
+              "a": "他最喜欢唱歌。"
+            },
+            {
+              "q": "小王唱了什么歌？",
+              "a": "他唱了一首中文歌。"
+            },
+            {
+              "q": "老师觉得他唱得怎么样？",
+              "a": "老师觉得他唱得非常好。"
+            },
+            {
+              "q": "为什么小王更喜欢学习中文了？",
+              "a": "因为他唱中文歌得到了老师的称赞和大家的鼓掌，所以他对学习中文更有兴趣了。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bai": 14,
+      "sections": [
+        {
+          "type": "clozepassage",
+          "title": "Điền từ vào đoạn văn",
+          "bank": [
+            "红绿灯",
+            "往",
+            "拐",
+            "马路",
+            "注意",
+            "白色",
+            "会",
+            "目的",
+            "听说",
+            "报名"
+          ],
+          "passage": "昨天我第一次去朋友家。他告诉我：“你先一直走到十字路口，看见(1)___以后，再(2)___前走三百米，然后向右(3)___。过了(4)___以后，你会看到一座(5)___的大楼，我家就在那儿。”路上我遇到一个老人。他对我说：“年轻人，过马路的时候一定要(6)___安全。”后来我到了朋友家。他告诉我最近学校要举行运动(7)___，很多同学已经(8)___参加了。我还(9)___学校会开一个太极拳班。我的朋友很想参加，因为他的(10)___是让身体更健康。",
+          "blanks": [
+            "红绿灯",
+            "往",
+            "拐",
+            "马路",
+            "白色",
+            "注意",
+            "会",
+            "报名",
+            "听说",
+            "目的"
+          ],
+          "pin": "Zuótiān wǒ dì-yī cì qù péngyou jiā. Tā gàosu wǒ: “Nǐ xiān yìzhí zǒu dào shízìlùkǒu, kànjiàn hónglǜdēng yǐhòu, zài wǎng qián zǒu sānbǎi mǐ, ránhòu xiàng yòu guǎi. Guò le mǎlù yǐhòu, nǐ huì kàndào yí zuò báisè de dàlóu, wǒ jiā jiù zài nàr.” Lùshang wǒ yùdào yí ge lǎorén. Tā duì wǒ shuō: “Niánqīngrén, guò mǎlù de shíhou yídìng yào zhùyì ānquán.” Hòulái wǒ dào le péngyou jiā. Tā gàosu wǒ zuìjìn xuéxiào yào jǔxíng yùndònghuì, hěn duō tóngxué yǐjīng bàomíng cānjiā le. Wǒ hái tīngshuō xuéxiào huì kāi yí ge tàijíquán bān. Wǒ de péngyou hěn xiǎng cānjiā, yīnwèi tā de mùdì shì ràng shēntǐ gèng jiànkāng.",
+          "vn": "Hôm qua tôi lần đầu tiên đến nhà bạn. Bạn ấy nói với tôi: “Bạn cứ đi thẳng đến ngã tư, thấy đèn xanh đèn đỏ rồi, lại đi tiếp về phía trước 300 mét, sau đó rẽ phải. Qua đường rồi, bạn sẽ thấy một tòa nhà màu trắng, nhà tôi ở đó.” Trên đường tôi gặp một ông lão. Ông nói với tôi: “Người trẻ, khi qua đường nhất định phải chú ý an toàn.” Sau đó tôi đến nhà bạn. Bạn ấy nói với tôi gần đây trường sẽ tổ chức hội thao, rất nhiều bạn học đã đăng ký tham gia rồi. Tôi còn nghe nói trường sẽ mở một lớp Thái Cực Quyền. Bạn tôi rất muốn tham gia, vì mục đích của bạn ấy là để cơ thể khỏe mạnh hơn."
+        },
+        {
+          "type": "reading",
+          "title": "Đọc đoạn văn và trả lời câu hỏi",
+          "qtype": "qa",
+          "passage": {
+            "zh": "听说学校最近要开一个太极拳班，很多同学都很感兴趣。王东也想报名参加。王东虽然学习很忙，但是他觉得身体健康更重要。他听很多老人说，打太极拳对身体很好，而且可以让人放松心情。可是王东的朋友不太同意。他说：“你每天已经有很多作业了，如果再去学太极拳，可能会更累。”王东回答：“我的目的不是参加比赛，而是让自己更健康。我相信只要努力，坚持学习，一定会有好的结果。”",
+            "pin": "Tīngshuō xuéxiào zuìjìn yào kāi yí ge tàijíquán bān, hěn duō tóngxué dōu hěn gǎn xìngqù. Wáng Dōng yě xiǎng bàomíng cānjiā. Wáng Dōng suīrán xuéxí hěn máng, dànshì tā juéde shēntǐ jiànkāng gèng zhòngyào. Tā tīng hěn duō lǎorén shuō, dǎ tàijíquán duì shēntǐ hěn hǎo, érqiě kěyǐ ràng rén fàngsōng xīnqíng. Kěshì Wáng Dōng de péngyou bú tài tóngyì. Tā shuō: “Nǐ měitiān yǐjīng yǒu hěn duō zuòyè le, rúguǒ zài qù xué tàijíquán, kěnéng huì gèng lèi.” Wáng Dōng huídá: “Wǒ de mùdì bú shì cānjiā bǐsài, ér shì ràng zìjǐ gèng jiànkāng. Wǒ xiāngxìn zhǐyào nǔlì, jiānchí xuéxí, yídìng huì yǒu hǎo de jiéguǒ.”",
+            "vn": "Nghe nói trường gần đây sẽ mở một lớp Thái Cực Quyền, rất nhiều bạn học đều rất hứng thú. Vương Đông cũng muốn đăng ký tham gia. Vương Đông tuy học rất bận, nhưng cậu thấy sức khỏe quan trọng hơn. Cậu nghe nhiều người già nói, đánh Thái Cực Quyền rất tốt cho cơ thể, lại còn có thể giúp người ta thư giãn tâm trạng. Nhưng bạn của Vương Đông không đồng ý lắm. Bạn ấy nói: “Mỗi ngày bạn đã có rất nhiều bài tập rồi, nếu còn đi học Thái Cực Quyền, có thể sẽ càng mệt hơn.” Vương Đông trả lời: “Mục đích của tôi không phải là tham gia thi đấu, mà là để bản thân khỏe mạnh hơn. Tôi tin rằng chỉ cần cố gắng, kiên trì học tập, chắc chắn sẽ có kết quả tốt.”"
+          },
+          "items": [
+            {
+              "q": "学校最近要开什么班？",
+              "a": "学校最近要开一个太极拳班。"
+            },
+            {
+              "q": "谁想报名参加？",
+              "a": "王东想报名参加。"
+            },
+            {
+              "q": "王东为什么想学习太极拳？",
+              "a": "因为他觉得身体健康更重要，而且打太极拳对身体很好，还能让人放松心情。"
+            },
+            {
+              "q": "王东朋友的意见是什么？",
+              "a": "他朋友觉得王东每天作业已经很多了，如果再学太极拳，可能会更累。"
+            },
+            {
+              "q": "王东的目的是什么？",
+              "a": "他的目的不是参加比赛，而是让自己更健康。"
+            }
+          ]
+        },
+        {
+          "type": "write",
+          "title": "Viết đoạn văn theo chủ đề và từ cho sẵn",
+          "topic": "我第一次去朋友家",
+          "words": [
+            "马路",
+            "注意",
+            "一座",
+            "白色",
+            "听说"
+          ],
+          "wordsVn": "con đường, chú ý, một tòa, màu trắng, nghe nói",
+          "sample": {
+            "zh": "上个星期，我第一次去朋友家。他家在一座白色的大楼里，离我家不远。出门以后，我一直往前走，过马路的时候要特别注意安全。我听说他家附近有一个很大的公园，所以我们去朋友家以前，先去公园散步了一会儿。",
+            "pin": "Shàng ge xīngqī, wǒ dì-yī cì qù péngyou jiā. Tā jiā zài yí zuò báisè de dàlóu lǐ, lí wǒ jiā bù yuǎn. Chūmén yǐhòu, wǒ yìzhí wàng qián zǒu, guò mǎlù de shíhou yào tèbié zhùyì ānquán. Wǒ tīngshuō tā jiā fùjìn yǒu yí ge hěn dà de gōngyuán, suǒyǐ wǒmen qù péngyou jiā yǐqián, xiān qù gōngyuán sànbù le yíhuìr.",
+            "vn": "Tuần trước, tôi lần đầu đến nhà bạn. Nhà bạn ấy ở trong một tòa nhà màu trắng, không xa nhà tôi. Ra khỏi nhà, tôi đi thẳng về phía trước, khi qua đường phải đặc biệt chú ý an toàn. Tôi nghe nói gần nhà bạn ấy có một công viên rất lớn, nên trước khi đến nhà bạn, chúng tôi đã ra công viên đi dạo một lúc."
+          }
+        }
+      ]
+    }
 ];
 
 // ============================================================
@@ -5077,7 +5184,15 @@ const EX_PHRASE_DICT={
 "马路":{pinyin:"mǎlù",hanviet:"MÃ LỘ",meaning:"đường phố"},
 "大楼":{pinyin:"dàlóu",hanviet:"ĐẠI LÂU",meaning:"tòa nhà cao tầng"},
 "老人":{pinyin:"lǎorén",hanviet:"LÃO NHÂN",meaning:"người già"},
-"篮球":{pinyin:"lánqiú",hanviet:"LAM CẦU",meaning:"bóng rổ"}
+"篮球":{pinyin:"lánqiú",hanviet:"LAM CẦU",meaning:"bóng rổ"},
+"严重":{pinyin:"yánzhòng",hanviet:"NGHIÊM TRỌNG",meaning:"nghiêm trọng"},
+"反而":{pinyin:"fǎn'ér",hanviet:"PHẢN NHI",meaning:"ngược lại, trái lại"},
+"汽车":{pinyin:"qìchē",hanviet:"KHÍ XA",meaning:"xe ô tô"},
+"两遍":{pinyin:"liǎngbiàn",hanviet:"LƯỠNG BIẾN",meaning:"hai lần/lượt"},
+"还没":{pinyin:"háiméi",hanviet:"HOÀN MÔ",meaning:"vẫn chưa"},
+"这种":{pinyin:"zhèzhǒng",hanviet:"GIẢ CHỦNG",meaning:"loại này"},
+"看看":{pinyin:"kànkan",hanviet:"KHÁN KHÁN",meaning:"xem thử, xem xem"},
+"上班":{pinyin:"shàngbān",hanviet:"THƯỢNG BAN",meaning:"đi làm"}
 };
 let _exMergedMap=null;
 function _exMatchMap(){
@@ -5303,7 +5418,18 @@ const EX_CHAR_DICT = {
 "坚":{pin:"jiān",hv:"KIÊN",vn:"kiên cố, kiên trì (坚持)"},
 "持":{pin:"chí",hv:"TRÌ",vn:"giữ, cầm, duy trì (坚持)"},
 "谁":{pin:"shéi",hv:"THÙY",vn:"ai"},
-"散":{pin:"sàn",hv:"TÁN",vn:"tản ra, giải tán; đi dạo (散步)"}
+"散":{pin:"sàn",hv:"TÁN",vn:"tản ra, giải tán; đi dạo (散步)"},
+"变":{pin:"biàn",hv:"BIẾN",vn:"thay đổi, biến đổi (变冷, 变化)"},
+"冷":{pin:"lěng",hv:"LÃNH",vn:"lạnh"},
+"知":{pin:"zhī",hv:"TRI",vn:"biết (知道)"},
+"道":{pin:"dào",hv:"ĐẠO",vn:"đường; nói, biết (知道)"},
+"项":{pin:"xiàng",hv:"HẠNG",vn:"khoản, hạng mục; lượng từ cho hoạt động (这项运动)"},
+"它":{pin:"tā",hv:"THA",vn:"nó (chỉ vật)"},
+"汽":{pin:"qì",hv:"KHÍ",vn:"hơi nước (汽车)"},
+"反":{pin:"fǎn",hv:"PHẢN",vn:"trái lại, ngược lại (反而)"},
+"严":{pin:"yán",hv:"NGHIÊM",vn:"nghiêm, nghiêm trọng (严重)"},
+"遍":{pin:"biàn",hv:"BIẾN",vn:"lần, lượt (xem/đọc hết một lượt)"},
+"重":{pin:"zhòng",hv:"TRỌNG",vn:"nặng; nghiêm trọng (严重)"}
 };
 function _exCharInfo(ch){
   const cm=_exComponentCharMap();
