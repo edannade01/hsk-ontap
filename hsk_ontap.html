@@ -4531,7 +4531,13 @@ function filterVocab(){renderVocab()}
 let _zhVoice = null;
 function _initVoices(){
   const vs = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
-  _zhVoice = vs.find(v=>v.lang==='zh-CN')
+  const novelty = ['Eddy','Flo','Grandma','Grandpa','Reed','Rocko','Sandy','Shelley','Jester','Bells','Bahh','Albert','Bad News','Boing','Bubbles','Cellos','Wobble','Trinoids','Zarvox','Whisper','Organ'];
+  const isNovelty = v => novelty.some(n=>v.name.startsWith(n));
+  _zhVoice = vs.find(v=>v.name==='Tingting')
+           || vs.find(v=>v.name==='Meijia')
+           || vs.find(v=>v.lang==='zh-CN' && !isNovelty(v))
+           || vs.find(v=>v.lang==='zh-TW' && !isNovelty(v))
+           || vs.find(v=>v.lang==='zh-CN')
            || vs.find(v=>v.lang==='zh-TW')
            || vs.find(v=>v.lang.startsWith('zh'))
            || null;
@@ -4546,7 +4552,7 @@ function speakChinese(text, event){
   window.speechSynthesis.cancel();
   const utter = new SpeechSynthesisUtterance(text);
   utter.lang = 'zh-CN';
-  utter.rate = 0.82;
+  utter.rate = 0.75;
   utter.pitch = 1;
   if(_zhVoice) utter.voice = _zhVoice;
   const btn = event && event.currentTarget;
