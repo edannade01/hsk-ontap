@@ -333,6 +333,9 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 .quiz-opt.wrong{background:#fdf0ef;border-color:var(--red);color:var(--red)}
 .quiz-opt:disabled{cursor:default}
 .quiz-opt .opt-zh{font-family:var(--font-zh);font-size:1.1rem;font-weight:600;display:block;margin-bottom:2px}
+.quiz-filter-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.quiz-opt-zh{text-align:center;padding:18px 10px}
+.quiz-opt-zh .opt-zh{font-size:2rem;margin-bottom:0}
 .quiz-feedback{padding:12px 16px;border-radius:var(--radius-sm);margin-bottom:16px;font-size:.9rem;display:none}
 .quiz-feedback.correct{background:#eafaf1;border:1px solid #27AE60;color:#1a7a42}
 .quiz-feedback.wrong{background:#fdf0ef;border:1px solid var(--red);color:var(--red)}
@@ -639,6 +642,29 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
       <button class="mode-btn" onclick="setQuizMode('vn2zh',this)">Việt → 中</button>
       <button class="mode-btn" onclick="setQuizMode('zh2pin',this)">中 → Pinyin</button>
       <button class="mode-btn" onclick="setQuizMode('pin2zh',this)">Pinyin → 中</button>
+    </div>
+    <div class="quiz-filter-bar">
+      <button class="badge-btn active" onclick="qzFilter('all',this)">Tất cả</button>
+      <button class="badge-btn b1" onclick="qzFilter(1,this)">Buổi 1</button>
+      <button class="badge-btn b2" onclick="qzFilter(2,this)">Buổi 2</button>
+      <button class="badge-btn b3" onclick="qzFilter(3,this)">Buổi 3</button>
+      <button class="badge-btn b4" onclick="qzFilter(4,this)">Buổi 4</button>
+      <button class="badge-btn b5" onclick="qzFilter(5,this)">Buổi 5</button>
+      <button class="badge-btn b6" onclick="qzFilter(6,this)">Buổi 6</button>
+      <button class="badge-btn b7" onclick="qzFilter(7,this)">Buổi 7</button>
+      <button class="badge-btn b8" onclick="qzFilter(8,this)">Buổi 8</button>
+      <button class="badge-btn b9" onclick="qzFilter(9,this)">Buổi 9</button>
+      <button class="badge-btn b10" onclick="qzFilter(10,this)">Buổi 10</button>
+      <button class="badge-btn b11" onclick="qzFilter(11,this)">Buổi 11</button>
+      <button class="badge-btn b12" onclick="qzFilter(12,this)">Buổi 12</button>
+      <button class="badge-btn b13" onclick="qzFilter(13,this)">Buổi 13</button>
+      <button class="badge-btn b14" onclick="qzFilter(14,this)">Buổi 14</button>
+      <button class="badge-btn b15" onclick="qzFilter(15,this)">Buổi 15</button>
+      <button class="badge-btn b16" onclick="qzFilter(16,this)">Buổi 16</button>
+      <button class="badge-btn b17" onclick="qzFilter(17,this)">Buổi 17</button>
+      <button class="badge-btn b18" onclick="qzFilter(18,this)">Buổi 18</button>
+      <button class="badge-btn b19" onclick="qzFilter(19,this)">Buổi 19</button>
+      <button class="badge-btn b20" onclick="qzFilter(20,this)">Buổi 20</button>
     </div>
     <div class="quiz-score">
       <div class="score-item"><div class="score-num correct" id="quizCorrect">0</div><div class="score-label">✓ Đúng</div></div>
@@ -4681,6 +4707,7 @@ let fcList = [...VOCAB];
 let fcIndex = 0;
 let fcFlipped = false;
 let quizMode = 'zh2vn';
+let quizBai = 'all';
 let quizCorrect = 0, quizWrong = 0, quizStreak = 0;
 let currentQuestion = null;
 let answered = false;
@@ -4922,15 +4949,31 @@ function setQuizMode(mode,btn){
   document.getElementById('quizStreak').textContent=0;
   nextQuestion();
 }
+function qzFilter(bai,btn){
+  quizBai=bai;
+  document.querySelectorAll('.quiz-filter-bar .badge-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  quizCorrect=0;quizWrong=0;quizStreak=0;
+  document.getElementById('quizCorrect').textContent=0;
+  document.getElementById('quizWrong').textContent=0;
+  document.getElementById('quizStreak').textContent=0;
+  nextQuestion();
+}
 function nextQuestion(){
   answered=false;
   document.getElementById('quizFeedback').style.display='none';
   document.getElementById('quizNext').style.display='none';
-  // pick random word
-  const pool=[...VOCAB];
+  // pick from filtered pool
+  const pool=quizBai==='all'?[...VOCAB]:VOCAB.filter(w=>w.bai===quizBai);
+  if(pool.length<4){
+    document.getElementById('quizQuestion').innerHTML='<div style="color:var(--text3)">Buổi này có ít hơn 4 từ, không thể tạo câu hỏi.</div>';
+    document.getElementById('quizOptions').innerHTML='';
+    return;
+  }
   const correct=pool[Math.floor(Math.random()*pool.length)];
-  // pick 3 distractors
-  const others=pool.filter(w=>w.id!==correct.id).sort(()=>Math.random()-.5).slice(0,3);
+  // distractors from same pool if possible, else whole VOCAB
+  const distPool=pool.length>=4?pool:VOCAB;
+  const others=distPool.filter(w=>w.id!==correct.id).sort(()=>Math.random()-.5).slice(0,3);
   const allOpts=[correct,...others].sort(()=>Math.random()-.5);
   currentQuestion={correct,allOpts};
   renderQuiz(correct,allOpts);
@@ -4942,8 +4985,8 @@ function renderQuiz(correct,allOpts){
     qEl.innerHTML=`<div class="quiz-question-zh">${correct.hanzi}</div><div class="quiz-question-pin" style="margin-top:6px;color:var(--text3)">Nghĩa tiếng Việt là gì?</div>`;
     oEl.innerHTML=allOpts.map(o=>`<button class="quiz-opt" onclick="checkAnswer(${o.id})" data-id="${o.id}">${o.meaning}</button>`).join('');
   }else if(quizMode==='vn2zh'){
-    qEl.innerHTML=`<div class="quiz-question-vn">${correct.meaning}</div><div class="quiz-question-pin" style="margin-top:4px;color:var(--text3)">Chữ Hán nào đúng?</div>`;
-    oEl.innerHTML=allOpts.map(o=>`<button class="quiz-opt" onclick="checkAnswer(${o.id})" data-id="${o.id}"><span class="opt-zh">${o.hanzi}</span>${o.pinyin}</button>`).join('');
+    qEl.innerHTML=`<div class="quiz-question-vn">${correct.meaning}</div><div class="quiz-question-pin" style="margin-top:6px;font-size:1.1rem;letter-spacing:.5px">${colorPinyin(correct.pinyin)}</div><div class="quiz-question-pin" style="margin-top:8px;color:var(--text3)">Chữ Hán nào đúng?</div>`;
+    oEl.innerHTML=allOpts.map(o=>`<button class="quiz-opt quiz-opt-zh" onclick="checkAnswer(${o.id})" data-id="${o.id}"><span class="opt-zh">${o.hanzi}</span></button>`).join('');
   }else if(quizMode==='zh2pin'){
     qEl.innerHTML=`<div class="quiz-question-zh">${correct.hanzi}</div><div class="quiz-question-vn" style="margin-top:4px;font-size:.9rem">${correct.meaning}</div><div class="quiz-question-pin" style="margin-top:4px;color:var(--text3)">Pinyin nào đúng?</div>`;
     oEl.innerHTML=allOpts.map(o=>`<button class="quiz-opt" onclick="checkAnswer(${o.id})" data-id="${o.id}">${o.pinyin}</button>`).join('');
