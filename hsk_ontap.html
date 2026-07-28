@@ -202,7 +202,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 .meaning-text{font-size:.85rem;color:var(--text);padding:10px 18px;border-top:1px solid var(--border);background:var(--surface2)}
 .cp-intro{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px;margin-bottom:16px;font-size:.85rem;color:var(--text2);line-height:1.6}
 .cp-intro b{color:var(--text)}
-.practice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.practice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 .practice-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 4px rgba(0,0,0,.05);padding:20px 14px 12px;text-align:center;position:relative}
 .practice-day{position:absolute;top:10px;left:10px;font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:10px;background:var(--primary-bg);color:var(--primary)}
 .practice-freq{position:absolute;top:10px;right:10px;font-size:.65rem;font-weight:600;color:var(--text3)}
@@ -491,6 +491,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 /* RESPONSIVE */
 @media(max-width:600px){
   .vocab-grid{grid-template-columns:1fr}
+  .practice-grid{grid-template-columns:1fr}
   .quiz-options{grid-template-columns:1fr}
   .hanzi-text{font-size:2rem}
   .fc-front-hanzi{font-size:3.5rem}
