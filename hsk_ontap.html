@@ -216,6 +216,8 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 .anchor-chip .btn-stroke{white-space:nowrap}
 .anchor-chip .stroke-area{width:100%;order:9}
 .anchor-words{padding-left:4px;border-left:2px solid var(--border);margin-left:8px}
+.remaining-block{margin-top:20px;padding-top:16px;border-top:1px dashed var(--border-2,var(--border))}
+.remaining-header{font-size:.85rem;font-weight:700;color:var(--text2);margin-bottom:12px;display:flex;align-items:baseline;gap:8px}
 .card-expanded{padding:14px 18px;border-top:1px solid var(--border);display:none}
 .vocab-card.open .card-expanded{display:block}
 .section-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:8px}
@@ -776,7 +778,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 <!-- TAB: LUYỆN CHỮ -->
 <div class="tab-panel" id="tab-charpractice">
   <div class="cp-intro">
-    <b id="cpTotalLabel">… chữ Hán</b> lặp lại <b>≥2 lần</b> trong 499 từ vựng của 23 buổi, nhóm theo <b>17 chủ đề liên quan</b> (người, sức khỏe, thời gian, nhà cửa...). Mỗi chữ trọng tâm hiện đúng những <b>từ vựng thật đã học</b> chứa chữ đó (y hệt thẻ ở tab Từ Vựng — có buổi học, bộ thành phần, ví dụ riêng) để luyện viết cả từ, không phải chữ đơn lẻ.
+    <b id="cpTotalLabel">… chữ Hán</b> lặp lại <b>≥2 lần</b> trong 499 từ vựng của 23 buổi, nhóm theo <b>17 chủ đề liên quan</b> (người, sức khỏe, thời gian, nhà cửa...). Mỗi chữ trọng tâm hiện đúng những <b>từ vựng thật đã học</b> chứa chữ đó (y hệt thẻ ở tab Từ Vựng) để luyện viết cả từ. Cuối mỗi chủ đề là mục <b>📚 Từ còn lại</b> — các từ không lặp chữ với từ nào khác, học tiếp sau khi đã nắm các từ thông dụng ở trên.
   </div>
   <div class="filter-bar" id="cpFilterRow"></div>
   <div id="practiceGrid"></div>
@@ -6180,16 +6182,137 @@ const CHAR_GROUPS = [
   {id:3209,theme:"khac",themeLabel:"🔹 Khác",hanzi:"表",pinyin:"biǎo",hanviet:"BIỂU",meaning:"bề mặt, biểu hiện",count:3,wordIds:[30,354,442]},
   {id:3210,theme:"khac",themeLabel:"🔹 Khác",hanzi:"托",pinyin:"tuō",hanviet:"THỔ",meaning:"phiên âm 'tor'",count:2,wordIds:[71,420]}
 ];
+
+const REMAINING_WORDS = [
+  {theme:"nguoi",wordId:15},
+  {theme:"nguoi",wordId:136},
+  {theme:"nguoi",wordId:350},
+  {theme:"nguoi",wordId:387},
+  {theme:"nguoi",wordId:497},
+  {theme:"nguoi",wordId:498},
+  {theme:"suckhoe",wordId:198},
+  {theme:"suckhoe",wordId:341},
+  {theme:"suckhoe",wordId:435},
+  {theme:"suckhoe",wordId:436},
+  {theme:"suckhoe",wordId:446},
+  {theme:"suckhoe",wordId:461},
+  {theme:"camxuc",wordId:76},
+  {theme:"camxuc",wordId:180},
+  {theme:"camxuc",wordId:183},
+  {theme:"camxuc",wordId:206},
+  {theme:"camxuc",wordId:235},
+  {theme:"camxuc",wordId:261},
+  {theme:"camxuc",wordId:394},
+  {theme:"camxuc",wordId:455},
+  {theme:"camxuc",wordId:457},
+  {theme:"camxuc",wordId:474},
+  {theme:"camxuc",wordId:496},
+  {theme:"thoigian",wordId:1},
+  {theme:"thoigian",wordId:51},
+  {theme:"thoigian",wordId:184},
+  {theme:"thoigian",wordId:201},
+  {theme:"thoigian",wordId:217},
+  {theme:"thoigian",wordId:417},
+  {theme:"nha",wordId:14},
+  {theme:"nha",wordId:63},
+  {theme:"nha",wordId:469},
+  {theme:"anuong",wordId:124},
+  {theme:"anuong",wordId:238},
+  {theme:"anuong",wordId:449},
+  {theme:"dichuyen",wordId:68},
+  {theme:"dichuyen",wordId:69},
+  {theme:"dichuyen",wordId:302},
+  {theme:"dichuyen",wordId:305},
+  {theme:"hoctap",wordId:25},
+  {theme:"hoctap",wordId:262},
+  {theme:"hoctap",wordId:322},
+  {theme:"hoctap",wordId:328},
+  {theme:"congviec",wordId:31},
+  {theme:"congviec",wordId:90},
+  {theme:"congviec",wordId:97},
+  {theme:"congviec",wordId:101},
+  {theme:"congviec",wordId:250},
+  {theme:"congviec",wordId:285},
+  {theme:"congviec",wordId:416},
+  {theme:"giaitri",wordId:194},
+  {theme:"giaitri",wordId:207},
+  {theme:"giaitri",wordId:232},
+  {theme:"giaitri",wordId:411},
+  {theme:"giaitri",wordId:413},
+  {theme:"congnghe",wordId:18},
+  {theme:"congnghe",wordId:401},
+  {theme:"congnghe",wordId:403},
+  {theme:"thiennhien",wordId:137},
+  {theme:"thiennhien",wordId:171},
+  {theme:"thiennhien",wordId:471},
+  {theme:"thiennhien",wordId:473},
+  {theme:"thiennhien",wordId:484},
+  {theme:"tinhtu",wordId:19},
+  {theme:"tinhtu",wordId:110},
+  {theme:"tinhtu",wordId:119},
+  {theme:"tinhtu",wordId:120},
+  {theme:"tinhtu",wordId:122},
+  {theme:"tinhtu",wordId:130},
+  {theme:"tinhtu",wordId:131},
+  {theme:"tinhtu",wordId:149},
+  {theme:"tinhtu",wordId:257},
+  {theme:"tinhtu",wordId:277},
+  {theme:"tinhtu",wordId:321},
+  {theme:"tinhtu",wordId:386},
+  {theme:"tinhtu",wordId:428},
+  {theme:"tinhtu",wordId:472},
+  {theme:"tinhtu",wordId:476},
+  {theme:"dongtu",wordId:5},
+  {theme:"dongtu",wordId:38},
+  {theme:"dongtu",wordId:54},
+  {theme:"dongtu",wordId:99},
+  {theme:"dongtu",wordId:112},
+  {theme:"dongtu",wordId:118},
+  {theme:"dongtu",wordId:123},
+  {theme:"dongtu",wordId:138},
+  {theme:"dongtu",wordId:173},
+  {theme:"dongtu",wordId:224},
+  {theme:"dongtu",wordId:228},
+  {theme:"dongtu",wordId:286},
+  {theme:"dongtu",wordId:287},
+  {theme:"dongtu",wordId:320},
+  {theme:"dongtu",wordId:368},
+  {theme:"dongtu",wordId:404},
+  {theme:"dongtu",wordId:425},
+  {theme:"dongtu",wordId:441},
+  {theme:"dongtu",wordId:470},
+  {theme:"dongtu",wordId:481},
+  {theme:"dongtu",wordId:487},
+  {theme:"nguphap",wordId:13},
+  {theme:"nguphap",wordId:58},
+  {theme:"nguphap",wordId:158},
+  {theme:"nguphap",wordId:159},
+  {theme:"nguphap",wordId:213},
+  {theme:"nguphap",wordId:225},
+  {theme:"nguphap",wordId:304},
+  {theme:"nguphap",wordId:324},
+  {theme:"nguphap",wordId:367},
+  {theme:"nguphap",wordId:381},
+  {theme:"soluong",wordId:134},
+  {theme:"soluong",wordId:310},
+  {theme:"soluong",wordId:326},
+  {theme:"soluong",wordId:327},
+  {theme:"soluong",wordId:345},
+  {theme:"soluong",wordId:429},
+  {theme:"soluong",wordId:464},
+  {theme:"soluong",wordId:492}
+];
 let _cpFilter='all';
 function buildCpFilters(){
   const row=document.getElementById('cpFilterRow');
   if(row.dataset.built)return;
   row.dataset.built='1';
-  let html=`<button class="badge-btn active" onclick="cpFilter('all',this)">Tất cả (${CHAR_GROUPS.length} chữ)</button>`;
+  let html=`<button class="badge-btn active" onclick="cpFilter('all',this)">Tất cả</button>`;
   for(const t of CP_THEMES){
     const n=CHAR_GROUPS.filter(c=>c.theme===t.key).length;
-    if(!n)continue;
-    html+=`<button class="badge-btn" onclick="cpFilter('${t.key}',this)">${t.label} (${n})</button>`;
+    const r=REMAINING_WORDS.filter(x=>x.theme===t.key).length;
+    if(!n && !r)continue;
+    html+=`<button class="badge-btn" onclick="cpFilter('${t.key}',this)">${t.label} (${n}+${r})</button>`;
   }
   row.innerHTML=html;
   document.getElementById('cpTotalLabel').textContent=CHAR_GROUPS.length+' chữ Hán';
@@ -6218,6 +6341,16 @@ function cpGroupHtml(g){
     </div>
   `;
 }
+function cpRemainingHtml(t,items){
+  const words = items.map(r=>VOCAB.find(w=>w.id===r.wordId)).filter(Boolean);
+  if(!words.length)return '';
+  return `
+    <div class="remaining-block">
+      <div class="remaining-header">📚 Từ còn lại — học tiếp sau <span class="practice-section-count">${words.length} từ</span></div>
+      <div class="vocab-grid">${words.map(w=>vocabCardHtml(w,'r'+t.key)).join('')}</div>
+    </div>
+  `;
+}
 function renderCharPractice(){
   buildCpFilters();
   const wrap = document.getElementById('practiceGrid');
@@ -6225,8 +6358,9 @@ function renderCharPractice(){
   let html='';
   for(const t of themesToShow){
     const members = CHAR_GROUPS.filter(c=>c.theme===t.key);
-    if(!members.length)continue;
-    html += `<div class="practice-section"><div class="practice-section-header">${t.label} <span class="practice-section-count">${members.length} chữ</span></div>${members.map(cpGroupHtml).join('')}</div>`;
+    const remaining = REMAINING_WORDS.filter(r=>r.theme===t.key);
+    if(!members.length && !remaining.length)continue;
+    html += `<div class="practice-section"><div class="practice-section-header">${t.label} <span class="practice-section-count">${members.length} chữ thông dụng${remaining.length?` · ${remaining.length} từ còn lại`:''}</span></div>${members.map(cpGroupHtml).join('')}${cpRemainingHtml(t,remaining)}</div>`;
   }
   wrap.innerHTML = html;
 }
