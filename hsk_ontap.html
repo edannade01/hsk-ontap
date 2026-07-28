@@ -4892,17 +4892,18 @@ function speakChinese(text, event){
   if(btn){ btn.classList.add('speaking'); utter.onend = ()=>btn.classList.remove('speaking'); utter.onerror = ()=>btn.classList.remove('speaking'); }
   window.speechSynthesis.speak(utter);
 }
-function vocabCardHtml(w){
+function vocabCardHtml(w,keySuffix){
+  const k=keySuffix?`${w.id}_${keySuffix}`:`${w.id}`;
   return `
-    <div class="vocab-card${isKnown(w.id)?' known':''}" id="vc-${w.id}" onclick="toggleCard(${w.id},event)">
+    <div class="vocab-card${isKnown(w.id)?' known':''}" id="vc-${k}" onclick="toggleCard('${k}',event)">
       <div class="known-badge">✓ Đã thuộc</div>
       <span class="card-bai ${getBaiClass(w.bai)}">Buổi ${w.bai}</span>
       <div class="card-front">
         <div class="hanzi-row"><span class="hanzi-text">${w.hanzi}</span><button class="btn-speak" onclick="speakChinese('${w.hanzi}',event)" title="Phát âm 🔊">🔊</button></div>
         <div class="pinyin-text">${colorPinyin(w.pinyin)}</div>
         <div class="hanviet-text">${w.hanviet}</div>
-        <button class="btn-stroke" onclick="toggleStrokes(${w.id},'${w.hanzi}',event)">✏️ Nét viết</button>
-        <div class="stroke-area" id="stroke-${w.id}">${[...w.hanzi].map((_,i)=>`<div id="stroke-${w.id}-${i}" class="stroke-char-box"></div>`).join('')}</div>
+        <button class="btn-stroke" onclick="toggleStrokes('${k}','${w.hanzi}',event)">✏️ Nét viết</button>
+        <div class="stroke-area" id="stroke-${k}">${[...w.hanzi].map((_,i)=>`<div id="stroke-${k}-${i}" class="stroke-char-box"></div>`).join('')}</div>
       </div>
       <div class="meaning-text">${w.meaning}</div>
       <div class="card-expanded bai-${w.bai}-ex">
@@ -4918,7 +4919,7 @@ function vocabCardHtml(w){
         ${w.antonyms&&w.antonyms.length?`<div class="expand-section"><div class="expand-label ant">🔴 Trái nghĩa</div><div class="word-tags">${renderWordTags(w.antonyms,'ant')}</div></div>`:''}
         ${w.related&&w.related.length?`<div class="expand-section"><div class="expand-label rel">🔵 Từ liên quan</div><div class="word-tags">${renderWordTags(w.related,'rel')}</div></div>`:''}
         <div class="card-actions">
-          <button class="btn-review" onclick="event.stopPropagation();toggleCard(${w.id},event)">Thu gọn ↑</button>
+          <button class="btn-review" onclick="event.stopPropagation();toggleCard('${k}',event)">Thu gọn ↑</button>
           <button class="btn-know" onclick="event.stopPropagation();markKnown(${w.id})">${isKnown(w.id)?'✓ Đã thuộc':'Đánh dấu thuộc'}</button>
         </div>
       </div>
@@ -4934,7 +4935,7 @@ function renderVocab(){
   const empty=document.getElementById('emptyState');
   if(list.length===0){grid.innerHTML='';empty.style.display='block';return;}
   empty.style.display='none';
-  grid.innerHTML=list.map(vocabCardHtml).join('');
+  grid.innerHTML=list.map(w=>vocabCardHtml(w)).join('');
 }
 function toggleCard(id,e){
   const card=document.getElementById('vc-'+id);
@@ -6213,7 +6214,7 @@ function cpGroupHtml(g){
         <button class="btn-stroke" onclick="toggleStrokes(${g.id},'${g.hanzi}',event)">✏️ Nét viết chữ ${g.hanzi}</button>
         <div class="stroke-area" id="stroke-${g.id}"><div id="stroke-${g.id}-0" class="stroke-char-box"></div></div>
       </div>
-      <div class="vocab-grid anchor-words">${words.map(vocabCardHtml).join('')}</div>
+      <div class="vocab-grid anchor-words">${words.map(w=>vocabCardHtml(w,'g'+g.id)).join('')}</div>
     </div>
   `;
 }
