@@ -200,6 +200,17 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 .pinyin-text{font-size:.95rem;color:var(--text2);letter-spacing:.5px;margin-bottom:4px}
 .hanviet-text{font-size:.7rem;font-weight:600;letter-spacing:1.5px;color:var(--red);text-transform:uppercase;opacity:.8}
 .meaning-text{font-size:.85rem;color:var(--text);padding:10px 18px;border-top:1px solid var(--border);background:var(--surface2)}
+.cp-intro{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px;margin-bottom:16px;font-size:.85rem;color:var(--text2);line-height:1.6}
+.cp-intro b{color:var(--text)}
+.practice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.practice-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 4px rgba(0,0,0,.05);padding:20px 14px 12px;text-align:center;position:relative}
+.practice-day{position:absolute;top:10px;left:10px;font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:10px;background:var(--primary-bg);color:var(--primary)}
+.practice-freq{position:absolute;top:10px;right:10px;font-size:.65rem;font-weight:600;color:var(--text3)}
+.practice-card .hanzi-text{text-align:center;margin-bottom:4px}
+.practice-card .pinyin-text,.practice-card .hanviet-text{text-align:center}
+.practice-card .meaning-text{margin-top:8px;border-radius:var(--radius-sm);padding:8px 10px}
+.practice-words{font-size:.72rem;color:var(--text3);border-top:1px solid var(--border);margin-top:8px;padding-top:6px;line-height:1.5}
+.practice-words b{color:var(--text2)}
 .card-expanded{padding:14px 18px;border-top:1px solid var(--border);display:none}
 .vocab-card.open .card-expanded{display:block}
 .section-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:8px}
@@ -543,6 +554,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
   <button class="tab-btn" data-tab="compare" onclick="switchTab('compare',this)">🔄 Phân Biệt</button>
   <button class="tab-btn" data-tab="songs" onclick="switchTab('songs',this)">🎵 Bài Hát</button>
   <button class="tab-btn" data-tab="exercise" onclick="switchTab('exercise',this)">✍️ Bài Tập</button>
+  <button class="tab-btn" data-tab="charpractice" onclick="switchTab('charpractice',this)">🖋 Luyện Chữ</button>
 </nav>
 
 <main>
@@ -754,6 +766,25 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
     <button class="badge-btn b14" onclick="filterExercise(14,this)">Buổi 14</button>
   </div>
   <div class="exercise-grid" id="exerciseGrid"></div>
+</div>
+
+<!-- TAB: LUYỆN CHỮ -->
+<div class="tab-panel" id="tab-charpractice">
+  <div class="cp-intro">
+    <b>36 chữ Hán lặp lại &gt;3 lần</b> trong 499 từ vựng của 23 buổi — xếp theo tần suất, chia lộ trình <b>5 chữ/ngày</b>. Bấm "✏️ Nét viết" để xem hoạt hình thứ tự nét rồi luyện viết theo.
+  </div>
+  <div class="filter-bar" id="cpFilterRow">
+    <button class="badge-btn active" onclick="cpFilter('all',this)">Tất cả (36)</button>
+    <button class="badge-btn" onclick="cpFilter(1,this)">Ngày 1</button>
+    <button class="badge-btn" onclick="cpFilter(2,this)">Ngày 2</button>
+    <button class="badge-btn" onclick="cpFilter(3,this)">Ngày 3</button>
+    <button class="badge-btn" onclick="cpFilter(4,this)">Ngày 4</button>
+    <button class="badge-btn" onclick="cpFilter(5,this)">Ngày 5</button>
+    <button class="badge-btn" onclick="cpFilter(6,this)">Ngày 6</button>
+    <button class="badge-btn" onclick="cpFilter(7,this)">Ngày 7</button>
+    <button class="badge-btn" onclick="cpFilter(8,this)">Ngày 8</button>
+  </div>
+  <div class="practice-grid" id="practiceGrid"></div>
 </div>
 
 </main>
@@ -4814,6 +4845,7 @@ function switchTab(id,btn){
   if(id==='compare')renderCompare();
   if(id==='songs')renderSongs();
   if(id==='exercise')renderExercises();
+  if(id==='charpractice')renderCharPractice();
 }
 function toggleDark(){document.documentElement.toggleAttribute('data-dark')}
 function shuffleVocab(){
@@ -5915,6 +5947,69 @@ function renderExWrite(id,sec){
       <div class="exercise-answer-vn">${sec.sample.vn}</div>
     </div>
   </div>`;
+}
+
+const CHAR_PRACTICE = [
+  {id:1001,day:1,hanzi:"子",pinyin:"zi",hanviet:"Tử",meaning:"hậu tố danh từ; con, đứa trẻ",count:11,words:["孩子","包子","饺子","筷子","裙子"]},
+  {id:1002,day:1,hanzi:"上",pinyin:"shàng",hanviet:"Thượng",meaning:"trên, lên",count:10,words:["上网","早上","上课","身上","上车"]},
+  {id:1003,day:1,hanzi:"打",pinyin:"dǎ",hanviet:"Đả",meaning:"đánh, làm (động từ đa nghĩa)",count:8,words:["打算","打扰","打听","打针","打扫"]},
+  {id:1004,day:1,hanzi:"车",pinyin:"chē",hanviet:"Xa",meaning:"xe",count:8,words:["火车","自行车","出租车","堵车"]},
+  {id:1005,day:1,hanzi:"出",pinyin:"chū",hanviet:"Xuất",meaning:"ra, xuất hiện",count:8,words:["出发","出差","出国","出来"]},
+  {id:1006,day:2,hanzi:"感",pinyin:"gǎn",hanviet:"Cảm",meaning:"cảm, cảm thấy",count:7,words:["感觉","感谢","感情","感冒","感兴趣"]},
+  {id:1007,day:2,hanzi:"业",pinyin:"yè",hanviet:"Nghiệp",meaning:"nghiệp, việc, ngành",count:6,words:["毕业","作业","事业","业余"]},
+  {id:1008,day:2,hanzi:"一",pinyin:"yī",hanviet:"Nhất",meaning:"một",count:6,words:["一般","一定","唯一","一直","一切"]},
+  {id:1009,day:2,hanzi:"好",pinyin:"hǎo",hanviet:"Hảo",meaning:"tốt",count:6,words:["好看","正好","爱好","好好儿"]},
+  {id:1010,day:2,hanzi:"儿",pinyin:"ér / r",hanviet:"Nhi",meaning:"trẻ con; hậu tố ngữ âm",count:5,words:["女儿","聊天儿","差点儿","好好儿"]},
+  {id:1011,day:3,hanzi:"开",pinyin:"kāi",hanviet:"Khai",meaning:"mở, bắt đầu",count:5,words:["开始","离开","开机","开药"]},
+  {id:1012,day:3,hanzi:"机",pinyin:"jī",hanviet:"Cơ",meaning:"máy",count:5,words:["飞机","机场","机会","关机"]},
+  {id:1013,day:3,hanzi:"生",pinyin:"shēng",hanviet:"Sinh",meaning:"sinh, sống, sống ra",count:5,words:["生词","生活","发生","医生"]},
+  {id:1014,day:3,hanzi:"会",pinyin:"huì",hanviet:"Hội",meaning:"biết, sẽ; hội, buổi họp",count:5,words:["机会","舞会","会议","晚会"]},
+  {id:1015,day:3,hanzi:"早",pinyin:"zǎo",hanviet:"Tảo",meaning:"sớm",count:5,words:["早上","早就","早晚","早饭"]},
+  {id:1016,day:4,hanzi:"发",pinyin:"fā",hanviet:"Phát",meaning:"phát ra, xảy ra (đọc \"fà\" = tóc)",count:5,words:["发生","出发","发烧","头发(fà)"]},
+  {id:1017,day:4,hanzi:"场",pinyin:"chǎng",hanviet:"Trường",meaning:"sân, bãi",count:5,words:["机场","操场","广场","足球场"]},
+  {id:1018,day:4,hanzi:"不",pinyin:"bù",hanviet:"Bất",meaning:"không",count:5,words:["不错","不但","不准","不过"]},
+  {id:1019,day:4,hanzi:"球",pinyin:"qiú",hanviet:"Cầu",meaning:"bóng",count:5,words:["踢球","篮球","羽毛球","足球场"]},
+  {id:1020,day:4,hanzi:"意",pinyin:"yì",hanviet:"Ý",meaning:"ý, ý nghĩa",count:5,words:["满意","注意","意思","愿意"]},
+  {id:1021,day:5,hanzi:"时",pinyin:"shí",hanviet:"Thời",meaning:"thời gian, lúc",count:4,words:["有时候","当时","准时","小时"]},
+  {id:1022,day:5,hanzi:"习",pinyin:"xí",hanviet:"Tập",meaning:"tập, luyện",count:4,words:["复习","预习","练习","习惯"]},
+  {id:1023,day:5,hanzi:"准",pinyin:"zhǔn",hanviet:"Chuẩn",meaning:"chuẩn, cho phép",count:4,words:["准备","准时","不准"]},
+  {id:1024,day:5,hanzi:"化",pinyin:"huà",hanviet:"Hóa",meaning:"biến đổi, hóa",count:4,words:["文化","消化","化验","化验室"]},
+  {id:1025,day:5,hanzi:"来",pinyin:"lái",hanviet:"Lai",meaning:"đến, lại",count:4,words:["回来","出来","越来越","看来"]},
+  {id:1026,day:6,hanzi:"果",pinyin:"guǒ",hanviet:"Quả",meaning:"quả, kết quả",count:4,words:["结果","如果","效果"]},
+  {id:1027,day:6,hanzi:"家",pinyin:"jiā",hanviet:"Gia",meaning:"nhà",count:4,words:["大家","家务","老家","画家"]},
+  {id:1028,day:6,hanzi:"面",pinyin:"miàn",hanviet:"Diện",meaning:"mặt, bề mặt, phía",count:4,words:["面积","上面","面前","面条"]},
+  {id:1029,day:6,hanzi:"没",pinyin:"méi",hanviet:"Một",meaning:"không có",count:4,words:["没用","没错","没问题"]},
+  {id:1030,day:6,hanzi:"色",pinyin:"sè",hanviet:"Sắc",meaning:"màu sắc",count:4,words:["颜色","特色","白色","脸色"]},
+  {id:1031,day:7,hanzi:"看",pinyin:"kàn",hanviet:"Khán",meaning:"xem, nhìn",count:4,words:["好看","看病","看来"]},
+  {id:1032,day:7,hanzi:"电",pinyin:"diàn",hanviet:"Điện",meaning:"điện",count:4,words:["电影院","电脑","电视台"]},
+  {id:1033,day:7,hanzi:"以",pinyin:"yǐ",hanviet:"Dĩ",meaning:"dùng, lấy; cho rằng",count:4,words:["以后","以前","可以","以为"]},
+  {id:1034,day:7,hanzi:"中",pinyin:"zhōng",hanviet:"Trung",meaning:"giữa, trung",count:4,words:["中间","初中","高中","中学"]},
+  {id:1035,day:7,hanzi:"离",pinyin:"lí",hanviet:"Ly",meaning:"rời, cách",count:4,words:["离开","距离","离别"]},
+  {id:1036,day:8,hanzi:"路",pinyin:"lù",hanviet:"Lộ",meaning:"đường",count:4,words:["走路","马路","十字路口","过马路"]}
+];
+let _cpFilter='all';
+function cpFilter(day,btn){
+  _cpFilter=day;
+  document.querySelectorAll('#cpFilterRow .badge-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCharPractice();
+}
+function renderCharPractice(){
+  const list = _cpFilter==='all' ? CHAR_PRACTICE : CHAR_PRACTICE.filter(c=>c.day===_cpFilter);
+  const grid = document.getElementById('practiceGrid');
+  grid.innerHTML = list.map(c=>`
+    <div class="practice-card">
+      <span class="practice-day">Ngày ${c.day}</span>
+      <span class="practice-freq">×${c.count}</span>
+      <div class="hanzi-row" style="justify-content:center"><span class="hanzi-text">${c.hanzi}</span><button class="btn-speak" onclick="speakChinese('${c.hanzi}',event)" title="Phát âm 🔊">🔊</button></div>
+      <div class="pinyin-text">${colorPinyin(c.pinyin)}</div>
+      <div class="hanviet-text">${c.hanviet}</div>
+      <button class="btn-stroke" onclick="toggleStrokes(${c.id},'${c.hanzi}',event)">✏️ Nét viết</button>
+      <div class="stroke-area" id="stroke-${c.id}"><div id="stroke-${c.id}-0" class="stroke-char-box"></div></div>
+      <div class="meaning-text">${c.meaning}</div>
+      <div class="practice-words"><b>Từ ví dụ:</b> ${c.words.join(', ')}</div>
+    </div>
+  `).join('');
 }
 
 // ============================================================
