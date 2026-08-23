@@ -23,7 +23,7 @@
   --b13: #6D4C41; --b13-bg: #EFEBE9;
   --b14: #455A64; --b14-bg: #ECEFF1;
   --b15: #00ACC1;
-  --b16: #C62828; --b17: #F57F17; --b18: #1A237E; --b19: #004D40; --b20: #4A148C; --b21: #E65100; --b22: #2E7D32; --b23: #6A1B9A; --b24: #00838F; --b25: #C2185B; --b26: #558B2F; --b27: #5D4037; --b28: #EF6C00; --b29: #5E35B1; --b30: #3949AB; --b15-bg: #E0F7FA;
+  --b16: #C62828; --b17: #F57F17; --b18: #1A237E; --b19: #004D40; --b20: #4A148C; --b21: #E65100; --b22: #2E7D32; --b23: #6A1B9A; --b24: #00838F; --b25: #C2185B; --b26: #558B2F; --b27: #5D4037; --b28: #EF6C00; --b29: #5E35B1; --b30: #3949AB; --b-final: #B8860B; --b-final-bg: #FFF6E0; --b15-bg: #E0F7FA;
   --gold: #C9A227;
   --primary: #1565C0; --primary-bg: #EFF6FF;
   --bg: #f0f4f8; --surface: #FFFFFF; --surface2: #F4F6FA;
@@ -106,6 +106,7 @@
   --b13-bg: #2a1f1a;
   --b14-bg: #1c2429;
   --b15-bg: #002b30;
+  --b-final: #E0AA3E; --b-final-bg: #332400;
   --shadow: 0 4px 16px rgba(0,0,0,.3);
 }
 [data-dark] header{background:var(--surface);border-bottom-color:var(--border)}
@@ -168,7 +169,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 .badge-btn.b14{border-color:var(--b14);color:var(--b14)}
 .badge-btn.b14.active{background:var(--b14);border-color:var(--b14);color:#fff}
 .badge-btn.b15{border-color:var(--b15);color:var(--b15)}
-.b16{border-color:var(--b16);color:var(--b16)}.badge-btn.b16.active{background:var(--b16);border-color:var(--b16);color:#fff}.badge-btn.b17{border-color:var(--b17);color:var(--b17)}.badge-btn.b17.active{background:var(--b17);border-color:var(--b17);color:#fff}.badge-btn.b18{border-color:var(--b18);color:var(--b18)}.badge-btn.b18.active{background:var(--b18);border-color:var(--b18);color:#fff}.badge-btn.b19{border-color:var(--b19);color:var(--b19)}.badge-btn.b19.active{background:var(--b19);border-color:var(--b19);color:#fff}.badge-btn.b20{border-color:var(--b20);color:var(--b20)}.badge-btn.b20.active{background:var(--b20);border-color:var(--b20);color:#fff}.badge-btn.b21{border-color:var(--b21);color:var(--b21)}.badge-btn.b21.active{background:var(--b21);border-color:var(--b21);color:#fff}.badge-btn.b22{border-color:var(--b22);color:var(--b22)}.badge-btn.b22.active{background:var(--b22);border-color:var(--b22);color:#fff}.badge-btn.b23{border-color:var(--b23);color:var(--b23)}.badge-btn.b23.active{background:var(--b23);border-color:var(--b23);color:#fff}.badge-btn.b24{border-color:var(--b24);color:var(--b24)}.badge-btn.b24.active{background:var(--b24);border-color:var(--b24);color:#fff}.badge-btn.b25{border-color:var(--b25);color:var(--b25)}.badge-btn.b25.active{background:var(--b25);border-color:var(--b25);color:#fff}.badge-btn.b26{border-color:var(--b26);color:var(--b26)}.badge-btn.b26.active{background:var(--b26);border-color:var(--b26);color:#fff}.badge-btn.b27{border-color:var(--b27);color:var(--b27)}.badge-btn.b27.active{background:var(--b27);border-color:var(--b27);color:#fff}.badge-btn.b28{border-color:var(--b28);color:var(--b28)}.badge-btn.b28.active{background:var(--b28);border-color:var(--b28);color:#fff}.badge-btn.b29{border-color:var(--b29);color:var(--b29)}.badge-btn.b29.active{background:var(--b29);border-color:var(--b29);color:#fff}.badge-btn.b30{border-color:var(--b30);color:var(--b30)}.badge-btn.b30.active{background:var(--b30);border-color:var(--b30);color:#fff}
+.b16{border-color:var(--b16);color:var(--b16)}.badge-btn.b16.active{background:var(--b16);border-color:var(--b16);color:#fff}.badge-btn.b17{border-color:var(--b17);color:var(--b17)}.badge-btn.b17.active{background:var(--b17);border-color:var(--b17);color:#fff}.badge-btn.b18{border-color:var(--b18);color:var(--b18)}.badge-btn.b18.active{background:var(--b18);border-color:var(--b18);color:#fff}.badge-btn.b19{border-color:var(--b19);color:var(--b19)}.badge-btn.b19.active{background:var(--b19);border-color:var(--b19);color:#fff}.badge-btn.b20{border-color:var(--b20);color:var(--b20)}.badge-btn.b20.active{background:var(--b20);border-color:var(--b20);color:#fff}.badge-btn.b21{border-color:var(--b21);color:var(--b21)}.badge-btn.b21.active{background:var(--b21);border-color:var(--b21);color:#fff}.badge-btn.b22{border-color:var(--b22);color:var(--b22)}.badge-btn.b22.active{background:var(--b22);border-color:var(--b22);color:#fff}.badge-btn.b23{border-color:var(--b23);color:var(--b23)}.badge-btn.b23.active{background:var(--b23);border-color:var(--b23);color:#fff}.badge-btn.b24{border-color:var(--b24);color:var(--b24)}.badge-btn.b24.active{background:var(--b24);border-color:var(--b24);color:#fff}.badge-btn.b25{border-color:var(--b25);color:var(--b25)}.badge-btn.b25.active{background:var(--b25);border-color:var(--b25);color:#fff}.badge-btn.b26{border-color:var(--b26);color:var(--b26)}.badge-btn.b26.active{background:var(--b26);border-color:var(--b26);color:#fff}.badge-btn.b27{border-color:var(--b27);color:var(--b27)}.badge-btn.b27.active{background:var(--b27);border-color:var(--b27);color:#fff}.badge-btn.b28{border-color:var(--b28);color:var(--b28)}.badge-btn.b28.active{background:var(--b28);border-color:var(--b28);color:#fff}.badge-btn.b29{border-color:var(--b29);color:var(--b29)}.badge-btn.b29.active{background:var(--b29);border-color:var(--b29);color:#fff}.badge-btn.b30{border-color:var(--b30);color:var(--b30)}.badge-btn.b30.active{background:var(--b30);border-color:var(--b30);color:#fff}.badge-btn.b-final{border-color:var(--b-final);color:var(--b-final)}.badge-btn.b-final.active{background:var(--b-final);border-color:var(--b-final);color:#fff}
 .badge-btn.b15.active{background:var(--b15);border-color:var(--b15);color:#fff}
 
 /* VOCAB GRID */
@@ -407,6 +408,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 .grammar-tag.b13{background:var(--b13-bg);color:var(--b13)}
 .grammar-tag.b14{background:var(--b14-bg);color:var(--b14)}
 .grammar-tag.b15{background:var(--b15-bg);color:var(--b15)}
+.grammar-tag.b-final{background:var(--b-final-bg);color:var(--b-final)}
 
 /* COMPARE */
 .compare-grid{display:flex;flex-direction:column;gap:20px}
@@ -810,6 +812,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
     <button class="badge-btn b10" onclick="filterExercise(10,this)">Buổi 10</button>
     <button class="badge-btn b11" onclick="filterExercise(11,this)">Buổi 11</button>
     <button class="badge-btn b14" onclick="filterExercise(14,this)">Buổi 14</button>
+    <button class="badge-btn b-final" onclick="filterExercise('final',this)">🏆 Tổng ôn</button>
   </div>
   <div class="exercise-grid" id="exerciseGrid"></div>
 </div>
@@ -4984,6 +4987,203 @@ const EXERCISES = [
           }
         }
       ]
+    },
+    {
+      "bai": "final",
+      "label": "Bài kiểm tra tổng hợp (Đọc & Viết — ôn toàn khóa)",
+      "tagClass": "b-final",
+      "sections": [
+        {
+          "type": "reading",
+          "title": "Đọc đoạn văn và trả lời câu hỏi",
+          "qtype": "qa",
+          "passage": {
+            "zh": "这一年，我的生活发生了很大的变化。以前我工作压力很大，经常熬夜，也从来没运动过，身体越来越不健康，脸色也不太好。后来公司的医生告诉我，如果我不改变生活习惯，以后很可能会得慢性病。\n从那以后，我决定改变自己的生活习惯。我每天早上都跟爷爷一起去公园练气功，练完以后顺便散步，一边走一边看风景，心情特别愉快。晚饭以后我也尽量少吃油腻的东西，多吃一些新鲜的蔬菜和水果。中午只要有机会，我都会睡一个午觉，这样下午做事情才更专注。\n除了锻炼身体，我也一直坚持学习中文。虽然一开始我的口语说得不太流利，但是我每天都认真练听力和口语，还常常跟中国朋友聊天儿，练习会话。上个星期的中文考试，我考得比以前好多了，老师说我进步很大，这让我更有信心了。\n这个周末，我跟家人一起去海边旅行，我们一边散步一边聊天儿，心情挺不错的。原来，只要每天坚持一点点，简单的改变也能带来好几个好处：身体更健康，心情也更好了。我真的很感谢自己一直坚持到现在。",
+            "pin": "Zhè yì nián, wǒ de shēnghuó fāshēng le hěn dà de biànhuà. Yǐqián wǒ gōngzuò yālì hěn dà, jīngcháng áoyè, yě cónglái méi yùndòng guò, shēntǐ yuè lái yuè bú jiànkāng, liǎnsè yě bú tài hǎo. Hòulái gōngsī de yīshēng gàosu wǒ, rúguǒ wǒ bù gǎibiàn shēnghuó xíguàn, yǐhòu hěn kěnéng huì dé mànxìngbìng.\nCóng nà yǐhòu, wǒ juédìng gǎibiàn zìjǐ de shēnghuó xíguàn. Wǒ měitiān zǎoshang dōu gēn yéye yìqǐ qù gōngyuán liàn qìgōng, liàn wán yǐhòu shùnbiàn sànbù, yìbiān zǒu yìbiān kàn fēngjǐng, xīnqíng tèbié yúkuài. Wǎnfàn yǐhòu wǒ yě jǐnliàng shǎo chī yóunì de dōngxi, duō chī yìxiē xīnxiān de shūcài hé shuǐguǒ. Zhōngwǔ zhǐyào yǒu jīhuì, wǒ dōu huì shuì yí ge wǔjiào, zhèyàng xiàwǔ zuò shìqing cái gèng zhuānzhù.\nChúle duànliàn shēntǐ, wǒ yě yìzhí jiānchí xuéxí Zhōngwén. Suīrán yì kāishǐ wǒ de kǒuyǔ shuō de bú tài liúlì, dànshì wǒ měitiān dōu rènzhēn liàn tīnglì hé kǒuyǔ, hái chángcháng gēn Zhōngguó péngyou liáotiānr, liànxí huìhuà. Shàng ge xīngqī de Zhōngwén kǎoshì, wǒ kǎo de bǐ yǐqián hǎo duō le, lǎoshī shuō wǒ jìnbù hěn dà, zhè ràng wǒ gèng yǒu xìnxīn le.\nZhège zhōumò, wǒ gēn jiārén yìqǐ qù hǎibiān lǚxíng, wǒmen yìbiān sànbù yìbiān liáotiānr, xīnqíng tǐng búcuò de. Yuánlái, zhǐyào měitiān jiānchí yìdiǎndiǎn, jiǎndān de gǎibiàn yě néng dàilái hǎo jǐ ge hǎochù: shēntǐ gèng jiànkāng, xīnqíng yě gèng hǎo le. Wǒ zhēnde hěn gǎnxiè zìjǐ yìzhí jiānchí dào xiànzài.",
+            "vn": "Năm nay, cuộc sống của tôi đã có nhiều thay đổi lớn. Trước đây tôi áp lực công việc rất lớn, thường xuyên thức khuya, cũng chưa từng vận động, cơ thể ngày càng không khỏe mạnh, sắc mặt cũng không tốt lắm. Sau đó bác sĩ của công ty nói với tôi, nếu tôi không thay đổi thói quen sinh hoạt thì sau này rất có thể sẽ mắc bệnh mãn tính.\nTừ đó, tôi quyết định thay đổi thói quen sinh hoạt của mình. Mỗi sáng tôi đều cùng ông nội đi công viên luyện khí công, luyện xong tiện thể dạo bộ, vừa đi vừa ngắm cảnh, tâm trạng đặc biệt vui vẻ. Sau bữa tối tôi cũng cố gắng ăn ít đồ dầu mỡ, ăn nhiều rau củ và trái cây tươi hơn. Buổi trưa chỉ cần có cơ hội, tôi đều sẽ ngủ một giấc trưa, như vậy buổi chiều làm việc mới tập trung hơn.\nNgoài rèn luyện thân thể, tôi cũng luôn kiên trì học tiếng Trung. Tuy lúc đầu khẩu ngữ của tôi nói không được lưu loát lắm, nhưng mỗi ngày tôi đều chăm chỉ luyện nghe và nói, còn thường xuyên trò chuyện với bạn Trung Quốc, luyện hội thoại. Kỳ thi tiếng Trung tuần trước, tôi thi tốt hơn trước nhiều, giáo viên nói tôi tiến bộ rất nhiều, điều này khiến tôi tự tin hơn.\nCuối tuần này, tôi cùng gia đình đi du lịch biển, chúng tôi vừa dạo bộ vừa trò chuyện, tâm trạng khá tốt. Hóa ra, chỉ cần mỗi ngày kiên trì một chút, sự thay đổi đơn giản cũng có thể mang lại khá nhiều lợi ích: cơ thể khỏe mạnh hơn, tâm trạng cũng tốt hơn. Tôi thực sự rất biết ơn bản thân đã kiên trì đến bây giờ."
+          },
+          "items": [
+            {
+              "q": "以前，为什么“我”的身体越来越不健康？",
+              "a": "因为以前“我”工作压力很大，经常熬夜，也从来没运动过。"
+            },
+            {
+              "q": "公司的医生对“我”说了什么？",
+              "a": "医生说，如果不改变生活习惯，以后很可能会得慢性病。"
+            },
+            {
+              "q": "改变生活习惯以后，“我”每天早上做什么？",
+              "a": "每天早上跟爷爷一起去公园练气功，练完以后顺便散步。"
+            },
+            {
+              "q": "“我”的中文考试考得怎么样？",
+              "a": "考得比以前好多了，老师说“我”进步很大。"
+            },
+            {
+              "q": "这个周末“我”跟家人一起做了什么？",
+              "a": "跟家人一起去海边旅行，一边散步一边聊天儿。"
+            }
+          ]
+        },
+        {
+          "type": "clozepassage",
+          "title": "Điền từ vào đoạn văn",
+          "bank": [
+            "宿舍",
+            "超市",
+            "校园",
+            "参观",
+            "已经",
+            "打算",
+            "附近",
+            "一直",
+            "聊天儿",
+            "应该"
+          ],
+          "passage": "我在这所大学(1)___学习两年了。我们的(2)___很大很漂亮，环境也很好。我住的(3)___离教室不远，(4)___就有一个(5)___，买东西很方便。周末如果没有作业，我(6)___跟朋友一起去附近的博物馆(7)___，了解中国的历史和文化。晚上吃完饭以后，我们喜欢在校园里散步，一边走一边(8)___，聊聊学校发生的事情。老师说，我们(9)___多跟中国朋友交流，这样中文才能(10)___进步。",
+          "blanks": [
+            "已经",
+            "校园",
+            "宿舍",
+            "附近",
+            "超市",
+            "打算",
+            "参观",
+            "聊天儿",
+            "应该",
+            "一直"
+          ],
+          "pin": "Wǒ zài zhè suǒ dàxué yǐjīng xuéxí liǎng nián le. Wǒmen de xiàoyuán hěn dà hěn piàoliang, huánjìng yě hěn hǎo. Wǒ zhù de sùshè lí jiàoshì bù yuǎn, fùjìn jiù yǒu yí ge chāoshì, mǎi dōngxi hěn fāngbiàn. Zhōumò rúguǒ méiyǒu zuòyè, wǒ dǎsuàn gēn péngyou yìqǐ qù fùjìn de bówùguǎn cānguān, liǎojiě Zhōngguó de lìshǐ hé wénhuà. Wǎnshang chī wán fàn yǐhòu, wǒmen xǐhuan zài xiàoyuán lǐ sànbù, yìbiān zǒu yìbiān liáotiānr, liáoliao xuéxiào fāshēng de shìqing. Lǎoshī shuō, wǒmen yīnggāi duō gēn Zhōngguó péngyou jiāoliú, zhèyàng Zhōngwén cái néng yìzhí jìnbù.",
+          "vn": "Tôi học ở trường đại học này đã 2 năm rồi. Khuôn viên trường của chúng tôi rất to và đẹp, môi trường cũng rất tốt. Ký túc xá tôi ở cách lớp học không xa, gần đó có một siêu thị, mua đồ rất tiện. Cuối tuần nếu không có bài tập, tôi định cùng bạn bè đi tham quan bảo tàng gần đó, tìm hiểu lịch sử và văn hóa Trung Quốc. Buổi tối ăn cơm xong, chúng tôi thích đi dạo trong khuôn viên trường, vừa đi vừa trò chuyện, nói về những chuyện xảy ra ở trường. Giáo viên nói, chúng tôi nên giao lưu nhiều hơn với bạn Trung Quốc, như vậy tiếng Trung mới có thể tiến bộ liên tục."
+        },
+        {
+          "type": "order",
+          "title": "Sắp xếp câu thành câu hoàn chỉnh",
+          "items": [
+            {
+              "q": "我 / 以前 / 从来 / 没 / 练 / 过 / 气功",
+              "a": "我以前从来没练过气功。",
+              "pin": "Wǒ yǐqián cónglái méi liànguò qìgōng.",
+              "vn": "Tôi trước đây chưa từng luyện khí công."
+            },
+            {
+              "q": "我们 / 先 / 做完 / 功课 / 再 / 去 / 公园 / 散步",
+              "a": "我们先做完功课再去公园散步。",
+              "pin": "Wǒmen xiān zuò wán gōngkè zài qù gōngyuán sànbù.",
+              "vn": "Chúng tôi làm xong bài tập trước rồi mới đi công viên dạo bộ."
+            },
+            {
+              "q": "爷爷 / 一边 / 散步 / 一边 / 看 / 风景",
+              "a": "爷爷一边散步一边看风景。",
+              "pin": "Yéye yìbiān sànbù yìbiān kàn fēngjǐng.",
+              "vn": "Ông tôi vừa đi dạo vừa ngắm cảnh."
+            },
+            {
+              "q": "他 / 已经 / 练 / 了 / 好几 / 年 / 气功 / 了",
+              "a": "他已经练了好几年气功了。",
+              "pin": "Tā yǐjīng liàn le hǎo jǐ nián qìgōng le.",
+              "vn": "Anh ấy đã luyện khí công mấy năm rồi."
+            },
+            {
+              "q": "这个 / 方法 / 挺 / 有效 / 的",
+              "a": "这个方法挺有效的。",
+              "pin": "Zhège fāngfǎ tǐng yǒuxiào de.",
+              "vn": "Phương pháp này khá hiệu quả."
+            }
+          ]
+        },
+        {
+          "type": "correct",
+          "title": "Sửa lỗi sai",
+          "example": {
+            "wrong": "我昨天晚上做作业熬夜了。",
+            "a": "我昨天晚上熬夜做作业了。"
+          },
+          "items": [
+            {
+              "wrong": "你要记得，去海边的时候不要一个人下水。",
+              "a": "你要记住，去海边的时候不要一个人下水。",
+              "pin": "Nǐ yào jìzhù, qù hǎibiān de shíhou bú yào yí ge rén xiàshuǐ.",
+              "vn": "Bạn phải nhớ, khi đi biển không được một mình xuống nước."
+            },
+            {
+              "wrong": "这件衣服一点儿贵，我们去看看别的吧。",
+              "a": "这件衣服有点儿贵，我们去看看别的吧。",
+              "pin": "Zhè jiàn yīfu yǒudiǎnr guì, wǒmen qù kànkan bié de ba.",
+              "vn": "Cái áo này hơi đắt, chúng ta đi xem cái khác đi."
+            },
+            {
+              "wrong": "他上午来找过我一次，下午再来了一次。",
+              "a": "他上午来找过我一次，下午又来了一次。",
+              "pin": "Tā shàngwǔ lái zhǎoguo wǒ yí cì, xiàwǔ yòu lái le yí cì.",
+              "vn": "Buổi sáng anh ấy đã đến tìm tôi một lần, buổi chiều lại đến thêm một lần nữa."
+            },
+            {
+              "wrong": "从来这个地方是一条河，现在变成了公园。",
+              "a": "原来这个地方是一条河，现在变成了公园。",
+              "pin": "Yuánlái zhège dìfang shì yì tiáo hé, xiànzài biànchéng le gōngyuán.",
+              "vn": "Vốn dĩ chỗ này là một dòng sông, bây giờ biến thành công viên rồi."
+            },
+            {
+              "wrong": "我看两个小时这本书了。",
+              "a": "我看这本书看了两个小时了。",
+              "pin": "Wǒ kàn zhè běn shū kàn le liǎng ge xiǎoshí le.",
+              "vn": "Tôi đọc quyển sách này đọc được hai tiếng rồi."
+            }
+          ]
+        },
+        {
+          "type": "translate",
+          "title": "Dịch câu (Việt → Trung)",
+          "items": [
+            {
+              "q": "Tôi trước đây chưa từng đi Trung Quốc du học, nhưng năm nay tôi quyết định thử một lần.",
+              "a": "我以前从来没去中国留学过，但是今年我决定试试。",
+              "pin": "Wǒ yǐqián cónglái méi qù Zhōngguó liúxué guò, dànshì jīnnián wǒ juédìng shìshi."
+            },
+            {
+              "q": "Tuy bài tập hôm nay rất nhiều, nhưng chúng tôi vẫn kiên trì làm xong.",
+              "a": "虽然今天的功课很多，但是我们还是坚持做完了。",
+              "pin": "Suīrán jīntiān de gōngkè hěn duō, dànshì wǒmen háishi jiānchí zuò wán le."
+            },
+            {
+              "q": "Vì cơ thể càng ngày càng khỏe mạnh, nên tôi cảm nhận được lợi ích của việc luyện khí công.",
+              "a": "因为身体越来越健康，所以我体会到了练气功的好处。",
+              "pin": "Yīnwèi shēntǐ yuè lái yuè jiànkāng, suǒyǐ wǒ tǐhuì dàole liàn qìgōng de hǎochù."
+            },
+            {
+              "q": "Ông tôi đã luyện khí công mấy năm rồi, sức tập trung cũng nâng cao rất nhiều.",
+              "a": "我爷爷练了好几年气功了，专注力也提高了很多。",
+              "pin": "Wǒ yéye liàn le hǎo jǐ nián qìgōng le, zhuānzhùlì yě tígāo le hěn duō."
+            },
+            {
+              "q": "Phương pháp này khá hiệu quả, chỉ cần luyện tập vài lần là có thể nhớ được.",
+              "a": "这个方法挺有效的，只要练习好几次就能记住。",
+              "pin": "Zhège fāngfǎ tǐng yǒuxiào de, zhǐyào liànxí hǎo jǐ cì jiù néng jìzhù."
+            }
+          ]
+        },
+        {
+          "type": "write",
+          "title": "Viết đoạn văn theo chủ đề và từ cho sẵn",
+          "topic": "Một thói quen bạn đã thay đổi",
+          "words": [
+            "改变",
+            "习惯",
+            "坚持",
+            "专注",
+            "好处",
+            "原来",
+            "感谢"
+          ],
+          "wordsVn": "thay đổi, thói quen, kiên trì, tập trung, lợi ích, hóa ra/vốn dĩ, cảm ơn",
+          "sample": {
+            "zh": "以前我每天晚上都躺在床上玩手机，玩到很晚才睡觉，所以第二天总是很困，做什么事情都不专注。后来我决定改变这个习惯：睡觉以前不再看手机，而是看半个小时书。刚开始的时候有点儿不习惯，但是我一直坚持，现在我发现自己精神好多了，做功课也更认真了。原来，一个小小的改变也能带来这么多好处。我很感谢自己一直坚持到现在。",
+            "pin": "Yǐqián wǒ měitiān wǎnshang dōu tǎng zài chuáng shàng wán shǒujī, wán dào hěn wǎn cái shuìjiào, suǒyǐ dì-èr tiān zǒngshì hěn kùn, zuò shénme shìqing dōu bù zhuānzhù. Hòulái wǒ juédìng gǎibiàn zhège xíguàn: shuìjiào yǐqián bú zài kàn shǒujī, ér shì kàn bàn ge xiǎoshí shū. Gāng kāishǐ de shíhou yǒudiǎnr bù xíguàn, dànshì wǒ yìzhí jiānchí, xiànzài wǒ fāxiàn zìjǐ jīngshen hǎo duō le, zuò gōngkè yě gèng rènzhēn le. Yuánlái, yí ge xiǎoxiǎo de gǎibiàn yě néng dàilái zhème duō hǎochù. Wǒ hěn gǎnxiè zìjǐ yìzhí jiānchí dào xiànzài.",
+            "vn": "Trước đây mỗi tối tôi đều nằm trên giường chơi điện thoại, chơi đến rất khuya mới ngủ, nên hôm sau luôn rất buồn ngủ, làm gì cũng không tập trung. Sau đó tôi quyết định thay đổi thói quen này: trước khi ngủ không xem điện thoại nữa, mà đọc sách nửa tiếng. Lúc mới đầu hơi không quen, nhưng tôi luôn kiên trì, bây giờ tôi thấy tinh thần mình tốt hơn nhiều, làm bài tập cũng chăm chú hơn. Hóa ra, một thay đổi nhỏ cũng có thể mang lại nhiều lợi ích như vậy. Tôi rất biết ơn bản thân đã kiên trì đến bây giờ."
+          }
+        }
+      ]
     }
 ];
 
@@ -5388,8 +5588,8 @@ function renderExercises(){
   const list=_exFilter==='all'?EXERCISES:EXERCISES.filter(e=>e.bai===_exFilter);
   document.getElementById('exerciseGrid').innerHTML=list.map(ex=>`
     <div class="exercise-bai-card" id="exb-${ex.bai}">
-      <div class="exercise-bai-header" onclick="toggleExBai(${ex.bai})">
-        <div class="exercise-bai-title"><span class="grammar-tag b${ex.bai}">Buổi ${ex.bai}</span> Bài tập</div>
+      <div class="exercise-bai-header" onclick="toggleExBai('${ex.bai}')">
+        <div class="exercise-bai-title"><span class="grammar-tag ${ex.tagClass||('b'+ex.bai)}">${ex.label||('Buổi '+ex.bai)}</span> Bài tập</div>
         <span class="exercise-bai-chevron">▾</span>
       </div>
       <div class="exercise-bai-body">
@@ -5637,7 +5837,15 @@ const EX_PHRASE_DICT={
 "清楚":{pinyin:"qīngchu",hanviet:"THANH SỞ",meaning:"rõ ràng"},
 "鱼汤":{pinyin:"yútāng",hanviet:"NGƯ THANG",meaning:"canh cá"},
 "耐心":{pinyin:"nàixīn",hanviet:"NẠI TÂM",meaning:"kiên nhẫn, nhẫn nại"},
-"祖孙俩":{pinyin:"zǔsūnliǎ",hanviet:"TỔ TÔN LƯỠNG",meaning:"hai ông cháu"}
+"祖孙俩":{pinyin:"zǔsūnliǎ",hanviet:"TỔ TÔN LƯỠNG",meaning:"hai ông cháu"},
+"变化":{pinyin:"biànhuà",hanviet:"BIẾN HÓA",meaning:"sự thay đổi, biến hóa"},
+"爷爷":{pinyin:"yéye",hanviet:"GIA GIA",meaning:"ông nội"},
+"水果":{pinyin:"shuǐguǒ",hanviet:"THỦY QUẢ",meaning:"trái cây, hoa quả"},
+"信心":{pinyin:"xìnxīn",hanviet:"TÍN TÂM",meaning:"sự tự tin, niềm tin"},
+"别的":{pinyin:"biéde",hanviet:"BIỆT ĐÍCH",meaning:"cái khác, loại khác"},
+"下水":{pinyin:"xiàshuǐ",hanviet:"HẠ THỦY",meaning:"xuống nước"},
+"尽量":{pinyin:"jǐnliàng",hanviet:"TẬN LƯỢNG",meaning:"cố gắng hết sức"},
+"除了":{pinyin:"chúle",hanviet:"TRỪ LIỄU",meaning:"ngoài...ra"}
 };
 let _exMergedMap=null;
 function _exMatchMap(){
@@ -5878,7 +6086,8 @@ const EX_CHAR_DICT = {
 "饿":{pin:"è",hv:"NGẠ",vn:"đói"},
 "敢":{pin:"gǎn",hv:"CẢM",vn:"dám"},
 "汤":{pin:"tāng",hv:"THANG",vn:"canh, súp"},
-"把":{pin:"bǎ",hv:"BẢ",vn:"đem, lấy (giới từ 把)"}
+"把":{pin:"bǎ",hv:"BẢ",vn:"đem, lấy (giới từ 把)"},
+"挺":{pin:"tǐng",hv:"ĐĨNH",vn:"khá, rất (挺...的)"}
 };
 function _exCharInfo(ch){
   const cm=_exComponentCharMap();
