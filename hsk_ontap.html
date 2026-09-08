@@ -818,6 +818,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
     <button class="badge-btn b10" onclick="filterExercise(10,this)">Buổi 10</button>
     <button class="badge-btn b11" onclick="filterExercise(11,this)">Buổi 11</button>
     <button class="badge-btn b14" onclick="filterExercise(14,this)">Buổi 14</button>
+    <button class="badge-btn b32" onclick="filterExercise(32,this)">Buổi 32</button>
     <button class="badge-btn b-final" onclick="filterExercise('final',this)">🏆 Tổng ôn</button>
   </div>
   <div class="exercise-grid" id="exerciseGrid"></div>
@@ -5250,6 +5251,126 @@ const EXERCISES = [
           }
         }
       ]
+    },
+    {
+      "bai": 32,
+      "sections": [
+        {
+          "type": "reading",
+          "title": "Đọc đoạn văn và trả lời câu hỏi",
+          "qtype": "qa",
+          "passage": {
+            "zh": "我出生在南方一个安静的小镇，那时候人口不多，日子过得很简单，虽然生活不算富裕，但是我一直很怀念过去那段时光。后来，这个地区发展得很快，人口越来越多，小镇也慢慢变成了一座大城市。\n城市的变化真的太大了。以前的小路变成了宽宽的马路，新的地铁和商场让很多人都认不出这里以前的样子。因为人口增加，交通越来越拥挤，也在一定程度上影响了大家的生活，不过这也带来了更多的工作机会，很多餐厅都要增加服务员才能忙得过来。\n去年，市政府决定建筑一座新的博物馆，请了一位有名的建筑师来设计，还打算在附近盖一个公园。听说这座建筑完成以后，会成为这个城市著名的地标。上个周末，我特意去参观了一下，顺便拍了几张照片发给在外地工作的朋友看。\n暑假的时候，学校安排我们参加了一次夏令营，去附近的农村住了几天，学到了不少新技能。冬天下雪的时候，那里比城市冷得多，早上出门必须穿大衣，不然很容易感冒；不过屋子里总是很暖和，大家坐在一起聊天，心里觉得特别温暖。这次经历让我变得更加自信，也让我明白，不管城市怎么改变，简单快乐的日子永远最珍贵。",
+            "pin": "Wǒ chūshēng zài nánfāng yí ge ānjìng de xiǎozhèn, nà shíhou rénkǒu bù duō, rìzi guò de hěn jiǎndān, suīrán shēnghuó bú suàn fùyù, dànshì wǒ yìzhí hěn huáiniàn guòqù nà duàn shíguāng. Hòulái, zhège dìqū fāzhǎn de hěn kuài, rénkǒu yuè lái yuè duō, xiǎozhèn yě mànmàn biànchéng le yí zuò dà chéngshì.\nChéngshì de biànhuà zhēnde tài dà le. Yǐqián de xiǎolù biànchéng le kuān kuān de mǎlù, xīn de dìtiě hé shāngchǎng ràng hěn duō rén dōu rèn bù chū zhèlǐ yǐqián de yàngzi. Yīnwèi rénkǒu zēngjiā, jiāotōng yuè lái yuè yōngjǐ, yě zài yídìng chéngdù shàng yǐngxiǎngle dàjiā de shēnghuó, búguò zhè yě dàilái le gèng duō de gōngzuò jīhuì, hěn duō cāntīng dōu yào zēngjiā fúwùyuán cáinéng máng de guòlái.\nQùnián, shì zhèngfǔ juédìng jiànzhù yí zuò xīn de bówùguǎn, qǐngle yí wèi yǒumíng de jiànzhùshī lái shèjì, hái dǎsuàn zài fùjìn gài yí ge gōngyuán. Tīngshuō zhè zuò jiànzhù wánchéng yǐhòu, huì chéngwéi zhège chéngshì zhùmíng de dìbiāo. Shàng ge zhōumò, wǒ tèyì qù cānguān le yíxià, shùnbiàn pāile jǐ zhāng zhàopiàn fā gěi zài wàidì gōngzuò de péngyou kàn.\nShǔjià de shíhou, xuéxiào ānpái wǒmen cānjiā le yí cì xiàlìngyíng, qù fùjìn de nóngcūn zhùle jǐ tiān, xuédào le bù shǎo xīn jìnéng. Dōngtiān xiàxuě de shíhou, nàlǐ bǐ chéngshì lěng de duō, zǎoshang chūmén bìxū chuān dàyī, bùrán hěn róngyì gǎnmào; búguò wūzi lǐ zǒngshì hěn nuǎnhuo, dàjiā zuò zài yìqǐ liáotiān, xīnlǐ juéde tèbié wēnnuǎn. Zhè cì jīnglì ràng wǒ biàn de gèngjiā zìxìn, yě ràng wǒ míngbai, bùguǎn chéngshì zěnme gǎibiàn, jiǎndān kuàilè de rìzi yǒngyuǎn zuì zhēnguì.",
+            "vn": "Tôi sinh ra ở một thị trấn nhỏ yên tĩnh miền Nam, lúc đó dân số không nhiều, ngày tháng trôi qua rất đơn giản, tuy cuộc sống không giàu có nhưng tôi luôn hoài niệm khoảng thời gian đó trong quá khứ. Sau này, khu vực này phát triển rất nhanh, dân số ngày càng nhiều, thị trấn nhỏ cũng dần dần biến thành một thành phố lớn.\nSự thay đổi của thành phố thật sự quá lớn. Con đường nhỏ trước đây đã biến thành con đường rộng lớn, tàu điện ngầm và trung tâm thương mại mới khiến rất nhiều người không nhận ra dáng vẻ trước đây của nơi này. Vì dân số tăng thêm, giao thông ngày càng đông đúc, cũng ở một mức độ nhất định ảnh hưởng đến cuộc sống của mọi người, nhưng điều này cũng mang lại nhiều cơ hội việc làm hơn, rất nhiều nhà hàng đều phải tăng thêm nhân viên phục vụ mới bận rộn xuể.\nNăm ngoái, chính quyền thành phố quyết định xây dựng một bảo tàng mới, mời một kiến trúc sư nổi tiếng đến thiết kế, còn định xây một công viên gần đó. Nghe nói công trình này hoàn thành xong sẽ trở thành biểu tượng nổi tiếng của thành phố. Cuối tuần trước, tôi đặc biệt đến tham quan một chút, tiện thể chụp vài tấm ảnh gửi cho người bạn đang làm việc ở nơi khác xem.\nVào kỳ nghỉ hè, trường sắp xếp cho chúng tôi tham gia một trại hè, đến sống ở vùng nông thôn gần đó vài ngày, học được không ít kỹ năng mới. Vào mùa đông khi tuyết rơi, nơi đó lạnh hơn thành phố nhiều, buổi sáng ra ngoài bắt buộc phải mặc áo khoác, nếu không rất dễ bị cảm; nhưng trong nhà luôn rất ấm áp, mọi người ngồi cùng nhau trò chuyện, trong lòng cảm thấy đặc biệt ấm áp. Trải nghiệm lần này khiến tôi trở nên tự tin hơn, cũng khiến tôi hiểu ra, bất kể thành phố thay đổi thế nào, những ngày tháng đơn giản vui vẻ vẫn luôn quý giá nhất."
+          },
+          "items": [
+            {
+              "q": "“我”出生在什么样的地方？那时候人口怎么样？",
+              "a": "“我”出生在南方一个安静的小镇，那时候人口不多。"
+            },
+            {
+              "q": "这几年，这个地区发生了什么变化？",
+              "a": "人口越来越多，小镇慢慢变成了一座大城市。"
+            },
+            {
+              "q": "市政府去年决定做什么？",
+              "a": "决定建筑一座新的博物馆，请了一位有名的建筑师来设计。"
+            },
+            {
+              "q": "暑假的时候，学校安排大家做了什么？",
+              "a": "安排大家参加夏令营，去附近的农村住了几天，学到了新技能。"
+            },
+            {
+              "q": "这次经历让“我”明白了什么道理？",
+              "a": "让“我”明白，不管城市怎么改变，简单快乐的日子永远最珍贵。"
+            }
+          ]
+        },
+        {
+          "type": "clozepassage",
+          "title": "Điền từ vào đoạn văn",
+          "bank": [
+            "温暖",
+            "变化",
+            "大衣",
+            "冬天",
+            "增加",
+            "不然",
+            "暖和",
+            "农村",
+            "影响"
+          ],
+          "passage": "我姐姐是一名建筑师，她的工作是设计城市里的建筑。她说，这几年城市的(1)___真的很大，人口(2)___了很多，这些(3)___了很多人的生活方式。每年(4)___，姐姐都会回(5)___看爷爷奶奶。那里比城市冷得多，出门一定要穿(6)___，(7)___很容易感冒。不过屋子里总是很(8)___，一家人坐在一起，心里觉得特别(9)___。",
+          "blanks": [
+            "变化",
+            "增加",
+            "影响",
+            "冬天",
+            "农村",
+            "大衣",
+            "不然",
+            "暖和",
+            "温暖"
+          ],
+          "pin": "Wǒ jiějie shì yì míng jiànzhùshī, tā de gōngzuò shì shèjì chéngshì lǐ de jiànzhù. Tā shuō, zhè jǐ nián chéngshì de biànhuà zhēnde hěn dà, rénkǒu zēngjiāle hěn duō, zhèxiē yǐngxiǎngle hěn duō rén de shēnghuó fāngshì. Měi nián dōngtiān, jiějie dōu huì huí nóngcūn kàn yéye nǎinai. Nàlǐ bǐ chéngshì lěng de duō, chūmén yídìng yào chuān dàyī, bùrán hěn róngyì gǎnmào. Búguò wūzi lǐ zǒngshì hěn nuǎnhuo, yìjiā rén zuò zài yìqǐ, xīnlǐ juéde tèbié wēnnuǎn.",
+          "vn": "Chị tôi là kiến trúc sư, công việc của chị là thiết kế các công trình trong thành phố. Chị nói, mấy năm nay sự thay đổi của thành phố thật sự rất lớn, dân số tăng thêm rất nhiều, những điều này đã ảnh hưởng đến phương thức sống của rất nhiều người. Mỗi năm vào mùa đông, chị đều về nông thôn thăm ông bà. Nơi đó lạnh hơn thành phố nhiều, ra ngoài nhất định phải mặc áo khoác, nếu không rất dễ bị cảm. Nhưng trong nhà luôn rất ấm áp, cả nhà ngồi cùng nhau, trong lòng cảm thấy đặc biệt ấm áp."
+        },
+        {
+          "type": "translate",
+          "title": "Dịch câu (Việt → Trung)",
+          "items": [
+            {
+              "q": "Thành phố này mấy năm nay thay đổi rất nhiều.",
+              "a": "这个城市这几年变化很大。",
+              "pin": "Zhège chéngshì zhè jǐ nián biànhuà hěn dà."
+            },
+            {
+              "q": "Tôi quyết định thay đổi công việc của mình, tìm một công việc mới.",
+              "a": "我决定改变自己的工作，找一个新工作。",
+              "pin": "Wǒ juédìng gǎibiàn zìjǐ de gōngzuò, zhǎo yí ge xīn gōngzuò."
+            },
+            {
+              "q": "Vì dân số tăng thêm nhanh, nên giao thông trở nên rất đông đúc.",
+              "a": "因为人口增加得很快，所以交通变得很拥挤。",
+              "pin": "Yīnwèi rénkǒu zēngjiā de hěn kuài, suǒyǐ jiāotōng biàn de hěn yōngjǐ."
+            },
+            {
+              "q": "Anh ấy là một kiến trúc sư nổi tiếng, đã thiết kế rất nhiều tòa nhà nổi tiếng.",
+              "a": "他是一位著名的建筑师，设计过很多有名的大楼。",
+              "pin": "Tā shì yí wèi zhùmíng de jiànzhùshī, shèjìguo hěn duō yǒumíng de dàlóu."
+            },
+            {
+              "q": "Mùa đông đến rồi, phải mặc áo khoác, nếu không rất dễ bị cảm.",
+              "a": "冬天到了，要穿大衣，不然很容易感冒。",
+              "pin": "Dōngtiān dào le, yào chuān dàyī, bùrán hěn róngyì gǎnmào."
+            }
+          ]
+        },
+        {
+          "type": "write",
+          "title": "Viết đoạn văn theo chủ đề và từ cho sẵn",
+          "topic": "Sự thay đổi mà bạn nhận thấy ở nơi bạn sống",
+          "words": [
+            "变化",
+            "改变",
+            "人口",
+            "增加",
+            "影响",
+            "建筑",
+            "著名",
+            "过去",
+            "自信",
+            "富裕"
+          ],
+          "wordsVn": "thay đổi (không tân ngữ), thay đổi (có tân ngữ), dân số, tăng thêm, ảnh hưởng, kiến trúc, nổi tiếng, quá khứ, tự tin, giàu có",
+          "sample": {
+            "zh": "我家乡这几年的变化特别大。过去，这里只是一个小地方，人口不多，也没有什么著名的建筑。后来，因为工业发展得很快，人口增加了很多，交通和生活方式都受到了很大影响。政府还建筑了不少新的大楼和公园，人们的生活也变得越来越富裕。虽然我很怀念过去安静的日子，但是看到家乡变得更好，我心里也觉得很自信、很骄傲。我相信，只要大家一起努力，家乡以后一定会继续改变，变得更美好。",
+            "pin": "Wǒ jiāxiāng zhè jǐ nián de biànhuà tèbié dà. Guòqù, zhèlǐ zhǐshì yí ge xiǎo dìfang, rénkǒu bù duō, yě méiyǒu shénme zhùmíng de jiànzhù. Hòulái, yīnwèi gōngyè fāzhǎn de hěn kuài, rénkǒu zēngjiāle hěn duō, jiāotōng hé shēnghuó fāngshì dōu shòudàole hěn dà yǐngxiǎng. Zhèngfǔ hái jiànzhùle bù shǎo xīn de dàlóu hé gōngyuán, rénmen de shēnghuó yě biàn de yuè lái yuè fùyù. Suīrán wǒ hěn huáiniàn guòqù ānjìng de rìzi, dànshì kàndào jiāxiāng biàn de gèng hǎo, wǒ xīnlǐ yě juéde hěn zìxìn, hěn jiāo’ào. Wǒ xiāngxìn, zhǐyào dàjiā yìqǐ nǔlì, jiāxiāng yǐhòu yídìng huì jìxù gǎibiàn, biàn de gèng měihǎo.",
+            "vn": "Quê hương tôi mấy năm nay thay đổi đặc biệt lớn. Trước đây, nơi này chỉ là một chỗ nhỏ, dân số không nhiều, cũng không có công trình kiến trúc nổi tiếng nào. Sau đó, vì công nghiệp phát triển rất nhanh, dân số tăng thêm rất nhiều, giao thông và phương thức sống đều chịu ảnh hưởng rất lớn. Chính quyền còn xây dựng không ít tòa nhà và công viên mới, cuộc sống của người dân cũng trở nên ngày càng giàu có. Tuy tôi rất hoài niệm những ngày tháng yên tĩnh trong quá khứ, nhưng nhìn thấy quê hương trở nên tốt đẹp hơn, trong lòng tôi cũng cảm thấy rất tự tin, rất tự hào. Tôi tin rằng, chỉ cần mọi người cùng nhau nỗ lực, quê hương sau này chắc chắn sẽ tiếp tục thay đổi, trở nên tốt đẹp hơn."
+          }
+        }
+      ]
     }
 ];
 
@@ -5921,7 +6042,14 @@ const EX_PHRASE_DICT={
 "永远":{pinyin:"yǒngyuǎn",hanviet:"VĨNH VIỄN",meaning:"mãi mãi"},
 "珍贵":{pinyin:"zhēnguì",hanviet:"TRÂN QUÝ",meaning:"quý giá"},
 "程度":{pinyin:"chéngdù",hanviet:"TRÌNH ĐỘ",meaning:"mức độ"},
-"屋子":{pinyin:"wūzi",hanviet:"ỐC TỬ",meaning:"căn phòng, nhà"}
+"屋子":{pinyin:"wūzi",hanviet:"ỐC TỬ",meaning:"căn phòng, nhà"},
+"骄傲":{pinyin:"jiāo\u2019ào",hanviet:"KIÊU NGẠO",meaning:"kiêu hãnh, tự hào"},
+"家乡":{pinyin:"jiāxiāng",hanviet:"GIA HƯƠNG",meaning:"quê hương"},
+"工业":{pinyin:"gōngyè",hanviet:"CÔNG NGHIỆP",meaning:"công nghiệp"},
+"方式":{pinyin:"fāngshì",hanviet:"PHƯƠNG THỨC",meaning:"phương thức, cách thức"},
+"奶奶":{pinyin:"nǎinai",hanviet:"NÃI NÃI",meaning:"bà nội"},
+"受到":{pinyin:"shòudào",hanviet:"THỤ ĐÁO",meaning:"chịu, nhận (ảnh hưởng, sự giúp đỡ...)"},
+"继续":{pinyin:"jìxù",hanviet:"KẾ TỤC",meaning:"tiếp tục"}
 };
 let _exMergedMap=null;
 function _exMatchMap(){
