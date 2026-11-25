@@ -144,6 +144,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 .search-input{width:100%;flex-basis:100%;padding:11px 20px;border:1.5px solid var(--border);border-radius:24px;background:var(--surface);color:var(--text);font-family:var(--font);font-size:.9rem;outline:none;transition:.2s;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 .search-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(21,101,192,.1)}
 .badge-btn{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:.8rem;font-weight:500;cursor:pointer;transition:.2s}
+.bai-squares{display:flex;gap:6px;flex-wrap:wrap;margin:-8px 0 16px}.bai-squares:empty{display:none}.bai-sq{min-width:42px;padding:6px 0;text-align:center}
 .badge-btn:hover,.badge-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
 .badge-btn.b1.active{background:var(--b1);border-color:var(--b1)}
 .badge-btn.b2.active{background:var(--b2);border-color:var(--b2)}
@@ -590,57 +591,11 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 <div class="tab-panel active" id="tab-vocab">
   <div class="filter-bar">
     <input class="search-input" id="searchInput" placeholder="🔍 Tìm chữ Hán, pinyin, nghĩa..." oninput="filterVocab()">
-    <button class="badge-btn active" onclick="filterBai('all',this)">Tất cả (1022)</button>
-    <button class="badge-btn b1" onclick="filterBai(1,this)">Buổi 1</button>
-    <button class="badge-btn b2" onclick="filterBai(2,this)">Buổi 2</button>
-    <button class="badge-btn b3" onclick="filterBai(3,this)">Buổi 3</button>
-    <button class="badge-btn b4" onclick="filterBai(4,this)">Buổi 4</button>
-    <button class="badge-btn b5" onclick="filterBai(5,this)">Buổi 5</button>
-    <button class="badge-btn b6" onclick="filterBai(6,this)">Buổi 6</button>
-    <button class="badge-btn b7" onclick="filterBai(7,this)">Buổi 7</button>
-    <button class="badge-btn b8" onclick="filterBai(8,this)">Buổi 8</button>
-    <button class="badge-btn b9" onclick="filterBai(9,this)">Buổi 9</button>
-    <button class="badge-btn b10" onclick="filterBai(10,this)">Buổi 10</button>
-    <button class="badge-btn b11" onclick="filterBai(11,this)">Buổi 11</button>
-    <button class="badge-btn b12" onclick="filterBai(12,this)">Buổi 12</button>
-    <button class="badge-btn b13" onclick="filterBai(13,this)">Buổi 13</button>
-    <button class="badge-btn b14" onclick="filterBai(14,this)">Buổi 14</button>
-    <button class="badge-btn b15" onclick="filterBai(15,this)">Buổi 15</button>
-    <button class="badge-btn b16" onclick="filterBai(16,this)">Buổi 16</button>
-    <button class="badge-btn b17" onclick="filterBai(17,this)">Buổi 17</button>
-    <button class="badge-btn b18" onclick="filterBai(18,this)">Buổi 18</button>
-    <button class="badge-btn b19" onclick="filterBai(19,this)">Buổi 19</button>
-    <button class="badge-btn b20" onclick="filterBai(20,this)">Buổi 20</button>
-    <button class="badge-btn b21" onclick="filterBai(21,this)">Buổi 21</button>
-    <button class="badge-btn b22" onclick="filterBai(22,this)">Buổi 22</button>
-    <button class="badge-btn b23" onclick="filterBai(23,this)">Buổi 23</button>
-    <button class="badge-btn b24" onclick="filterBai(24,this)">Buổi 24</button>
-    <button class="badge-btn b25" onclick="filterBai(25,this)">Buổi 25</button>
-    <button class="badge-btn b26" onclick="filterBai(26,this)">Buổi 26</button>
-    <button class="badge-btn b27" onclick="filterBai(27,this)">Buổi 27</button>
-    <button class="badge-btn b28" onclick="filterBai(28,this)">Buổi 28</button>
-    <button class="badge-btn b29" onclick="filterBai(29,this)">Buổi 29</button>
-    <button class="badge-btn b30" onclick="filterBai(30,this)">Buổi 30</button>
-    <button class="badge-btn b31" onclick="filterBai(31,this)">Buổi 31</button>
-    <button class="badge-btn b32" onclick="filterBai(32,this)">Buổi 32</button>
-    <button class="badge-btn b33" onclick="filterBai(33,this)">Buổi 33</button>
-    <button class="badge-btn b34" onclick="filterBai(34,this)">Buổi 34</button>
-    <button class="badge-btn b35" onclick="filterBai(35,this)">Buổi 35</button>
-    <button class="badge-btn b36" onclick="filterBai(36,this)">Buổi 36</button>
-    <button class="badge-btn b37" onclick="filterBai(37,this)">Buổi 37</button>
-    <button class="badge-btn b38" onclick="filterBai(38,this)">Buổi 38</button>
-    <button class="badge-btn b39" onclick="filterBai(39,this)">Buổi 39</button>
-    <button class="badge-btn b40" onclick="filterBai(40,this)">Buổi 40</button>
-    <button class="badge-btn b41" onclick="filterBai(41,this)">Buổi 41</button>
-    <button class="badge-btn b42" onclick="filterBai(42,this)">Buổi 42</button>
-    <button class="badge-btn b43" onclick="filterBai(43,this)">Buổi 43</button>
-    <button class="badge-btn b44" onclick="filterBai(44,this)">Buổi 44</button>
-    <button class="badge-btn b45" onclick="filterBai(45,this)">Buổi 45</button>
-    <button class="badge-btn b46" onclick="filterBai(46,this)">Buổi 46</button>
-    <button class="badge-btn b47" onclick="filterBai(47,this)">Buổi 47</button>
-    <button class="badge-btn b48" onclick="filterBai(48,this)">Buổi 48</button>
-    <button class="badge-btn" onclick="filterBai('unknown',this)" style="border-color:#E67E22;color:#E67E22">Chưa thuộc</button>
+    <button class="badge-btn active" data-nav="vocab" data-v="all" onclick="filterBai('all',this)">Tất cả (1022)</button>
+    <span class="bai-groups" data-nav="vocab" style="display:contents"></span>
+    <button class="badge-btn" data-nav="vocab" data-v="unknown" onclick="filterBai('unknown',this)" style="border-color:#E67E22;color:#E67E22">Chưa thuộc</button>
   </div>
+  <div class="bai-squares" data-nav="vocab"></div>
   <div class="vocab-grid" id="vocabGrid"></div>
   <div class="empty-state" id="emptyState" style="display:none"><span class="icon">🔍</span>Không tìm thấy từ nào</div>
 </div>
@@ -649,57 +604,11 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 <div class="tab-panel" id="tab-flashcard">
   <div class="fc-container">
     <div class="fc-filter-bar">
-      <button class="badge-btn active" onclick="fcFilter('all',this)">Tất cả</button>
-      <button class="badge-btn b1" onclick="fcFilter(1,this)">Buổi 1</button>
-      <button class="badge-btn b2" onclick="fcFilter(2,this)">Buổi 2</button>
-      <button class="badge-btn b3" onclick="fcFilter(3,this)">Buổi 3</button>
-      <button class="badge-btn b4" onclick="fcFilter(4,this)">Buổi 4</button>
-      <button class="badge-btn b5" onclick="fcFilter(5,this)">Buổi 5</button>
-      <button class="badge-btn b6" onclick="fcFilter(6,this)">Buổi 6</button>
-      <button class="badge-btn b7" onclick="fcFilter(7,this)">Buổi 7</button>
-      <button class="badge-btn b8" onclick="fcFilter(8,this)">Buổi 8</button>
-      <button class="badge-btn b9" onclick="fcFilter(9,this)">Buổi 9</button>
-      <button class="badge-btn b10" onclick="fcFilter(10,this)">Buổi 10</button>
-      <button class="badge-btn b11" onclick="fcFilter(11,this)">Buổi 11</button>
-      <button class="badge-btn b12" onclick="fcFilter(12,this)">Buổi 12</button>
-      <button class="badge-btn b13" onclick="fcFilter(13,this)">Buổi 13</button>
-      <button class="badge-btn b14" onclick="fcFilter(14,this)">Buổi 14</button>
-      <button class="badge-btn b15" onclick="fcFilter(15,this)">Buổi 15</button>
-      <button class="badge-btn b16" onclick="fcFilter(16,this)">Buổi 16</button>
-      <button class="badge-btn b17" onclick="fcFilter(17,this)">Buổi 17</button>
-      <button class="badge-btn b18" onclick="fcFilter(18,this)">Buổi 18</button>
-      <button class="badge-btn b19" onclick="fcFilter(19,this)">Buổi 19</button>
-      <button class="badge-btn b20" onclick="fcFilter(20,this)">Buổi 20</button>
-      <button class="badge-btn b21" onclick="fcFilter(21,this)">Buổi 21</button>
-      <button class="badge-btn b22" onclick="fcFilter(22,this)">Buổi 22</button>
-      <button class="badge-btn b23" onclick="fcFilter(23,this)">Buổi 23</button>
-      <button class="badge-btn b24" onclick="fcFilter(24,this)">Buổi 24</button>
-      <button class="badge-btn b25" onclick="fcFilter(25,this)">Buổi 25</button>
-      <button class="badge-btn b26" onclick="fcFilter(26,this)">Buổi 26</button>
-      <button class="badge-btn b27" onclick="fcFilter(27,this)">Buổi 27</button>
-      <button class="badge-btn b28" onclick="fcFilter(28,this)">Buổi 28</button>
-      <button class="badge-btn b29" onclick="fcFilter(29,this)">Buổi 29</button>
-      <button class="badge-btn b30" onclick="fcFilter(30,this)">Buổi 30</button>
-      <button class="badge-btn b31" onclick="fcFilter(31,this)">Buổi 31</button>
-      <button class="badge-btn b32" onclick="fcFilter(32,this)">Buổi 32</button>
-      <button class="badge-btn b33" onclick="fcFilter(33,this)">Buổi 33</button>
-      <button class="badge-btn b34" onclick="fcFilter(34,this)">Buổi 34</button>
-      <button class="badge-btn b35" onclick="fcFilter(35,this)">Buổi 35</button>
-      <button class="badge-btn b36" onclick="fcFilter(36,this)">Buổi 36</button>
-      <button class="badge-btn b37" onclick="fcFilter(37,this)">Buổi 37</button>
-      <button class="badge-btn b38" onclick="fcFilter(38,this)">Buổi 38</button>
-      <button class="badge-btn b39" onclick="fcFilter(39,this)">Buổi 39</button>
-      <button class="badge-btn b40" onclick="fcFilter(40,this)">Buổi 40</button>
-      <button class="badge-btn b41" onclick="fcFilter(41,this)">Buổi 41</button>
-      <button class="badge-btn b42" onclick="fcFilter(42,this)">Buổi 42</button>
-      <button class="badge-btn b43" onclick="fcFilter(43,this)">Buổi 43</button>
-      <button class="badge-btn b44" onclick="fcFilter(44,this)">Buổi 44</button>
-      <button class="badge-btn b45" onclick="fcFilter(45,this)">Buổi 45</button>
-      <button class="badge-btn b46" onclick="fcFilter(46,this)">Buổi 46</button>
-      <button class="badge-btn b47" onclick="fcFilter(47,this)">Buổi 47</button>
-      <button class="badge-btn b48" onclick="fcFilter(48,this)">Buổi 48</button>
-      <button class="badge-btn" onclick="fcFilter('unknown',this)" style="border-color:#E67E22;color:#E67E22">Chưa thuộc</button>
+      <button class="badge-btn active" data-nav="fc" data-v="all" onclick="fcFilter('all',this)">Tất cả</button>
+      <span class="bai-groups" data-nav="fc" style="display:contents"></span>
+      <button class="badge-btn" data-nav="fc" data-v="unknown" onclick="fcFilter('unknown',this)" style="border-color:#E67E22;color:#E67E22">Chưa thuộc</button>
     </div>
+    <div class="bai-squares" data-nav="fc"></div>
     <div class="fc-stats">
       <span><span class="dot dot-know"></span> <span id="fc-known-cnt">0</span> đã thuộc</span>
       <span><span class="dot dot-review"></span> <span id="fc-review-cnt">0</span> cần ôn</span>
@@ -739,56 +648,10 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
       <button class="mode-btn" onclick="setQuizMode('pin2zh',this)">Pinyin → 中</button>
     </div>
     <div class="quiz-filter-bar">
-      <button class="badge-btn active" onclick="qzFilter('all',this)">Tất cả</button>
-      <button class="badge-btn b1" onclick="qzFilter(1,this)">Buổi 1</button>
-      <button class="badge-btn b2" onclick="qzFilter(2,this)">Buổi 2</button>
-      <button class="badge-btn b3" onclick="qzFilter(3,this)">Buổi 3</button>
-      <button class="badge-btn b4" onclick="qzFilter(4,this)">Buổi 4</button>
-      <button class="badge-btn b5" onclick="qzFilter(5,this)">Buổi 5</button>
-      <button class="badge-btn b6" onclick="qzFilter(6,this)">Buổi 6</button>
-      <button class="badge-btn b7" onclick="qzFilter(7,this)">Buổi 7</button>
-      <button class="badge-btn b8" onclick="qzFilter(8,this)">Buổi 8</button>
-      <button class="badge-btn b9" onclick="qzFilter(9,this)">Buổi 9</button>
-      <button class="badge-btn b10" onclick="qzFilter(10,this)">Buổi 10</button>
-      <button class="badge-btn b11" onclick="qzFilter(11,this)">Buổi 11</button>
-      <button class="badge-btn b12" onclick="qzFilter(12,this)">Buổi 12</button>
-      <button class="badge-btn b13" onclick="qzFilter(13,this)">Buổi 13</button>
-      <button class="badge-btn b14" onclick="qzFilter(14,this)">Buổi 14</button>
-      <button class="badge-btn b15" onclick="qzFilter(15,this)">Buổi 15</button>
-      <button class="badge-btn b16" onclick="qzFilter(16,this)">Buổi 16</button>
-      <button class="badge-btn b17" onclick="qzFilter(17,this)">Buổi 17</button>
-      <button class="badge-btn b18" onclick="qzFilter(18,this)">Buổi 18</button>
-      <button class="badge-btn b19" onclick="qzFilter(19,this)">Buổi 19</button>
-      <button class="badge-btn b20" onclick="qzFilter(20,this)">Buổi 20</button>
-      <button class="badge-btn b21" onclick="qzFilter(21,this)">Buổi 21</button>
-      <button class="badge-btn b22" onclick="qzFilter(22,this)">Buổi 22</button>
-      <button class="badge-btn b23" onclick="qzFilter(23,this)">Buổi 23</button>
-      <button class="badge-btn b24" onclick="qzFilter(24,this)">Buổi 24</button>
-      <button class="badge-btn b25" onclick="qzFilter(25,this)">Buổi 25</button>
-      <button class="badge-btn b26" onclick="qzFilter(26,this)">Buổi 26</button>
-      <button class="badge-btn b27" onclick="qzFilter(27,this)">Buổi 27</button>
-      <button class="badge-btn b28" onclick="qzFilter(28,this)">Buổi 28</button>
-      <button class="badge-btn b29" onclick="qzFilter(29,this)">Buổi 29</button>
-      <button class="badge-btn b30" onclick="qzFilter(30,this)">Buổi 30</button>
-      <button class="badge-btn b31" onclick="qzFilter(31,this)">Buổi 31</button>
-      <button class="badge-btn b32" onclick="qzFilter(32,this)">Buổi 32</button>
-      <button class="badge-btn b33" onclick="qzFilter(33,this)">Buổi 33</button>
-      <button class="badge-btn b34" onclick="qzFilter(34,this)">Buổi 34</button>
-      <button class="badge-btn b35" onclick="qzFilter(35,this)">Buổi 35</button>
-      <button class="badge-btn b36" onclick="qzFilter(36,this)">Buổi 36</button>
-      <button class="badge-btn b37" onclick="qzFilter(37,this)">Buổi 37</button>
-      <button class="badge-btn b38" onclick="qzFilter(38,this)">Buổi 38</button>
-      <button class="badge-btn b39" onclick="qzFilter(39,this)">Buổi 39</button>
-      <button class="badge-btn b40" onclick="qzFilter(40,this)">Buổi 40</button>
-      <button class="badge-btn b41" onclick="qzFilter(41,this)">Buổi 41</button>
-      <button class="badge-btn b42" onclick="qzFilter(42,this)">Buổi 42</button>
-      <button class="badge-btn b43" onclick="qzFilter(43,this)">Buổi 43</button>
-      <button class="badge-btn b44" onclick="qzFilter(44,this)">Buổi 44</button>
-      <button class="badge-btn b45" onclick="qzFilter(45,this)">Buổi 45</button>
-      <button class="badge-btn b46" onclick="qzFilter(46,this)">Buổi 46</button>
-      <button class="badge-btn b47" onclick="qzFilter(47,this)">Buổi 47</button>
-      <button class="badge-btn b48" onclick="qzFilter(48,this)">Buổi 48</button>
+      <button class="badge-btn active" data-nav="quiz" data-v="all" onclick="qzFilter('all',this)">Tất cả</button>
+      <span class="bai-groups" data-nav="quiz" style="display:contents"></span>
     </div>
+    <div class="bai-squares" data-nav="quiz"></div>
     <div class="quiz-score">
       <div class="score-item"><div class="score-num correct" id="quizCorrect">0</div><div class="score-label">✓ Đúng</div></div>
       <div class="score-item"><div class="score-num wrong" id="quizWrong">0</div><div class="score-label">✗ Sai</div></div>
@@ -857,34 +720,11 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 <!-- TAB 7: BÀI TẬP -->
 <div class="tab-panel" id="tab-exercise">
   <div class="filter-bar">
-    <button class="badge-btn active" onclick="filterExercise('all',this)">Tất cả</button>
-    <button class="badge-btn b5" onclick="filterExercise(5,this)">Buổi 5</button>
-    <button class="badge-btn b6" onclick="filterExercise(6,this)">Buổi 6</button>
-    <button class="badge-btn b7" onclick="filterExercise(7,this)">Buổi 7</button>
-    <button class="badge-btn b8" onclick="filterExercise(8,this)">Buổi 8</button>
-    <button class="badge-btn b9" onclick="filterExercise(9,this)">Buổi 9</button>
-    <button class="badge-btn b10" onclick="filterExercise(10,this)">Buổi 10</button>
-    <button class="badge-btn b11" onclick="filterExercise(11,this)">Buổi 11</button>
-    <button class="badge-btn b14" onclick="filterExercise(14,this)">Buổi 14</button>
-    <button class="badge-btn b32" onclick="filterExercise(32,this)">Buổi 32</button>
-    <button class="badge-btn b33" onclick="filterExercise(33,this)">Buổi 33</button>
-    <button class="badge-btn b34" onclick="filterExercise(34,this)">Buổi 34</button>
-    <button class="badge-btn b35" onclick="filterExercise(35,this)">Buổi 35</button>
-    <button class="badge-btn b36" onclick="filterExercise(36,this)">Buổi 36</button>
-    <button class="badge-btn b37" onclick="filterExercise(37,this)">Buổi 37</button>
-    <button class="badge-btn b38" onclick="filterExercise(38,this)">Buổi 38</button>
-    <button class="badge-btn b39" onclick="filterExercise(39,this)">Buổi 39</button>
-    <button class="badge-btn b40" onclick="filterExercise(40,this)">Buổi 40</button>
-    <button class="badge-btn b41" onclick="filterExercise(41,this)">Buổi 41</button>
-    <button class="badge-btn b42" onclick="filterExercise(42,this)">Buổi 42</button>
-    <button class="badge-btn b43" onclick="filterExercise(43,this)">Buổi 43</button>
-    <button class="badge-btn b44" onclick="filterExercise(44,this)">Buổi 44</button>
-    <button class="badge-btn b45" onclick="filterExercise(45,this)">Buổi 45</button>
-    <button class="badge-btn b46" onclick="filterExercise(46,this)">Buổi 46</button>
-    <button class="badge-btn b47" onclick="filterExercise(47,this)">Buổi 47</button>
-    <button class="badge-btn b48" onclick="filterExercise(48,this)">Buổi 48</button>
-    <button class="badge-btn b-final" onclick="filterExercise('final',this)">🏆 Tổng ôn</button>
+    <button class="badge-btn active" data-nav="ex" data-v="all" onclick="filterExercise('all',this)">Tất cả</button>
+    <span class="bai-groups" data-nav="ex" style="display:contents"></span>
+    <button class="badge-btn b-final" data-nav="ex" data-v="final" onclick="filterExercise('final',this)">🏆 Tổng ôn</button>
   </div>
+  <div class="bai-squares" data-nav="ex"></div>
   <div class="exercise-grid" id="exerciseGrid"></div>
 </div>
 
@@ -7780,10 +7620,9 @@ function shuffleVocab(){
 // VOCAB TAB
 // ============================================================
 let _baiFilter='all';
-function filterBai(bai,btn){
+function filterBai(bai){
   _baiFilter=bai;
-  document.querySelectorAll('#tab-vocab .badge-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+  _navSync('vocab');
   renderVocab();
 }
 function filterVocab(){renderVocab()}
@@ -7856,7 +7695,7 @@ function vocabCardHtml(w,keySuffix){
 function renderVocab(){
   const q=document.getElementById('searchInput').value.toLowerCase();
   let list=VOCAB;
-  if(_baiFilter!=='all'&&_baiFilter!=='unknown')list=list.filter(w=>w.bai===_baiFilter);
+  if(_baiFilter!=='all'&&_baiFilter!=='unknown')list=list.filter(w=>_baiMatch(_baiFilter,w.bai));
   if(_baiFilter==='unknown')list=list.filter(w=>!isKnown(w.id));
   if(q)list=list.filter(w=>w.hanzi.includes(q)||w.pinyin.toLowerCase().includes(q)||w.meaning.toLowerCase().includes(q)||w.hanviet.toLowerCase().includes(q));
   const grid=document.getElementById('vocabGrid');
@@ -7892,15 +7731,14 @@ function colorPinyin(pin){
 // FLASHCARD TAB
 // ============================================================
 let _fcBai='all';
-function fcFilter(bai,btn){
+function fcFilter(bai){
   _fcBai=bai;
-  document.querySelectorAll('#tab-flashcard .badge-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+  _navSync('fc');
   initFlashcard();
 }
 function initFlashcard(){
   let list=[...VOCAB];
-  if(_fcBai!=='all'&&_fcBai!=='unknown')list=list.filter(w=>w.bai===_fcBai);
+  if(_fcBai!=='all'&&_fcBai!=='unknown')list=list.filter(w=>_baiMatch(_fcBai,w.bai));
   if(_fcBai==='unknown')list=list.filter(w=>!isKnown(w.id));
   // shuffle
   for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]];}
@@ -7979,10 +7817,9 @@ function setQuizMode(mode,btn){
   document.getElementById('quizStreak').textContent=0;
   nextQuestion();
 }
-function qzFilter(bai,btn){
+function qzFilter(bai){
   quizBai=bai;
-  document.querySelectorAll('.quiz-filter-bar .badge-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+  _navSync('quiz');
   quizCorrect=0;quizWrong=0;quizStreak=0;
   document.getElementById('quizCorrect').textContent=0;
   document.getElementById('quizWrong').textContent=0;
@@ -7994,7 +7831,7 @@ function nextQuestion(){
   document.getElementById('quizFeedback').style.display='none';
   document.getElementById('quizNext').style.display='none';
   // pick from filtered pool
-  const pool=quizBai==='all'?[...VOCAB]:VOCAB.filter(w=>w.bai===quizBai);
+  const pool=quizBai==='all'?[...VOCAB]:VOCAB.filter(w=>_baiMatch(quizBai,w.bai));
   if(pool.length<4){
     document.getElementById('quizQuestion').innerHTML='<div style="color:var(--text3)">Buổi này có ít hơn 4 từ, không thể tạo câu hỏi.</div>';
     document.getElementById('quizOptions').innerHTML='';
@@ -8113,14 +7950,57 @@ function renderCompare(){
 // EXERCISE TAB (BÀI TẬP)
 // ============================================================
 let _exFilter='all';
-function filterExercise(bai,btn){
+const _BAI_NAVS={
+  vocab:{get:()=>_baiFilter,set:v=>filterBai(v),list:()=>VOCAB.map(w=>w.bai)},
+  fc:{get:()=>_fcBai,set:v=>fcFilter(v),list:()=>VOCAB.map(w=>w.bai)},
+  quiz:{get:()=>quizBai,set:v=>qzFilter(v),list:()=>VOCAB.map(w=>w.bai)},
+  ex:{get:()=>_exFilter,set:v=>filterExercise(v),list:()=>EXERCISES.map(e=>e.bai)}
+};
+function _baiMatch(f,b){
+  if(f==='all')return true;
+  if(f&&typeof f==='object')return typeof b==='number'&&b>=f.a&&b<=f.b;
+  return b===f;
+}
+function _navSync(key){
+  const nav=_BAI_NAVS[key],f=nav.get();
+  document.querySelectorAll('button[data-nav="'+key+'"][data-v]').forEach(b=>b.classList.toggle('active',b.dataset.v===f));
+  const bais=[...new Set(nav.list().filter(x=>typeof x==='number'))].sort((a,b)=>a-b);
+  const groups=[];
+  bais.forEach(b=>{
+    const g=Math.floor((b-1)/10);
+    let o=groups.find(x=>x.g===g);
+    if(!o){o={g,a:b,b:b,list:[]};groups.push(o)}
+    o.b=b;o.list.push(b);
+  });
+  const cur=typeof f==='number'?groups.find(x=>x.list.includes(f)):(f&&typeof f==='object'?groups.find(x=>x.a===f.a&&x.b===f.b):null);
+  const gEl=document.querySelector('.bai-groups[data-nav="'+key+'"]');
+  const sEl=document.querySelector('.bai-squares[data-nav="'+key+'"]');
+  if(gEl){
+    gEl.innerHTML=groups.map(o=>'<button class="badge-btn'+(o===cur?' active':'')+'" data-g="'+o.g+'">Buổi '+o.a+'–'+o.b+'</button>').join('');
+    gEl.querySelectorAll('[data-g]').forEach(btn=>btn.onclick=()=>{
+      const o=groups.find(x=>x.g===+btn.dataset.g);
+      nav.set({a:o.a,b:o.b});
+    });
+  }
+  if(sEl){
+    if(!cur){sEl.innerHTML=''}
+    else{
+      const whole=typeof f==='object';
+      sEl.innerHTML='<button class="badge-btn'+(whole?' active':'')+'" data-w="1">Cả nhóm</button>'+
+        cur.list.map(n=>'<button class="badge-btn bai-sq b'+n+(f===n?' active':'')+'" data-n="'+n+'">'+n+'</button>').join('');
+      sEl.querySelector('[data-w]').onclick=()=>nav.set({a:cur.a,b:cur.b});
+      sEl.querySelectorAll('[data-n]').forEach(btn=>btn.onclick=()=>nav.set(+btn.dataset.n));
+    }
+  }
+}
+function filterExercise(bai){
   _exFilter=bai;
-  document.querySelectorAll('#tab-exercise .badge-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+  _navSync('ex');
   renderExercises();
 }
+['vocab','fc','quiz','ex'].forEach(_navSync);
 function renderExercises(){
-  const list=_exFilter==='all'?EXERCISES:EXERCISES.filter(e=>e.bai===_exFilter);
+  const list=_exFilter==='all'?EXERCISES:EXERCISES.filter(e=>_baiMatch(_exFilter,e.bai));
   document.getElementById('exerciseGrid').innerHTML=list.map(ex=>`
     <div class="exercise-bai-card" id="exb-${ex.bai}">
       <div class="exercise-bai-header" onclick="toggleExBai('${ex.bai}')">
