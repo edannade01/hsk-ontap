@@ -144,7 +144,7 @@ main{margin-top:calc(var(--header-h) + var(--tab-h));padding:24px 20px;max-width
 .search-input{width:100%;flex-basis:100%;padding:11px 20px;border:1.5px solid var(--border);border-radius:24px;background:var(--surface);color:var(--text);font-family:var(--font);font-size:.9rem;outline:none;transition:.2s;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 .search-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(21,101,192,.1)}
 .badge-btn{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);font-size:.8rem;font-weight:500;cursor:pointer;transition:.2s}
-.bai-squares{display:flex;gap:6px;flex-wrap:wrap;margin:-8px 0 16px}.bai-squares:empty{display:none}.bai-sq{min-width:42px;padding:6px 0;text-align:center}
+.bai-squares{display:flex;gap:6px;flex-wrap:wrap;margin:-8px 0 16px}.bai-squares:empty{display:none}.bai-quick{border-color:var(--primary);color:var(--primary)}.bai-quick.active{color:#fff}.bai-sq{min-width:42px;padding:6px 0;text-align:center}
 .badge-btn:hover,.badge-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
 .badge-btn.b1.active{background:var(--b1);border-color:var(--b1)}
 .badge-btn.b2.active{background:var(--b2);border-color:var(--b2)}
@@ -7976,7 +7976,12 @@ function _navSync(key){
   const gEl=document.querySelector('.bai-groups[data-nav="'+key+'"]');
   const sEl=document.querySelector('.bai-squares[data-nav="'+key+'"]');
   if(gEl){
-    gEl.innerHTML=groups.map(o=>'<button class="badge-btn'+(o===cur?' active':'')+'" data-g="'+o.g+'">Buổi '+o.a+'–'+o.b+'</button>').join('');
+    const mx=bais[bais.length-1],r5=bais[Math.max(0,bais.length-5)];
+    const isR5=f&&typeof f==='object'&&f.a===r5&&f.b===mx;
+    gEl.innerHTML='<button class="badge-btn bai-quick'+(f===mx?' active':'')+'" data-q="last">⚡ Mới nhất (Buổi '+mx+')</button>'+
+      '<button class="badge-btn bai-quick'+(isR5?' active':'')+'" data-q="r5">5 buổi gần đây</button>'+groups.map(o=>'<button class="badge-btn'+(o===cur?' active':'')+'" data-g="'+o.g+'">Buổi '+o.a+'–'+o.b+'</button>').join('');
+    gEl.querySelector('[data-q="last"]').onclick=()=>nav.set(mx);
+    gEl.querySelector('[data-q="r5"]').onclick=()=>nav.set({a:r5,b:mx});
     gEl.querySelectorAll('[data-g]').forEach(btn=>btn.onclick=()=>{
       const o=groups.find(x=>x.g===+btn.dataset.g);
       nav.set({a:o.a,b:o.b});
